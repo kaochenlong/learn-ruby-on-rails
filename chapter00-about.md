@@ -37,7 +37,6 @@ Ruby on Rails (以下將簡稱 Rails) 是一個非常具有生產力的網站開
 * 不會教你怎麼寫 HTML/CSS/Javascript。
 * 不會教你怎麼使用 Git。
 * 不會教你完整的 Ruby 語法或是進階的 Meta Programming 技巧。
-* 不會教你怎麼寫測試。
 
 為什麼不? 原因為簡單，因為上面所列的每一個主題，都可以是獨立的一本書。
 
