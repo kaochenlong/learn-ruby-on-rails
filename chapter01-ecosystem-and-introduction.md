@@ -90,7 +90,7 @@ Rails 的兩大設計哲學：
 
 如果想要在線上寫 Rails 的話，[c9.io](https://c9.io/) 這個線上平台也是個很不錯的選項：
 
-![c9.io](images/chapter01/c9.io.png)
+![c9.io](images/chapter01/c9.io.jpg)
 
 c9.io 除了有線上開發環境外，也可直接在線上有預覽的功能。
 
