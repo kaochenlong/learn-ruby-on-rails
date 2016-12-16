@@ -13,7 +13,7 @@
 | 15 - Rails - Model Migration | 16 - Rails - Model 關連性 | 17 - Rails - Model 驗證及回呼 |
 | 18 - Rails - 多國語言 | 19 - Rails - 寄發信件 | 20 - Rails - 背景工作及工作排程 |
 | 21 - Rails - JavaScript 與 Assets Pipeline | 22 - Rails 之 API 模式 | 23 - 實作：購物車 |
-| 24 - 實作：訂單處理 | 25 - 實作：金流串接(使用智付寶) | 26 - 實作：ActionCable 即使聊天室 |
+| 24 - 實作：訂單處理 | 25 - 實作：金流串接(使用智付寶) | 26 - 實作：ActionCable 即時聊天室 |
 | 27 - 實作：網站佈署(Heroku 及 Capistrano) | 28 - 程式碼整理 | 29 - 寫測試讓你更有信心 - RSpec 環境設定、單元測試與整合測試 |
 
 ## 版本
