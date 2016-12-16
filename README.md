@@ -4,7 +4,7 @@
 
 ## 目錄
 
-| [00 - 寫在最前面](chapter00-about.md) | [01 - Ruby 生態圈及簡介](chapter01-ecosystem-and-introduction.md) | 02 - 開發環境安裝 |
+| [00 - 寫在最前面](chapter00-about.md) | [01 - 生態圈及簡介](chapter01-ecosystem-and-introduction.md) | 02 - 開發環境安裝 |
 |:---------|:------|:------|
 | 03 - 常用命令列工具 | 04 - 第一個應用程式(使用 Scaffold) | 05 - Ruby - 變數、常數、流程控制、迴圈 |
 | 06 - Ruby - 數字、字串、符號、陣列、Hash | 07 - Ruby - 方法與程式碼區塊(block) | 08 - Ruby - 類別與模組 |
