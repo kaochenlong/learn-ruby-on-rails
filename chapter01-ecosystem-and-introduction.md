@@ -84,13 +84,13 @@ Rails 的兩大設計哲學：
 
 如果只是想練一下 Ruby 的話，可以試試 [Try Ruby](http://tryruby.org/) 網站：
 
-![Try Ruby](images/chapter01/try_ruby.png)
+![Try Ruby](images/chapter01/try_ruby.jpg)
 
 在畫面的左邊會一直出現要你完成的題目，右邊輸入區則是類似 Ruby 的 irb 環境。
 
 如果想要在線上寫 Rails 的話，[c9.io](https://c9.io/) 這個線上平台也是個很不錯的選項：
 
-![c9.io](images/chapter01/c9.io.jpg)
+![c9.io](images/chapter01/c9.io.png)
 
 c9.io 除了有線上開發環境外，也可直接在線上有預覽的功能。
 
