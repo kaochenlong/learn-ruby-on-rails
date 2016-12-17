@@ -1,10 +1,15 @@
 # 生態圈及簡介
 
-## Ruby 生態圈
+- [Ruby 生態圈](#ruby-ecosystem)
+- [關於 Ruby](#about-ruby)
+- [關於 Rails](#about-rails)
+- [常見問題](#faq)
+
+## <a name="ruby-ecosystem"></a>Ruby 生態圈
 
 Ruby 這個程式語言可以說是因為 Rails 的盛行而興起的，我相信大部份的人會開始學習 Ruby 大多是因為 Rails 的緣故。事實上，在 Rails 風行之前，Ruby 這個程式語言也許可以說全世界幾乎只有日本的工程師在使用。
 
-## 關於 Ruby
+## <a name="about-ruby"></a>關於 Ruby
 ### 什麼是 Ruby?
 
 很多人因為聽聞 Rails 可以快速開發網站而開始接觸 Ruby，所以會認為 Ruby 就是用來開發網站，或是覺得 Ruby 是個最近幾年才發明的程式語言。事實上 Ruby 是一種泛用的腳本式程式語言，從資料分析、繪圖、3D 建模、系統管理、遊戲開發等程式都可以使用 Ruby 開發，而且它的年紀已經超過 20 年了。
@@ -33,7 +38,7 @@ Ruby 是個很容易學、很容易上手的程式語言，語法寫起來也很
 
 很多人在評估程式語言的優劣，是看有哪些大公司、單位在使用它，或是使用的開發者人數。老實說我個人不是很關心這個問題，有些人覺得 Ruby 並不是很流行，在 [TIOBE](http://www.tiobe.com) 網站上的排名也不是非常前面，但我個人認為，好的東西不一定要流行，只要能完成任務的工具就是好工具。在 iPhone 還沒流行之前，誰也沒料到有一天 Objective-C 這個語法看起來很奇怪的程式語言有一天可以這麼熱門。
 
-## 關於 Rails
+## <a name="about-rails"></a>關於 Rails
 
 ### 什麼是 Rails?
 
@@ -66,19 +71,19 @@ Rails 的兩大設計哲學：
 
 如果有些程式碼片段或結構一直重複的出現，就應該把重複的部份抽離出來，整理成為一個方法或類別。這樣的方法或類別不僅可以重複使用，也會因此變得比較好維護，Bug 也比較容易被發現。
 
-### 常見問題
+## <a name="faq"></a>常見問題
 
-#### 聽說寫 Ruby/Rails  要先買 Mac 電腦?
+### 聽說寫 Ruby/Rails  要先買 Mac 電腦?
 
 其實不需要的，使用 Mac 系統只是在開發環境上比較方便，但並不是必需品，即使用一般的 PC 安裝 Linux/Ubuntu 系統一樣可以進行開發。事實上，最後網站佈署的環境也是 Linux/Ubuntu，所以不要聽信「要先學 Ruby/Rails 要先買 Mac」之類的江湖謠言。
 
 當然，如果經濟許可，使用 Mac 電腦開發是件還滿開心的事。
 
-#### 用 Windows 可以嗎?
+### 用 Windows 可以嗎?
 
 如果只是練習，Windows 勉強是可以的，因為在 Windows 也有打包好的懶人安裝包([Ruby Installer](https://rubyinstaller.org/) 及 [Rails Installer](http://railsinstaller.org/en))，但在 Windows 平台常常會遇到套件安裝失敗或不支援的問題。如果您平常的工作還是需要 Windows 的話，建議您可以使用 [VirtualBox](https://www.virtualbox.org/) 在 Windows 上安裝個 Linux/Ubuntu 的虛擬作業環境，可以少些麻煩。
 
-#### 一定要安裝在自己的電腦裡嗎?
+### 一定要安裝在自己的電腦裡嗎?
 
 也許因為某些因素，你無法在電腦上安裝 Ruby/Rails 環境(例如設備是借來的、公司內部管制，或是設備的記憶體不夠多，跑不動 VirtualBox 之類的軟體等)，也有其它線上的環境可以讓你練習。
 
