@@ -9,18 +9,18 @@
 
 ## 你的第一個 Rails 應用程式 (Blog 系統)
 
-新手上路，讓我們來做一個可以讓使用者在發文的 Blog 系統吧! 想一下這個系統的使用者故事(User Story)大概會長什麼樣子：
+新手上路，讓我們來做一個讓使用者可以發文的 Blog 系統吧! 先想一下這個系統的使用者故事(User Story)大概會長什麼樣子：
 
 - 可以新增使用者(User)
 - 每個使用者(User)可以新增、修改或刪除自己寫的文章(Post)
 
-雖然 Ruby 的世界有非常多厲害的套件(gem)，像是如果要做會員系統，只要用 [devise](https://github.com/plataformatec/devise) 就可以在幾分鐘甚至是幾十秒內就把會員基本的功能完成。不過這裡我們先不用任何套件，僅靠 Rails 內建的功能來完成它。
+雖然 Ruby 的世界有非常多厲害的套件(gem)，像是如果要做會員系統，只要用 [devise](https://github.com/plataformatec/devise) 就可以在幾分鐘甚至是幾十秒內就把會員註冊、登入、登出等基本的功能完成。不過這裡我們先不用任何套件，僅靠 Rails 內建的功能來完成它。
 
 ## <a name="user-scaffold"></a>使用者功能
 
 ### Step 1: 使用 Scaffold
 
-讓我們先想一下使用者的資料大概會長什麼樣子：
+我們先想一下使用者的資料大概會長什麼樣子：
 
 | 欄位名稱 | 資料型態      |    說明        |
 |:---------|:-------------:|:---------------|
@@ -28,7 +28,7 @@
 |email     | 字串(string)  | 使用者 Email   |
 |tel       | 字串(string)  | 聯絡電話       |
 
-接下來，我們使用 Rails 內建的 Scaffold 功能來幫我們產生需要的檔案。切換到終端機畫面：
+接下來，我們使用 Rails 內建的 Scaffold 功能來幫我們產生需要的檔案。切換到終端機畫面輸入指令：
 
     $ rails generate scaffold User name:string email:string tel:string
     Running via Spring preloader in process 17922
@@ -83,7 +83,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
 end
 ```
 
-內容看不懂沒關係，但大概可以從文字猜得出來它是要建立一個表格(table)，裡面有 `name`、`email` 以及 `tel` 三個欄位，分別都是字串(string)型態。
+內容現在看不懂沒關係，之後會再介紹，但大概可以從文字猜得出來它是要建立一個表格(table)，裡面有 `name`、`email` 以及 `tel` 三個欄位，分別都是字串(string)型態。
 
 在 Rails 專案，這個檔案稱之遷移檔(migration file)，是個很重要的檔案，我們會在後面的章節再介紹。
 
@@ -118,7 +118,7 @@ end
 
 ![image](images/chapter04/user-scaffold-1.png)
 
-試著新增資料：
+試著輸入一些資料資料：
 
 ![image](images/chapter04/user-scaffold-2.png)
 
@@ -194,7 +194,7 @@ end
 
 ![image](images/chapter04/post-scaffold-2.png)
 
-這個地方其實不該讓使用者自己填空，至少是要自動帶入或是使用下拉選單，不過暫時先這樣。然後就可以看到：
+這個 User 欄位其實不該讓使用者自己填空，至少是要自動帶入或是使用下拉選單，不過暫時先這樣。然後就可以看到：
 
 ![image](images/chapter04/post-scaffold-3.png)
 
@@ -236,7 +236,7 @@ end
 
 Scaffold 好用歸好用，我當年第一次接觸 Rails 就是被 Scaffold 給騙進來的。但實際在工作的時候不見得常用，比較常見是手動建立 controller 或 model，畢竟 Scaffold 一口氣生出太多用不到的檔案，而且也有種用牛刀殺小雞的感覺。
 
-基本上 Rails 是不可能靠用聽的或用看的就學得會的，一定多要練習，加油!
+基本上 Rails 是不可能靠用聽的或用看的就學得會的，一定多要練習，建議有空可試著照 Rails Guide 的這篇 [Getting Started](http://guides.rubyonrails.org/getting_started.html) 操練一遍，應該就對 Rails 更有概念了，加油!
 
 有任何問題可於 [GitHub issue](https://github.com/kaochenlong/learn-ruby-on-rails/issues) 討論。原始碼可於 [這裡](https://github.com/kaochenlong/hello_rails) 取得
 
