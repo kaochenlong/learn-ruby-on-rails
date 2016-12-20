@@ -592,7 +592,7 @@ end
 
 陣列的 `each` 方法非常常用到，讓我們來看一下之前用 Scaffold 產生的檔案(檔案：app/views/users/index.html.erb)：
 
-```
+```erb
 <tbody>
   <% @users.each do |user| %>
     <tr>
