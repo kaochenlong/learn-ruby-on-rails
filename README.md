@@ -1,6 +1,6 @@
 # 為你自己學 Ruby on Rails
 
-「為你自己學 Ruby on Rails」系列文章。
+「為你自己學 Ruby on Rails」系列文章。好讀版請走[這裡](http://learnrails.kaochenlong.com/)。
 
 如其標題，學習不需要為公司、不需要為長官、同事、不需要為別人，只為你自己。
 
@@ -34,5 +34,5 @@
 * Github: <https://github.com/kaochenlong>
 * Email: eddie@5xruby.tw
 
-若內容有誤，歡迎直接發 PR 來修正 :)
+若內容有誤，歡迎直接發 Pull Request 來修正 :)
 
