@@ -7,6 +7,8 @@
 - [安裝 Rails](#install-rails)
 - [建立 Rails 專案](#build-rails-project)
 
+----
+
 ## <a name="install-ruby"></a>安裝 Ruby
 
 ### Unix/Linux 作業系統
@@ -34,6 +36,8 @@
 ### 其它系統
 
 更多其它平台的安裝方式，或是想要直接下載原始碼自行編譯，請參閱 [Ruby 官方網站](https://www.ruby-lang.org/)的安裝說明。
+
+----
 
 ## <a name="use-rvm"></a>用 RVM 來管理 Ruby 版本
 
@@ -172,6 +176,8 @@ RVM 會自動找 `[ruby-]2.3[.3]` 這個版本的 Ruby 來安裝。前面提到�
 
 我自己個人習慣使用 RVM，除了 RVM 之外還有其它的選擇，例如 [rbenv](https://github.com/rbenv/rbenv) 及 [chruby](https://github.com/postmodern/chruby)，這些 Ruby 版本管理工具各有其優、缺點，還請大家自己去試用看看，然後選一套自己覺得順手的來用吧。
 
+----
+
 ## <a name="install-rails"></a>安裝 Rails
 
 完成 Ruby 安裝後，接下來就準備來安裝 Rails。在開放原始碼的圈子，有非常多的善心人士開發好了功能強大又可免費取用的套件，在 Ruby 的世界我們稱它叫 `gem`。Rails 本身也是一個 gem (更準確的說，應該是一群 gem 的集合體)，要安裝 rails 的話，只要使用 `gem install` 指令加上套件名稱即可，像這樣：
@@ -204,6 +210,8 @@ RVM 會自動找 `[ruby-]2.3[.3]` 這個版本的 Ruby 來安裝。前面提到�
     Rails 5.0.0.1
 
 接下來，我們就要用它來建立第一個 Rails 專案了。
+
+----
 
 ## <a name="build-rails-project"></a>建立 Rails 專案
 
