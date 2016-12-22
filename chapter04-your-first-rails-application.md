@@ -16,6 +16,8 @@
 
 雖然 Ruby 的世界有非常多厲害的套件(gem)，像是如果要做會員系統，只要用 [devise](https://github.com/plataformatec/devise) 就可以在幾分鐘甚至是幾十秒內就把會員註冊、登入、登出等基本的功能完成。不過這裡我們先不用任何套件，僅靠 Rails 內建的功能來完成它。
 
+----
+
 ## <a name="user-scaffold"></a>使用者功能
 
 ### Step 1: 使用 Scaffold
@@ -128,6 +130,8 @@ end
 
 相當神奇吧!
 
+----
+
 ## <a name="post-scaffold"></a>文章功能
 
 完成了使用者功能，接著是文章(Post)功能，大致上也是依樣畫葫蘆，但還會加上一些這兩個功能之間的關連性。
@@ -222,6 +226,8 @@ end
 
 其實這裡還有一些效能問題(N+1 Query)，不過也讓我們留到以後再說明。
 
+----
+
 ## <a name="rails-shortcuts"></a>Rails 常用快速鍵
 
 這是一些常用到的快速鍵，可以讓你少敲幾個字：
@@ -231,6 +237,8 @@ end
 * `rails server` :point_right: `rails s`
 * `rails console` :point_right: `rails c`
 * `bundle install` :point_right: `bundle`
+
+----
 
 ## <a name="note"></a>小結
 

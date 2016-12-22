@@ -6,6 +6,8 @@
 - [常用命令列指令](#command-line)
 - [不要害怕指令、不要害怕錯誤](#dont-be-scared-of-command-line)
 
+----
+
 ## <a name="dev-tools"></a>開發工具
 
 剛接觸 Ruby 或 Rails 的朋友常會問道：「我是 Ruby/Rails 的新手，請問有像 Apple 的 Xcode、Microsoft 的 Visual Studio 或至少像 Dreamweaver 之類方便或視覺化的整合開發工具(Integrated Development Environment, IDE)嗎?」
@@ -39,6 +41,8 @@ Ruby/Rails 的開發者只要手上有任何一款文字編輯器就能進行開
 #### RubyMine
 
 但說沒有 IDE 其實是騙人的，還是有商業公司推出一套名為 [RubyMine](https://www.jetbrains.com/ruby/) 的整合開發工具。它的優點可以提醒或自動完成語法，對 Ruby 語法還不熟的新手來說應該有幫助；但缺點是執行速度有比較慢一點點，另一個不太算缺點的缺點就是它的收費比其它的軟體要來得貴一些。
+
+----
 
 ## <a name="command-line"></a>常用命令列指令
 
@@ -130,6 +134,8 @@ Ruby/Rails 的開發者只要手上有任何一款文字編輯器就能進行開
 有些指令需要有系統管理權限(root 權限)才能執行(例如要幫使用者變更密碼)。這時可在指令前面再加上 `sudo` 指令，只要你本身有可以使用 `sudo` 指令的權限，就可暫時的透過這個指令取得 root 權限：
 
     $ sudo passwd john
+
+----
 
 ## <a name="dont-be-scared-of-command-line"><a>不要害怕指令、不要害怕錯誤
 

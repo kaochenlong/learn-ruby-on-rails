@@ -8,6 +8,8 @@ Rails 不是一種程式語言，它是一種用 Ruby 這個程式語言所開�
 
 接下來幾個章節的目的並不是要詳細的介紹 Ruby 這個程式語言所有的功能，而是希望讓大家對 Ruby 有足夠的基本認識，之後大家在閱讀或撰寫 Rails 專案的時候，會比較知道 Rails 在寫些什麼。
 
+----
+
 ## <a name="variable-and-constant"></a>變數 (variable) 與常數 (Constant)
 
 ### 變數種類
@@ -240,6 +242,8 @@ x, y = y, x
 
 很神奇嗎! 利用 Ruby 可以多重指定變數的特性，一行就搞定了，程式碼簡單又容易閱讀。
 
+----
+
 ## <a name="flow-control"></a>流程控制 (Flow Controller)
 
 先看看這個有趣的小故事：
@@ -445,6 +449,8 @@ else
   puts "不是潤年"
 end
 ```
+
+----
 
 ## <a name="loop-and-iteration"></a>迴圈及迭代(Loop and Iteration)
 

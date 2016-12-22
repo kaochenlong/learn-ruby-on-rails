@@ -9,7 +9,7 @@
 | [00 - 寫在最前面](chapter00-about.md) | [01 - 生態圈及簡介](chapter01-ecosystem-and-introduction.md) | [02 - 開發環境安裝](chapter02-environment-setup.md) |
 |:---------|:------|:------|
 | [03 - 開發工具與常用命令列指令](chapter03-command-line-tools.md) | [04 - 第一個應用程式(使用 Scaffold)](chapter04-your-first-rails-application.md) | [05 - Ruby - 變數、常數、流程控制、迴圈](chapter05-ruby-basic-1.md) |
-| 06 - Ruby - 數字、字串、符號、陣列、Hash | 07 - Ruby - 方法與程式碼區塊(block) | 08 - Ruby - 類別與模組 |
+| [06 - Ruby - 數字、字串、陣列、雜湊、符號](chapter06-ruby-basic-2.md) | 07 - Ruby - 方法與程式碼區塊(block) | 08 - Ruby - 類別與模組 |
 | 09 - 使用套件(gem)讓開發更有效率 | 10 - Rails - MVC | 11 - Rails - Route 與 Controller |
 | 12 - Rails - Layout, View, View Helper 與 Partial Render | 13 - Rails - 表單處理及檔案上傳 | 14 - Rails - Model 基本操作 |
 | 15 - Rails - Model Migration | 16 - Rails - Model 關連性 | 17 - Rails - Model 驗證及回呼 |
