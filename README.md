@@ -6,17 +6,45 @@
 
 ## 目錄
 
-| [00 - 寫在最前面](chapter00-about.md) | [01 - 生態圈及簡介](chapter01-ecosystem-and-introduction.md) | [02 - 開發環境安裝](chapter02-environment-setup.md) |
-|:---------|:------|:------|
-| [03 - 開發工具與常用命令列指令](chapter03-command-line-tools.md) | [04 - 第一個應用程式(使用 Scaffold)](chapter04-your-first-rails-application.md) | [05 - Ruby - 變數、常數、流程控制、迴圈](chapter05-ruby-basic-1.md) |
-| [06 - Ruby - 數字、字串、陣列、雜湊、符號](chapter06-ruby-basic-2.md) | [07 - Ruby - 方法與程式碼區塊(block)](chapter07-ruby-basic-3.md) | 08 - Ruby - 類別與模組 |
-| 09 - 使用套件(gem)讓開發更有效率 | 10 - Rails - MVC | 11 - Rails - Route 與 Controller |
-| 12 - Rails - Layout, View, View Helper 與 Partial Render | 13 - Rails - 表單處理及檔案上傳 | 14 - Rails - Model 基本操作 |
-| 15 - Rails - Model Migration | 16 - Rails - Model 關連性 | 17 - Rails - Model 驗證及回呼 |
-| 18 - Rails - 多國語言 | 19 - Rails - 寄發信件 | 20 - Rails - 背景工作及工作排程 |
-| 21 - Rails - JavaScript 與 Assets Pipeline | 22 - Rails 之 API 模式 | 23 - 實作：購物車 |
-| 24 - 實作：訂單處理 | 25 - 實作：金流串接(使用智付寶) | 26 - 實作：ActionCable 即時聊天室 |
-| 27 - 實作：網站佈署(Heroku 及 Capistrano) | 28 - 程式碼整理 | 29 - 寫測試讓你更有信心 - RSpec 環境設定、單元測試與整合測試 |
+### 簡介
+- [00 寫在最前面](chapter00-about.md)
+- [01 生態圈及簡介](chapter01-ecosystem-and-introduction.md)
+- [02 開發環境安裝](chapter02-environment-setup.md)
+- [03 開發工具與常用命令列指令](chapter03-command-line-tools.md)
+- [04 第一個應用程式(使用 Scaffold)](chapter04-your-first-rails-application.md)
+
+### Ruby 基本
+- [05 變數、常數、流程控制、迴圈](chapter05-ruby-basic-1.md)
+- [06 數字、字串、陣列、雜湊、符號](chapter06-ruby-basic-2.md)
+- [07 方法與程式碼區塊(block)](chapter07-ruby-basic-3.md)
+- 08 Ruby - 類別與模組
+
+### Rails 入門
+- 09 使用套件(gem)讓開發更有效率
+- 10 MVC
+- 11 Route 與 Controller
+- 12 Layout, View, View Helper 與 Partial Render
+- 13 表單處理及檔案上傳
+- 14 Model 基本操作
+- 15 Model Migration
+- 16 Model 關連性
+- 17 Model 驗證及回呼
+- 18 多國語言
+- 19 寄發信件
+- 20 背景工作及工作排程
+- 21 JavaScript 與 Assets Pipeline
+- 22 之 API 模式
+
+### 實作
+- 23 購物車
+- 24 訂單處理
+- 25 金流串接(使用智付寶)
+- 26 ActionCable 即時聊天室
+- 27 網站佈署(Heroku 及 Capistrano)
+
+### 其它
+- 28 程式碼整理
+- 29 寫測試讓你更有信心 - RSpec 環境設定、單元測試與整合測試
 
 ## 版本
 
