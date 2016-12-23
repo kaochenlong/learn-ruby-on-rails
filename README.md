@@ -4,9 +4,12 @@
 
 如其標題，學習不需要為公司、不需要為長官、同事、不需要為別人，只為你自己。
 
+好讀版本：http://learnrails.kaochenlong.com/
+
 ## 目錄
 
 ### 簡介
+
 - [00 寫在最前面](chapter00-about.md)
 - [01 生態圈及簡介](chapter01-ecosystem-and-introduction.md)
 - [02 開發環境安裝](chapter02-environment-setup.md)
@@ -14,12 +17,14 @@
 - [04 第一個應用程式(使用 Scaffold)](chapter04-your-first-rails-application.md)
 
 ### Ruby 基本
+
 - [05 變數、常數、流程控制、迴圈](chapter05-ruby-basic-1.md)
 - [06 數字、字串、陣列、雜湊、符號](chapter06-ruby-basic-2.md)
 - [07 方法與程式碼區塊(block)](chapter07-ruby-basic-3.md)
-- 08 Ruby - 類別與模組
+- 08 類別與模組
 
 ### Rails 入門
+
 - 09 使用套件(gem)讓開發更有效率
 - 10 MVC
 - 11 Route 與 Controller
@@ -36,6 +41,7 @@
 - 22 之 API 模式
 
 ### 實作
+
 - 23 購物車
 - 24 訂單處理
 - 25 金流串接(使用智付寶)
@@ -43,6 +49,7 @@
 - 27 網站佈署(Heroku 及 Capistrano)
 
 ### 其它
+
 - 28 程式碼整理
 - 29 寫測試讓你更有信心 - RSpec 環境設定、單元測試與整合測試
 
