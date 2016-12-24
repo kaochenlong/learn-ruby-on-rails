@@ -21,7 +21,7 @@
 - [05 變數、常數、流程控制、迴圈](chapter05-ruby-basic-1.md)
 - [06 數字、字串、陣列、雜湊、符號](chapter06-ruby-basic-2.md)
 - [07 方法與程式碼區塊(block)](chapter07-ruby-basic-3.md)
-- 08 類別與模組
+- [08 類別與模組](chapter08-ruby-basic-4.md)
 
 ### Rails 入門
 
