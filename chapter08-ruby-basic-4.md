@@ -27,7 +27,7 @@ Ruby 是一款物件導向程式語言(Objected-Oriented Programming, OOP)，在
 
 ### 什麼是類別?
 
-大家也許在夜市有看過有人在賣雞蛋糕，有的小雞形狀，有的是小貓、小貓或其它動物形狀，只要把調配好的麵粉糊倒進模具，壓一下，幾分鐘後就會有香噴噴又造型可愛的雞蛋糕可以吃了。
+大家也許在夜市有看過有人在賣雞蛋糕，有小貓、小狗或其它可愛動物造型，只要把調配好的麵粉糊倒進模具，壓一下，幾分鐘後就會有香噴噴又造型可愛的雞蛋糕可以吃了。
 
 ![image](images/chapter08/cake_maker.jpg)
 photo by [Bryan Liu](https://www.flickr.com/photos/bryanliu99/)
