@@ -26,8 +26,8 @@
 
 ### Rails 入門
 
-- 10 MVC
-- 11 Route 與 Controller
+- [10 Model、View、Controller 三分天下](chapter10-mvc.md)
+- 11 Routes 與 Controller
 - 12 Layout, View, View Helper 與 Partial Render
 - 13 表單處理及檔案上傳
 - 14 Model 基本操作
@@ -38,7 +38,7 @@
 - 19 寄發信件
 - 20 背景工作及工作排程
 - 21 JavaScript 與 Assets Pipeline
-- 22 之 API 模式
+- 22 API 模式
 
 ### 實作
 
