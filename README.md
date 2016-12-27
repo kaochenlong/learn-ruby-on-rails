@@ -27,7 +27,7 @@
 ### Rails 入門
 
 - [10 Model、View、Controller 三分天下](chapter10-mvc.md)
-- 11 Routes 與 Controller
+- [11 Routes](chapter11-routes.md)
 - 12 Layout, View, View Helper 與 Partial Render
 - 13 表單處理及檔案上傳
 - 14 Model 基本操作
