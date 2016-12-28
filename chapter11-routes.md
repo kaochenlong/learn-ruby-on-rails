@@ -9,11 +9,11 @@
 
 ![image](images/chapter10/mvc.png)
 
-Route 是整個網站對外公開的網站路徑對照表，當使用者連上你的網站的時候，Rails 會解析使用者所輸入的網址及參數，再根據解析的結果，去找到該負責處理的單位(哪個 Controller 以及哪個 Action)。
+Route 是整個網站對外公開的網站路徑對照表，當使用者連上你的網站的時候，Rails 會解析使用者所輸入的網址及參數，再根據解析的結果，去找到該負責處理的單位(哪個 Controller 跟 Action)。
 
 ## <a name="route-intro"></a>Route 起步走
 
-舉個例子來說：
+舉個例子來說，這個網址：
 
     http://kaochenlong.com/posts/123
 
@@ -33,9 +33,60 @@ get "/posts", to: "posts#index"
 get "/posts/:id", to: "posts#show"
 ```
 
+想像一下這個情境：
+
 的意思就是，「當使用者輸入 `posts` 這個網址，它會交由 `posts#index` 來處理，也就是 `PostsController` 上的 `index` 方法；同理，當使用者輸入 `/posts/123` 這個網址之後，它會轉由 `PostsController` 上的 `show` 方法，並且把 `123` 當做參數(:id)傳給 Controller」。
 
-剩下的就是 MVC(Model, View, Controller) 的事了。
+
+> 客人上門了...
+>
+> 客人：「你好，我想要看所有的文章列表(輸入網址 `/posts`)」
+>
+> Route：「好的，我幫你轉接到 `PostsController` 櫃台的 `index` 分機，請他幫您服務」
+>
+> 客人：「等等，我改變主意了，我只想要看第 87 號文章就好(輸入網址 `/posts/87`)」
+>
+> Route：「沒問題，請您一樣到 `PostsController` 櫃台的，但這次請找 `show` 分機，並且把 `87` 這個號碼牌給他，他會替您調閱資料」
+>
+> 客人：「那請問可以給我看看使用者的列表嗎 (輸入網址 `/users`)」
+>
+> Route：「不好意思，目前沒有相關資料喔 (回應 HTTP 404)」
+
+Route 的角色就類似是這樣，負責解讀使用者輸入的網址，然後轉去對應的地方，剩下的，就是 MVC(Model, View, Controller) 你們的事了。但如果找不到路徑，會出現 `HTTP 404` 找不到頁面的錯誤訊息，在開發模式下會出現這個畫面：
+
+![image](images/chapter11/no-route-error.png)
+
+### Route 跟 Controller 的關係
+
+根據 MVC 的圖解說明，Route 是告知這個需求要去找哪個 Controller 的哪個 Action
+
+再想像一下這個情境：
+
+> 客人又上門了
+>
+> 客人：「我想要看所有的文章列表(輸入網址 `/posts`)」
+>
+> Route: 「好的，我幫你轉接到 `PostsController` 櫃台的 `index` 分機，請他幫您服務」
+>
+> 客人依照指示來到 `PostsController` 櫃台，發現根本沒有這個櫃台!!
+
+然後就會看到這個畫面：
+
+![image](images/chapter11/no-controller-error.png)
+
+這個 `uninitialized constant PostsController` 錯誤訊息是指找不到 `PostsController` 這個常數，其實就是指找不到這個類別。
+
+> 客人又再次上門了
+>
+> 客人：「我想要看所有的文章列表(輸入網址 `/posts`)」
+>
+> Route: 「好的，我幫你轉接到 `PostsController` 櫃台的 `index` 分機，請他幫您服務」
+>
+> 客人依照指示來到 `PostsController` 櫃台，這次看到櫃台了，但卻發現沒有 `index` 這個分機!!
+
+![image](images/chapter11/no-action-error.png)
+
+也就是說，即使 Route 有這條路徑，也不表示那個 Controller 就檔案就一定需要事先存在；就算 Controller 存在，也不表示 Action 存在。所以下回看到這些錯誤訊息就不用太擔心了。
 
 ### 檢視目前所有的路徑
 
@@ -73,7 +124,7 @@ root "welcome#index"
 
 ### 轉址
 
-Route 除了做路徑對照外，還可以直接做轉址：
+Route 除了做路徑對照外，也可以直接做轉址：
 
 ```ruby
 get '/users', to: redirect('/accounts')
@@ -87,7 +138,7 @@ get '/5xruby', to: redirect('https://5xruby.tw')
 
 這樣當使用者輸入 `/5xruby` 這個網址的時候，就會立馬被轉址到指定的網站了。
 
-### 見山不是山，PHP 一定是 PHP 嗎
+### 見山不是山，PHP 一定是 PHP 嗎? 假的!
 
 在以前，當我們看到這樣的網址：
 
@@ -127,7 +178,7 @@ end
        about GET  /about(.:format) pages#about
              GET  /about(.:format) products#about
 
-如果遇到這種情況，在前面先查到的就會先生效，也就是說寫在後面的會被覆蓋，等於是白寫的了。
+如果遇到這種情況，在 Route 進行比對的時候，在前面先查到的就會先生效，也就是說寫在後面的會被覆蓋，等於是白寫的了。
 
 ## <a name="restful-routes"></a>RESTful 網址設計
 
