@@ -138,7 +138,7 @@ get '/5xruby', to: redirect('https://5xruby.tw')
 
 這樣當使用者輸入 `/5xruby` 這個網址的時候，就會立馬被轉址到指定的網站了。
 
-### 見山不是山，PHP 一定是 PHP 嗎? 假的!
+### 見山不是山，看到 PHP 一定是 PHP 嗎? 假的!
 
 在以前，當我們看到這樣的網址：
 
@@ -160,7 +160,7 @@ end
 
 網址看起來是 PHP，但實際上它是 Rails 喔 :)
 
-### Routes 的順序?
+### Route 的順序
 
 如果不小心在 Route 裡這樣寫：
 
@@ -218,7 +218,7 @@ end
 
 ## <a name="resources"></a>資源 Resource
 
-要符合 RESTful 的網址設計，除了自己一條一條自己寫之外，更建議直接使用 `resources` 方法：
+要符合 RESTful 的網址設計，除了自己一條一條自己寫之外，更建議直接使用 Rails 提供的 `resources` 方法：
 
 ```ruby
 Rails.application.routes.draw do
@@ -267,21 +267,21 @@ end
                  PUT    /products/:id(.:format)      products#update
                  DELETE /products/:id(.:format)      products#destroy
 
-它可以在後面接上 `_path` 或 `_url` 可以產生相對應的路徑或網址，如果是站內連結，通常會使用 `_path` 寫法來產生站內的路徑，例如：
+它在後面接上 `_path` 或 `_url` 後可以變成「產生相對應的路徑或網址」的 View Helper。如果是站內連結，通常會使用 `_path` 寫法來產生站內的路徑，例如：
 
     products + path     = products_path         => /products
     new_product + path  = new_product_path      => /products/new
     edit_product + path = edit_product_path(2)  => /products/2/edit
 
-如果是加上 `_url` 則會產生完整的路徑，包括主機網域名稱：
+如果是使用 `_url` 則會產生完整的路徑，包括主機網域名稱：
 
     products + url     = products_url         => http://kaochenlong.com/products
     new_product + url  = new_product_url      => http://kaochenlong.com/products/new
     edit_product + url = edit_product_url(2)  => http://kaochenlong.com/products/2/edit
 
- 通常在寄發 Email 的時候會使用 `_url` 的完整路徑寫法。
+通常在寄發 Email 的時候會在信件內容裡使用 `_url` 的完整路徑寫法。
 
-### resources 後面一定要是複數嗎?
+### 問題：resources 後面一定要是複數嗎?
 
 其實不一定，這只是 Rails 的其中一個慣例罷了，不遵照這個慣例其實也不會怎麼樣，例如這樣寫：
 
@@ -304,28 +304,28 @@ end
                PUT    /user/:id(.:format)                user#update
                DELETE /user/:id(.:format)                user#destroy
 
-一樣是 8 個路由對應到 CRUD 相關的 7 個方法，但原本會對到 `users_controller` 會變成 `user_controller`，這點需要特別注意。
+一樣是 8 個路由對應到 CRUD 相關的 7 個方法，但原本會對到 `users_controller` 會變成 `user_controller`，這點需要稍微注意一下。
 
 ### 如果不要這麼多路由...
 
-`resources` 方法可以便利做出 CRUD 相對應的路由，但這個方法一口氣就會做出 8 個，如果有時候不需要這麼多，例如一般使用者不需要對商品有新增、修改及刪除功能，僅需求檢視功能的話，可以使用 `only` 或 `except` 來調整：
+`resources` 方法可以便利做出 CRUD 相對應的路由，但這個方法一口氣就會做出 8 個。如果有時候不需要這麼多，舉個例子來說，如果一般使用者不需要對商品有「新增」、「修改」及「刪除」功能，僅需要「檢視」功能的話，可以使用 `only` 或 `except` 參數來調整產生的路由數量：
 
 ```ruby
-  Rails.application.routes.draw do
-    resources :products, only: [:index, :show]
+Rails.application.routes.draw do
+  resources :products, only: [:index, :show]
 
-    # 或是要這樣寫也行
-    # resources :products, except: [:new, :create, :edit, :update, :destroy]
-  end
+  # 或是反過來這樣寫也行
+  # resources :products, except: [:new, :create, :edit, :update, :destroy]
+end
 ```
 
 `only` 跟 `except` 兩種寫法剛好是相反效果，可視需求挑選寫起來比較簡短的。
 
-以上面這個例子來說，需要的路由只有一、二個，雖然說直接自己寫也可以，但除了一些靜態頁面外，仍建議採用 `resources` 的寫法再加上 only 或 except 來調整，以維持整體路由的慣例。
+以上面這個例子來說，需要的路由只有一、二個，雖然不靠 `resources` 方法直接寫也可以，但除了一些靜態頁面外，仍建議採用 `resources` 的寫法再加上 only 或 except 來調整數量，以維持整體路由的慣例。
 
 ### 單數的 Resource
 
-這裡指的單數 Resource 不是上面這個單數名詞，而是 `resource` 方法本身就是單數的，這個跟複數的 resources 方法的差別在於單數 resource 方法不會做出含有 `:id` 的路徑，例如：
+這裡指的單數 Resource 不是上面這個單數名詞，而是 `resource` 方法本身就是單數的，這個跟複數的 resources 方法的差別在於「單數 resource 方法不會做出含有 `:id` 的路徑」，例如：
 
 ```ruby
 Rails.application.routes.draw do
@@ -333,7 +333,7 @@ Rails.application.routes.draw do
 end
 ```
 
-這行語法會造出 7 個路由，像這樣：
+跟複數的 `resources` 有點像，但單數的 `resource` 方法僅會造出 7 個路由，像這樣：
 
     $ rails routes
           Prefix Verb   URI Pattern             Controller#Action
@@ -345,9 +345,9 @@ end
                  PUT    /profile(.:format)      profiles#update
                  DELETE /profile(.:format)      profiles#destroy
 
-跟複數的 resource 比起來，單數的路徑除了沒有帶有 `id` 之外，也沒有 `index`。
+跟複數的 resources 比起來，單數的路徑除了沒有帶有 `id` 之外，也沒有 `index`。
 
-什麼時候會用到單數 resource ，什麼時候用複數 resources? 舉例來說，像是個人 profile，如果想要設計「使用者只能檢視、更新、刪除自己的 profile」的效果就可使用單數 resource，網址就會長得像：
+什麼時候會用到單數 resource ，什麼時候用複數 resources? 舉例來說，像是會員個人 profile，如果想要設計「使用者只能檢視、更新、刪除自己的 profile」的效果就可使用單數 resource，網址就會長得像：
 
     /profile
 
@@ -401,7 +401,57 @@ end
 
     /users/2/posts/3/comments/5
 
-網址太長，而且事實上這樣設計也是沒必要的。
+網址太長，而且事實上這樣設計也是沒必要的，舉例來說：
+
+    /users/2/posts/3
+
+這個網址，看起來可以取得 2 號使用者的第 3 號文章，但事實上文章編號是自動跳號且不會重複的流水編號，所以並不需要知道使用者是誰也可以找得到這篇文章，像這樣：
+
+    /posts/3
+
+不僅網址較短，也比較清楚就是要「檢視 3 號文章」。事實上「編輯」、「更新」以及「刪除」功能也沒有必要一定要跟在 User 後面，所以原來這樣大腸包小腸式的寫法，可以使用 `only` (或 `except`) 參數修正成這樣：
+
+```ruby
+Rails.application.routes.draw do
+  resources :users do
+    resources :posts, only: [:index, :new, :create]
+  end
+  resources :posts, only: [:show, :edit, :update, :destroy]
+end
+```
+
+整個路徑就會變成這樣：
+
+    $ rails routes
+           Prefix Verb   URI Pattern                         Controller#Action
+       user_posts GET    /users/:user_id/posts(.:format)     posts#index
+                  POST   /users/:user_id/posts(.:format)     posts#create
+    new_user_post GET    /users/:user_id/posts/new(.:format) posts#new
+            users GET    /users(.:format)                    users#index
+                  POST   /users(.:format)                    users#create
+         new_user GET    /users/new(.:format)                users#new
+        edit_user GET    /users/:id/edit(.:format)           users#edit
+             user GET    /users/:id(.:format)                users#show
+                  PATCH  /users/:id(.:format)                users#update
+                  PUT    /users/:id(.:format)                users#update
+                  DELETE /users/:id(.:format)                users#destroy
+        edit_post GET    /posts/:id/edit(.:format)           posts#edit
+             post GET    /posts/:id(.:format)                posts#show
+                  PATCH  /posts/:id(.:format)                posts#update
+                  PUT    /posts/:id(.:format)                posts#update
+                  DELETE /posts/:id(.:format)                posts#destroy
+
+事實上，上面這樣的寫法還可以更精簡一點：
+
+```ruby
+Rails.application.routes.draw do
+  resources :users do
+    resources :posts, shallow: true
+  end
+end
+```
+
+在 `resources` 後面加上 `shallow: true` 參數，就可以做出一樣的效果。
 
 ### 如果覺得 Resources 內建的路徑不夠用...
 
@@ -426,9 +476,19 @@ end
                PUT    /orders/:id(.:format)      orders#update
                DELETE /orders/:id(.:format)      orders#destroy
 
-但如果覺得不夠，或是想要再加其它的路徑，可使用 `collection` 或是 `member` 方法，這兩種用法在使用上有一些差異：
+但如果覺得不夠，例如想要加上「確認訂單」或是「取消訂單」之類更改訂單狀態的路徑，可使用 `collection` 或是 `member` 方法。這兩種用法在使用上有一些差異：
 
 #### 使用 collection
+
+例如，我想要可以檢視所有「已經取消的訂單」，網址上可能可以這樣設計：
+
+    # 在後面加參數的方式
+    GET /orders?type=cancelled
+
+    # 或是給它一個獨立的路徑
+    GET /orders/cancelled
+
+雖然第一種做法也可以，但這樣表示必須在原來的 Action 裡多判斷、處理傳進來的 `type=calcelled` 參數；第二種做法則是另外開一個 Action 專門做這件事。你可以使用 `collection` 方法來做出這個效果：
 
 ```ruby
 Rails.application.routes.draw do
@@ -440,7 +500,7 @@ Rails.application.routes.draw do
 end
 ```
 
-這樣的寫法，會產生以下路徑：
+把 `collection` 包在 `orders` 這個 Resources 裡，這樣的寫法，會產生以下路徑：
 
     $ rails routes
               Prefix Verb   URI Pattern                 Controller#Action
@@ -454,9 +514,7 @@ end
                      PUT    /orders/:id(.:format)       orders#update
                      DELETE /orders/:id(.:format)       orders#destroy
 
-除了原來的 8 個之外，還多了一個 `/orders/cancelled` 的路徑，並且指向 `orders#cancelled`
-
-不想用 Block 方式寫的話，也可這樣寫，效果是一樣的：
+你可以看到，除了原來的 8 個之外，還多了一個 `/orders/cancelled` 的路徑，並且指向 `orders#cancelled` 這個 Action。不想用 Block 方式寫的話，也可這樣寫，效果是一樣的：
 
 ```ruby
 Rails.application.routes.draw do
@@ -467,6 +525,16 @@ end
 ```
 
 #### 使用 member
+
+如果我想要「確認第 2 號訂單」或是「取消第 3 號訂單」，`resources` 做出來的 8 個路徑好像都不太適用，我想要做出像這樣的路徑：
+
+    # 確認 2 號訂單
+    POST /orders/2/confirm
+
+    # 取消 3 號訂單
+    DELETE /orders/3/cancel
+
+跟 collection 有點類似，就是在 orders 這個 Resources 裡加上 `member`：
 
 ```ruby
 Rails.application.routes.draw do
@@ -479,7 +547,7 @@ Rails.application.routes.draw do
 end
 ```
 
-會產生以下路徑：
+這樣一來會產生以下路徑：
 
     $ rails routes
            Prefix Verb   URI Pattern                   Controller#Action
@@ -494,9 +562,7 @@ end
                   PUT    /orders/:id(.:format)         orders#update
                   DELETE /orders/:id(.:format)         orders#destroy
 
-這樣會產生 `/orders/2/confirm` 以及 `/orders/3/cancel` 的路徑。跟 collection 有點不同的是，使用 `member` 方式產生的路徑，會帶有 `:id` 在裡面，這個 `:id` 會傳到 Controller 裡變成 `params` 這個變數的一部份。
-
-如果不想使用 Block 方式寫的話，也可這樣寫，效果一樣：
+可以看得出來跟 `collection` 方法做出來的路徑有點不同，使用 `member` 方式產生的路徑，會帶有 `:id` 在裡面，這個 `:id` 會傳到 Controller 裡變成 `params` 這個變數的一部份。同樣，如果不想使用 Block 方式寫的話，也可這樣寫，效果一樣：
 
 ```ruby
 Rails.application.routes.draw do
@@ -572,7 +638,7 @@ end
 
 ### 後台網址不要太好猜
 
-如果網站的後台網址被猜到，即使有擋帳號密碼，總是多了一層被猜到帳密的機會。所以通常不建議大家直接使用像 `admin` 或 `backend` 這種太好猜的網址做為後台。透過 Rails 的 Route 設計，可以把原來 `admin` 的 namespace 的路徑改成比較不好猜的，例如：
+如果網站的後台網址被猜到，即使有擋帳號密碼，總是還是有被猜到帳密的機會。所以通常不建議大家直接使用像 `admin` 或 `backend` 這種太常見或容易猜的網址做為後台。透過 Rails 的 Route 設計，可以把原來 `admin` 的 namespace 的路徑改成比較不好猜的，例如：
 
 ```ruby
 Rails.application.routes.draw do
