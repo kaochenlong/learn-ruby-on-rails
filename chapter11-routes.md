@@ -33,10 +33,9 @@ get "/posts", to: "posts#index"
 get "/posts/:id", to: "posts#show"
 ```
 
-想像一下這個情境：
-
 的意思就是，「當使用者輸入 `posts` 這個網址，它會交由 `posts#index` 來處理，也就是 `PostsController` 上的 `index` 方法；同理，當使用者輸入 `/posts/123` 這個網址之後，它會轉由 `PostsController` 上的 `show` 方法，並且把 `123` 當做參數(:id)傳給 Controller」。
 
+想像一下這個情境：
 
 > 客人上門了...
 >
