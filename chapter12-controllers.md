@@ -43,7 +43,7 @@ end
       invoke    coffee
       create      app/assets/javascripts/pages.coffee
       invoke    scss
-      create      app/assets/stylesheets/pages.scss## <a name="render"></a>頁面輸出
+      create      app/assets/stylesheets/pages.scss
 
 上面這行指令會幫你做出一個 `PagesController`，以及一些其它對應的檔案、目錄。Controller 的內容如下：
 
