@@ -28,14 +28,14 @@
 
 - [10 Model、View、Controller 三分天下](chapter10-mvc.md)
 - [11 Routes](chapter11-routes.md)
-- 12 Layout, View, View Helper 與 Partial Render
+- [12 Controller](chapter12-controllers.md)
 - 13 表單處理及檔案上傳
-- 14 Model 基本操作
-- 15 Model Migration
-- 16 Model 關連性
-- 17 Model 驗證及回呼
-- 18 多國語言
-- 19 寄發信件
+- 14 Layout, View, View Helper 與 Partial Render
+- 15 Model 基本操作
+- 16 Model Migration
+- 17 Model 關連性
+- 18 Model 驗證及回呼
+- 19 多國語言與寄發信件
 - 20 背景工作及工作排程
 - 21 JavaScript 與 Assets Pipeline
 - 22 API 模式
