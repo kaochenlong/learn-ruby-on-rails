@@ -20,7 +20,7 @@ CRUD 是 Create, Read, Update 跟 Delete 四個字的縮寫，對 Rails 來說�
 
 ## 實作：票選系統
 
-就讓我們直接實作一個簡單的投票系統，稍微再熟悉 Rails 的 MVC 運作方式以及表單處理。在開始前，先再次複習一下這張 MVC 的圖解：
+我們直接實作一個簡單的投票系統，藉此熟悉 Rails 的 MVC 運作方式以及表單處理。在開始前，先再次複習一下這張 MVC 的圖解：
 
 ![image](images/chapter13/form-vs-mvc.png)
 
@@ -165,6 +165,7 @@ end
 直接用 Model 的 `all` 類別方法取得所有資料，並存成 `@candidates` 實體變數，以便待會在 View 可使用。
 
 注意事項：
+
 1. 慣例上，像這種取出來是一批資料的，都會使用複變名詞，例如 `@candidates` 或 `@users`。
 2. 除非必要，請儘量先考慮使用區域變數而不要使用實體變數，以上面這個例子來說，因為稍後要在 View 使用 `@candidates` 變數所以才使用實體變數。
 
@@ -342,11 +343,11 @@ end
 @candidate = Candidate.new(candidate_params)
 ```
 
-應該就可以順利新增資料了
+應該就可以順利新增資料了，試著填寫一些資料：
 
 ![image](images/chapter13/vote-candidate-03.png)
 
-按下按鈕後
+按下按鈕後應該就可以新增資料了：
 
 ![image](images/chapter13/vote-candidate-04.png)
 
