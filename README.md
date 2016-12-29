@@ -29,7 +29,7 @@
 - [10 Model、View、Controller 三分天下](chapter10-mvc.md)
 - [11 Routes](chapter11-routes.md)
 - [12 Controller](chapter12-controllers.md)
-- 13 表單處理及檔案上傳
+- [13 CRUD 分解動作 - 簡易票選系統實作](chapter13-crud.md)
 - 14 Layout, View, View Helper 與 Partial Render
 - 15 Model 基本操作
 - 16 Model Migration
