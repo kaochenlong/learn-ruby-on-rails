@@ -259,9 +259,31 @@ end
 2. `text_field_tag` 會被轉換成 HTML 的 `<input type="text" />` 標籤。
 3. `submit_tag` 會被轉換成 HTML 的 `<input type="submit" />` 標籤。
 
-以上這些方法都統稱為 `View Helper`，更多相關的使用方法參考[這裡](http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.html)。詳細轉換內容可直接檢視頁面原始碼。這時候的畫面會長得像這樣：
+以上這些方法都統稱為 `View Helper`，更多相關的使用方法參考[這裡](http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.html)。這時候的畫面會長得像這樣：
 
 ![image](images/chapter12/bmi-2.png)
+
+在繼續之前，先讓我們檢視一下這一頁的原始碼，仔細看一下跟表單有關的部份，稍做整理如下：
+
+```html
+<form action="/bmi/result" accept-charset="UTF-8" method="post">
+  <input name="utf8" type="hidden" value="&#x2713;" />
+  <input type="hidden" name="authenticity_token" value="3xKrFHZfr6YL8q4tVLCvwSZQPb9FIXJKd7YL5h+mASxNozNuXiwRle3vUSlGKUsNpfF7H1/cUP2El4qMNfdPZg==" />
+  身高：<input type="text" name="body_height" id="body_height" /> 公分<br />
+  體重：<input type="text" name="body_weight" id="body_weight" /> 公斤<br />
+  <input type="submit" name="commit" value="開始計算" data-disable-with="開始計算" />
+</form>
+```
+
+這邊有一段名字叫做 `authenticity_token` 的隱藏 input 標籤，不只內容看起來像是亂碼，而且每次重新整理又會得到不一樣的值，這個是做什麼用的呢?
+
+我在一開始接觸網路的時候做的工作是網路行銷，因為工作的關係，常常需要撰寫讓網友們票選或是填寫資料抽獎之類的程式。稍微有點技術底子的參加者，只要檢視網頁的原始碼，就可以看得出來這個表單要用什麼方式(GET 或 POST)、要送到什麼地方，以及要送的資料欄位名稱。有心人士只要寫一個簡單的小程式，仿照原頁面送資料到指定的地方，就可能可以造成灌票或是大量留言、灌水的情況，影響活動的公平性。若因此而再加一些驗證規則，反而又提高了一般參加者的的門檻。
+
+如果這個活動網站是用 Rails 開發的，Rails 預設在處理表單的時候會檢查這個 `authenticity_token` 是不是由本站所產生的，如果沒有這個欄位，或是這個欄位的值經 Rails 核對後發現並不是本身所產生，就會出現這個錯誤訊息：
+
+![image](images/chapter12/invalid-authenticity-token-error.png)
+
+不管是 `form_tag` 或是下個章節才介紹的 `form_for`，在產生 `<form>` 標籤的時候都會自動幫你加上並產生 `authenticity_token` 的欄位，確保比較不會太容易被有心人士所破壞。
 
 ### 第 2 步 - 新增 Route
 
