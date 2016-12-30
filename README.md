@@ -30,7 +30,7 @@
 - [11 Routes](chapter11-routes.md)
 - [12 Controller](chapter12-controllers.md)
 - [13 CRUD 分解動作 - 簡易票選系統實作](chapter13-crud.md)
-- 14 Layout, View, View Helper 與 Partial Render
+- [14 Layout, Render 與 View Helper](chapter14-layout-render-and-view-helper.md)
 - 15 Model 基本操作
 - 16 Model Migration
 - 17 Model 關連性
