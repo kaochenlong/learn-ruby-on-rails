@@ -32,7 +32,7 @@
 - [13 CRUD 分解動作 - 簡易票選系統實作](chapter13-crud.md)
 - [14 Layout, Render 與 View Helper](chapter14-layout-render-and-view-helper.md)
 - [15 Model 基本操作](chapter15-model-basic.md)
-- 16 Model Migration
+- [16 Model Migration](chapter16-model-migration.md)
 - 17 Model 關連性
 - 18 Model 驗證及回呼
 - 19 多國語言與寄發信件
