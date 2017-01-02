@@ -299,14 +299,14 @@ end
 
     >> store1 = Store.first
       Store Load (0.2ms)  SELECT  "stores".* FROM "stores" ORDER BY "stores"."id" ASC LIMIT ?  [["LIMIT", 1]]
-    => #<Store id: 1, title: "太空膠囊公司", tel: nil, address: nil, user_id: 2, created_at: "2017-01-02 13:49:11", updated_at: "2017-01-02 13:49:11">
+    => #<Store id: 1, title: "太空膠囊公司", ...[略]... updated_at: "2017-01-02 13:49:11">
 
 再來建立兩筆資料，分別是 `product1` 跟 `product2`：
 
     >> product1 = Product.new(name: "100 倍重力訓練機", price: 10000)
-    => #<Product id: nil, name: "100 倍重力訓練機", description: nil, price: #<BigDecimal:7fcca3381658,'0.1E5',9(27)>, is_available: nil, store_id: nil, created_at: nil, updated_at: nil>
+    => #<Product id: nil, name: "100 倍重力訓練機", description: ...[略]..., updated_at: nil>
     >> product2 = Product.new(name: "膠囊機車", price: 2000)
-    => #<Product id: nil, name: "膠囊機車", description: nil, price: #<BigDecimal:7fcca3361218,'0.2E4',9(27)>, is_available: nil, store_id: nil, created_at: nil, updated_at: nil>
+    => #<Product id: nil, name: "膠囊機車", description: ...[略]..., updated_at: nil>
 
 然後把 `product1` 跟 `product2` 丟給 `store1`：
 
@@ -316,7 +316,7 @@ end
       SQL (0.3ms)  INSERT INTO "products" ("name", "price", "store_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "100 倍重力訓練機"], ["price", #<BigDecimal:7fcca3381658,'0.1E5',9(27)>], ["store_id", 1], ["created_at", 2017-01-02 15:05:00 UTC], ["updated_at", 2017-01-02 15:05:00 UTC]]
       SQL (0.1ms)  INSERT INTO "products" ("name", "price", "store_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "膠囊機車"], ["price", #<BigDecimal:7fcca3361218,'0.2E4',9(27)>], ["store_id", 1], ["created_at", 2017-01-02 15:05:00 UTC], ["updated_at", 2017-01-02 15:05:00 UTC]]
        (0.8ms)  commit transaction
-    => [#<Product id: 1, name: "100 倍重力訓練機", description: nil, price: #<BigDecimal:7fcca38946b8,'0.1E5',9(27)>, is_available: nil, store_id: 1, created_at: "2017-01-02 15:05:00", updated_at: "2017-01-02 15:05:00">, #<Product id: 2, name: "膠囊機車", description: nil, price: #<BigDecimal:7fcca0cef828,'0.2E4',9(27)>, is_available: nil, store_id: 1, created_at: "2017-01-02 15:05:00", updated_at: "2017-01-02 15:05:00">]
+    => [#<Product id: 1, name: "100 倍重力訓練機", description: ...[略]... updated_at: "2017-01-02 15:05:00">, #<Product id: 2, name: "膠囊機車", description: ...[略]... updated_at: "2017-01-02 15:05:00">]
 
 這樣就完成了。如果你想只丟單筆資料給 `store1` 的話也可以這樣做：
 
@@ -325,7 +325,7 @@ end
 確認一下資料是不是真的有寫進去：
 
     >> store1.products
-    => #<ActiveRecord::Associations::CollectionProxy [#<Product id: 1, name: "100 倍重力訓練機", description: nil, price: #<BigDecimal:7fcca1666c80,'0.1E5',9(27)>, is_available: nil, store_id: 1, created_at: "2017-01-02 15:05:00", updated_at: "2017-01-02 15:05:00">, #<Product id: 2, name: "膠囊機車", description: nil, price: #<BigDecimal:7fcca0cef828,'0.2E4',9(27)>, is_available: nil, store_id: 1, created_at: "2017-01-02 15:05:00", updated_at: "2017-01-02 15:05:00">]>
+    => #<ActiveRecord::Associations::CollectionProxy [#<Product id: 1, name: "100 倍重力訓練機", description: ...[略]..., updated_at: "2017-01-02 15:05:00">, #<Product id: 2, name: "膠囊機車", description: ...[略]... updated_at: "2017-01-02 15:05:00">]>
 
 確認資料筆數：
 
@@ -338,7 +338,7 @@ end
 除了上面這種用法外，跟 `has_one` 一樣，也可從 Store 的角度直接來建立商品：
 
     >> store1.products.build(name: "賽亞超人變身手錶", price: 10)
-    => #<Product id: nil, name: "賽亞超人變身手錶", description: nil, price: #<BigDecimal:7fcca2a67630,'0.1E2',9(27)>, is_available: nil, store_id: 1, created_at: nil, updated_at: nil>
+    => #<Product id: nil, name: "賽亞超人變身手錶", ...[略]... updated_at: nil>
     >> store1.save
        (0.1ms)  begin transaction
       User Load (0.1ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 2], ["LIMIT", 1]]
@@ -356,7 +356,7 @@ end
 
     >> store1 = Store.first
       Store Load (0.1ms)  SELECT  "stores".* FROM "stores" ORDER BY "stores"."id" ASC LIMIT ?  [["LIMIT", 1]]
-    => #<Store id: 1, title: "太空膠囊公司", tel: nil, address: nil, user_id: 2, created_at: "2017-01-02 13:49:11", updated_at: "2017-01-02 13:49:11">
+    => #<Store id: 1, title: "太空膠囊公司", ...[略]..., updated_at: "2017-01-02 13:49:11">
 
 然後就發現原來的 `products` 方法不能用了(因為就沒設定了當然不能用)：
 
@@ -377,4 +377,192 @@ end
     >> store1.product
       Product Load (0.2ms)  SELECT "products".* FROM "products" WHERE "products"."store_id" = ?  [["store_id", 1]]
     => #<ActiveRecord::Associations::CollectionProxy [#<Product id: 1, name: "100 倍重力訓練機", ..[略]..ted_at: "2017-01-02 15:13:23">]>
+
+## <a name="many-to-many-relationship"></a>關連：多對多
+
+我年輕時候曾在牙醫診所混過一陣子，就以牙醫診所例子來說，一家診所可能有很多位醫生，每位病人來看病的時候可以選擇不同的醫生看診，以資料表關連來說，就是「醫生 `has_many` 病人，病人也 `has_many` 醫生」。其實醫生或病人本身沒辦法直接知道今天的行程(幾點的時候要看哪位病人)，所以通常診所都會有一個類似「約診簿」的東西，記錄著這兩邊(醫生與病人)的資訊，透過這個約診簿就可以某位醫生在今天下午三點要看哪位病人。
+
+多對多關連的概念大概就有點像這樣，沒辦法單純的在兩邊的 Model 設定 `has_many` 或 `belongs_to` 就搞定，多對多的關連會需要一個第三方的資料表來存放這兩邊 Model 的資訊，也就是「約診簿」的概念。
+
+我們先建立一個專門存放 Store 跟 Product 這兩邊資訊的 Model：
+
+Model 名稱：WareHouse
+
+| 欄位名稱   | 型態          | 說明      |
+|------------|---------------|-----------|
+| store_id   | 整數(Integer) | 商店編號  |
+| product_id | 整數(Integer) | 產品編號  |
+
+如果完成，資料表大概會長這樣：
+
+![image](images/chapter17/many-to-many-tables.png)
+
+基本上這個第三方 Model (WareHouse)僅需存放兩邊 Model 的 `id` 即可，但如果想要再加別的欄位也是可以另外增加的。接著使用 Model 產生器來產生相對應的檔案：
+
+    $ rails g model WareHouse store:references product:references
+      invoke  active_record
+      create    db/migrate/20170102182749_create_ware_houses.rb
+      create    app/models/ware_house.rb
+      invoke    test_unit
+      create      test/models/ware_house_test.rb
+      create      test/fixtures/ware_houses.yml
+
+這裡的 `store:references` 寫法其實也可以用前面的 `store_id:integer` 寫法，但 `references` 的寫法會多做幾件事：
+
+1. 自動加上索引(index)，加快查詢速度。
+2. 自動幫 Model 加上 `belongs_to`
+
+> 注意：別忘了執行 `rails db:migrate`
+
+接下來，讓我們編輯 `app/models/ware_house.rb`：
+
+```ruby
+class WareHouse < ApplicationRecord
+  belongs_to :store
+  belongs_to :product
+end
+```
+
+因為使用 `references` 的寫法，所以自動補上這兩行 `belongs_to` 方法，但如果沒有也沒關係，就自己手動輸入即可。
+
+接著回到 Store Model，加上以下這兩行：
+
+```ruby
+class Store < ApplicationRecord
+  belongs_to :user
+
+  has_many :ware_houses
+  has_many :products, through: :ware_houses
+end
+```
+
+然後同樣也在 Product Model 同樣加上這兩行：
+
+```ruby
+class Product < ApplicationRecord
+  has_many :ware_houses
+  has_many :stores, through: :ware_houses
+end
+```
+
+WareHouse Model 同時 `belongs_to` Store 以及 Product，然後 Store 跟 Product 這兩個 Model 也都 `has_many` WareHouse。
+
+這樣一來，這三個 Model 之間的關連圖大概長這樣：
+
+![image](images/chapter17/many-to-many-model.png)
+
+其實，Store 跟 Product 之間並沒有直接的關連，就跟前面例子裡提到醫生必須透過「約診簿」才會知道今天的行程一樣。Store 跟 Product 都是透過(through) WareHouse 的紀錄，才會知道商店與商品之間的關連。讓我們進 `rails console` 操作看看：
+
+    $ rails console
+    >> store1 = Store.find(1)
+      Store Load (0.2ms)  SELECT  "stores".* FROM "stores" WHERE "stores"."id" = ? LIMIT ?  [["id", 1], ["LIMIT", 1]]
+    => #<Store id: 1, title: "太空膠囊公司", tel: nil, ...[略]...:11", updated_at: "2017-01-02 13:49:11">
+    >> store2 = Store.find(6)
+      Store Load (0.1ms)  SELECT  "stores".* FROM "stores" WHERE "stores"."id" = ? LIMIT ?  [["id", 6], ["LIMIT", 1]]
+    => #<Store id: 6, title: "紅緞帶公司", tel: nil, ...[略]...updated_at: "2017-01-02 14:26:48">
+
+先取得任意兩間商店 `store1` 與 `store2`，接下來再隨便取出 3 件商品(或是要直接新增也可以)：
+
+    >> product1 = Product.find(1)
+      Product Load (0.1ms)  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?  [["id", 1], ["LIMIT", 1]]
+    => #<Product id: 1, name: "100 倍重力訓練機", description...[略]...updated_at: "2017-01-02 15:05:00">
+    >> product2 = Product.find(2)
+      Product Load (0.2ms)  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?  [["id", 2], ["LIMIT", 1]]
+    => #<Product id: 2, name: "膠囊機車", description...[略]...updated_at: "2017-01-02 15:05:00">
+    >> product3 = Product.find(3)
+      Product Load (0.1ms)  SELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?  [["id", 3], ["LIMIT", 1]]
+    => #<Product id: 3, name: "賽亞超人變身手錶", description...[略]...updated_at: "2017-01-02 15:13:23">
+
+
+然後接著把 `product1` 跟 `product2` 丟給 `store1`，把 `product2` 跟 `product3` 丟給 `store2`：
+
+    >> store1.products = [product1, product2]
+       (0.1ms)  begin transaction
+      SQL (0.4ms)  INSERT INTO "ware_houses" ("store_id", "product_id", ...[略]...updated_at", 2017-01-02 19:35:17 UTC]]
+      SQL (0.1ms)  INSERT INTO "ware_houses" ("store_id", "product_id", ...[略]...updated_at", 2017-01-02 19:35:17 UTC]]
+       (0.7ms)  commit transaction
+
+    >> store2.products = [product2, product3]
+       (0.1ms)  begin transaction
+      SQL (0.3ms)  INSERT INTO "ware_houses" ("store_id", "product_id", ...[略]...updated_at", 2017-01-02 19:35:27 UTC]]
+      SQL (0.1ms)  INSERT INTO "ware_houses" ("store_id", "product_id", ...[略]...updated_at", 2017-01-02 19:35:27 UTC]]
+       (2.0ms)  commit transaction
+
+這時候這幾個商店跟商品物件的關連圖應該長得像這樣：
+
+![image](images/chapter17/many-to-many-group.png)
+
+試著查詢看看，有幾家商店在賣 `product1`：
+
+    >> product1.stores.count
+       (0.2ms)  SELECT COUNT(*) FROM "stores" INNER JOIN "ware_houses" ON "stores"."id" = "ware_houses"."store_id" WHERE "ware_houses"."product_id" = ?  [["product_id", 1]]
+    => 1
+
+如果沒寫錯的話，應該是只有 1 家沒錯，再看看 `product2`：
+
+    >> product2.stores.count
+       (0.2ms)  SELECT COUNT(*) FROM "stores" INNER JOIN "ware_houses" ON "stores"."id" = "ware_houses"."store_id" WHERE "ware_houses"."product_id" = ?  [["product_id", 2]]
+    => 2
+
+因為在 `store1` 跟 `store2` 都有這個商品，所以是 2 家。仔細觀察，其實在這些操作的 SQL 語法中，都已經不是直接跟 Store 或 Product 要資料，而是向 WareHouse 在進行查詢。
+
+「多對多」關連，在使用上其實就跟一般的「一對多」差不多，但實際上的資訊都是記錄在第三方資料表裡。
+
+### HABTM(has_and_belongs_to_many)
+
+除了 `has_many ... through` 的寫法，還可使用 `has_and_belongs_to_many` 方法來做多對多關連，而且寫法更簡單：
+
+```ruby
+# Store Model
+class Store < ActiveRecord::Base
+  has_and_belongs_to_many :products
+end
+
+# Product Model
+class Product < ActiveRecord::Base
+  has_and_belongs_to_many :stores
+end
+```
+
+就這樣，不需要另外新增第三方 Model 即可完成多對多關連。注意，我是說「不需要第三方 Model」，不是「不需要第三方資料表」，畢竟還是要有一個資料表存放雙方的資訊，只是這個資料表因為不重要也不會存取它，所以可以不需要 Model 對應。
+
+這個第三方資料表的名字是有規定的，預設是「兩個資料表依照英文字母先後順序排序，中間以底線分格」，所以以我們這個例子來說，這個資料表的名字就是「products_stores」。
+
+即然不需要 Model，那我們就直接新增一個 Migration 來建立資料表：
+
+    $ rails g migration create_join_table_for_store_and_product
+      invoke  active_record
+      create    db/migrate/20170102195954_create_join_table_for_store_and_product.rb
+
+編輯內容如下：
+
+```ruby
+class CreateJoinTableForStoreAndProduct < ActiveRecord::Migration[5.0]
+  def change
+    create_table :products_stores, id: false do |t|
+      t.belongs_to :store, index: true
+      t.belongs_to :product, index: true
+    end
+  end
+end
+```
+
+> 注意：別忘了執行 `rails db:migrate`
+
+一樣到 `rails console` 試一下：
+
+    >> s1 = Store.first
+      Store Load (0.2ms)  SELECT  "stores".* FROM "stores" ORDER BY "stores"."id" ASC LIMIT ?  [["LIMIT", 1]]
+    => #<Store id: 1, title: "太空膠囊公司", tel: nil, ...[略]... updated_at: "2017-01-02 13:49:11">
+    >> s1.products
+      Product Load (0.2ms)  SELECT "products".* FROM "products" INNER JOIN "products_stores" ON "products"."id" = "products_stores"."product_id" WHERE "products_stores"."store_id" = ?  [["store_id", 1]]
+    => #<ActiveRecord::Associations::CollectionProxy []>
+
+依舊可以正常運作，但就是往 `products_stores` 這個資料表存取資料了。
+
+### 該選擇 `has_many ... through` 還是 `has_and_belongs_to_many` 的寫法?
+
+基本上，如果你有需要使用這個第三方 Model 再做其它事情(例如你想知道這筆商品是在什麼時間店出貨到商店裡)，選用 `has_many ... through` 的寫法；如果不介意也不會用到這個第三方 Model，那使用 `has_and_belongs_to_many` 的方式也是可以的。
+
+我個人是比較偏好 `has_many ... through` 的寫法，雖然寫起來比較囉嗦，但會比較清楚清楚一點。
 
