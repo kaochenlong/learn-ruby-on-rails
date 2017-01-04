@@ -35,7 +35,7 @@ CRUD 是 Create, Read, Update 跟 Delete 四個字的縮寫，對 Rails 來說�
 
 因為 Route 是整個 Rails 應用程式的第一關，所以在思考要新增功能的時候，我通常第一步都是先想 Route 要怎麼規劃。
 
-1. 因為要可以新增、修改、刪除候選人，所以我使用 `resoruces` 直接做出完整的 CRUD 路徑
+1. 因為要可以新增、修改、刪除候選人，所以我使用 `resources` 直接做出完整的 CRUD 路徑
 2. 因為要投票給某一位候選人，所以我用 `member` 的方式加了一組 `post :vote`，補充原本 CRUD 的 8 個路徑。
 
 程式碼如下：
