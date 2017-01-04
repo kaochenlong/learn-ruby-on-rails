@@ -35,7 +35,7 @@
 - [16 Model Migration](chapter16-model-migration.md)
 - [17 Model 關連性](chapter17-model-relationship.md)
 - [18 Model 驗證及回呼](chapter18-model-validation-and-callback.md)
-- 19 多國語言與寄發信件
+- [19 寄發信件](chapter19-send-email.md)
 - 20 背景工作及工作排程
 - 21 JavaScript 與 Assets Pipeline
 - 22 API 模式
