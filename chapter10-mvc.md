@@ -83,7 +83,7 @@ Model 相關的檔案都是放在 `app/models` 目錄裡：
 | Model 類別名稱 |  檔案名稱          | 資料表名稱    |
 |----------------|--------------------|---------------|
 | User           |  user.rb           | users         |
-| Post           |  post.rb           | post          |
+| Post           |  post.rb           | posts         |
 | ProductItem    |  product_item.rb   | product_items |
 
 當然資料表的命名慣例是可以修改的，但沒必要的話通常不會特別去改它，儘量維持「慣例優於設定」(CoC, Convention Over Configuration)的原則。
