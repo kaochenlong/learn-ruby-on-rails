@@ -36,22 +36,22 @@
 - [17 Model 關連性](chapter17-model-relationship.md)
 - [18 Model 驗證及回呼](chapter18-model-validation-and-callback.md)
 - [19 寄發信件](chapter19-send-email.md)
-- 20 背景工作及工作排程
+- [20 背景工作及工作排程](chapter20-background-job.md)
 - 21 JavaScript 與 Assets Pipeline
 - 22 API 模式
 
-### 實作
-
-- 23 購物車
-- 24 訂單處理
-- 25 金流串接(使用智付寶)
-- 26 ActionCable 即時聊天室
-- 27 網站佈署(Heroku 及 Capistrano)
-
 ### 其它
 
-- 28 程式碼整理
-- 29 寫測試讓你更有信心 - RSpec 環境設定、單元測試與整合測試
+- 23 程式碼整理
+- 24 寫測試讓你更有信心 - RSpec 環境設定、單元測試與整合測試
+
+### 實作
+
+- 25 購物車
+- 26 訂單處理
+- 27 金流串接(使用智付寶)
+- 28 ActionCable 即時聊天室
+- 29 網站佈署(Heroku 及 Capistrano)
 
 ## 版本
 
