@@ -129,7 +129,7 @@ json.extract! user, :name, :email
 
 ### 為什麼加 `.json` 就可以了?
 
-其實這是 Route 做的好事，先看一下 `rails routes` 的結果：
+其實這算是 Route 做的好事，先看一下 `rails routes` 的結果：
 
     $ rails routes
        Prefix Verb   URI Pattern               Controller#Action
@@ -148,15 +148,13 @@ json.extract! user, :name, :email
 
 ## <a name="api-only"></a>API-Only 模式
 
-Rails 方便歸方便，它本身也是個有點肥大的框架，這是一直以來 Rails 被詬病的地方。在 Rails 5 之後，Rails 加入了 API only 的模式，讓你在產生專案的時候減少一些不必要的套件及 middleware。讓我們產生一個全新的專案：
+Rails 方便歸方便，它本身是個有點肥大的框架，這是一直以來 Rails 被詬病的地方。在 Rails 5 之後，Rails 加入了 API only 的模式，讓你在產生專案的時候減少一些不必要的套件及 middleware。讓我們產生一個全新的專案：
 
     $ rails new my_blog --api
 
-後面加上了 `--api` 參數
-
-不僅裡面用到的 gem 變少了
+後面加上了 `--api` 參數產生出來的專案，因為僅需要做 API 的輸出，所以不僅用到的 gem 變少了，連用到的 middleware 也比較少一點，在效能的提昇上是有一些幫助的。
 
 更多詳細資料請參閱 http://guides.rubyonrails.org/api_app.html
 
-當然，即使如此，Rails 畢竟是一個功能完整的網站開發框架，改成 API only 也只是從很胖的胖子變成普通胖的胖子，如果真的有效能考量，而且沒有要用到那麼完整的功能，也許可直接考慮使用更輕量化的工具，例如 Sinatra (http://www.sinatrarb.com/)。
+但即使如此，Rails 畢竟是一個功能完整的網站開發框架，改成 API only 也只是從很胖的胖子變成普通胖的胖子，如果真的有效能考量，而且沒有要用到那麼完整的功能，也許可直接考慮使用更輕量化的工具，例如 Sinatra (http://www.sinatrarb.com/)。
 
