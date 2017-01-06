@@ -37,8 +37,8 @@
 - [18 Model 驗證及回呼](chapter18-model-validation-and-callback.md)
 - [19 寄發信件](chapter19-send-email.md)
 - [20 背景工作及工作排程](chapter20-background-job.md)
-- 21 JavaScript 與 Assets Pipeline
-- 22 API 模式
+- [21 API 模式](chapter21-api-mode.md)
+- 22 JavaScript 與 Assets Pipeline
 
 ### 其它
 
