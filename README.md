@@ -38,12 +38,9 @@
 - [19 寄發信件](chapter19-send-email.md)
 - [20 背景工作及工作排程](chapter20-background-job.md)
 - [21 API 模式](chapter21-api-mode.md)
-- 22 JavaScript 與 Assets Pipeline
-
-### 其它
-
-- 23 程式碼整理
-- 24 寫測試讓你更有信心 - RSpec 環境設定、單元測試與整合測試
+- [22 寫測試讓你更有信心 - Part 1](chapter22-testing-with-rspec-part-1.md)
+- 23 寫測試讓你更有信心 - Part 2
+- 24 程式碼整理
 
 ### 實作
 
