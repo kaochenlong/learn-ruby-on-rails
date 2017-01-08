@@ -39,7 +39,7 @@
 - [20 背景工作及工作排程](chapter20-background-job.md)
 - [21 API 模式](chapter21-api-mode.md)
 - [22 寫測試讓你更有信心 - Part 1](chapter22-testing-with-rspec-part-1.md)
-- 23 寫測試讓你更有信心 - Part 2
+- [23 寫測試讓你更有信心 - Part 2](chapter23-testing-with-rspec-part-2.md)
 - 24 程式碼整理
 
 ### 實作
