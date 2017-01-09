@@ -38,7 +38,7 @@ end
 |----------|:--------------------------|:--------------------------------|
 | 類別     | UsersController           | ContactMailer                   |
 | 繼承類別 | ApplicationController     | ApplicationMailer               |
-| Layout   | app/views/application.rb  | /app/views/mailer               |
+| Layout   | app/views/layouts/application.html.erb  | /app/views/layouts/mailer.html.erb               |
 | View     | app/views/users/*.erb     | /app/views/contact_mailer/*.erb |
 
 ### mailer 上的 action?
