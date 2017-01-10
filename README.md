@@ -44,11 +44,12 @@
 
 ### 實作
 
-- 25 購物車
-- 26 訂單處理
-- 27 金流串接(使用智付寶)
-- 28 ActionCable 即時聊天室
+- [25 購物車 - Part 1](chapter25-shopping-cart-part-1.md)
+- 26 購物車 - Part 2
+- 27 訂單處理
+- 28 金流串接(使用智付寶)
 - 29 網站佈署(Heroku 及 Capistrano)
+- 30 ActionCable 即時聊天室
 
 ## 版本
 
