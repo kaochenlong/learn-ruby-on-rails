@@ -153,7 +153,7 @@ end
 
 定義一個 `set_user` 方法(通常會掛在 `private` 區塊)，然後掛在 `before_action` 這個 Callback 上，並且僅在 `show`、`edit`、`update` 以及 `destroy` 這 4 個 Action 執行前先執行。
 
-其它可以用的 Callback 還有 `after_action` 跟 `around_acction` 等方法，更多詳細內容可參考 http://api.rubyonrails.org/classes/AbstractController/Callbacks/ClassMethods.html
+其它可以用的 Callback 還有 `after_action` 跟 `around_action` 等方法，更多詳細內容可參考 http://api.rubyonrails.org/classes/AbstractController/Callbacks/ClassMethods.html
 
 ## <a name="organize-model-logic-with-scope"></a>在 Controller 看到有點長的連續技
 
