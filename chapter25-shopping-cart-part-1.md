@@ -17,7 +17,7 @@
 
 說明：
 
-一台購物車(Cart,①))會有很多的購買項目 (CartItem ②))，每個購買項目都有一項商品(Product ③)以及數量(Quantity ④)
+一台購物車(Cart,①)會有很多的購買項目 (CartItem ②)，每個購買項目都有一項商品(Product ③)以及數量(Quantity ④)
 
 ### 基本功能
 
