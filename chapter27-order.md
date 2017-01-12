@@ -188,5 +188,5 @@ end
 
 這樣就會在做完 `refund` 退款事件後，接著做 `after` 方法指定的事了。
 
-更多詳細使用方法及 Callback，請見 AASM 的說明頁面。
+更多詳細使用方法及 Callback，請見 [AASM](https://github.com/aasm/aasm) 的說明頁面。
 
