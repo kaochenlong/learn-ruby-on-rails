@@ -46,7 +46,7 @@
 
 - [25 購物車 - Part 1](chapter25-shopping-cart-part-1.md)
 - [26 購物車 - Part 2](chapter26-shopping-cart-part-2.md)
-- 27 訂單處理
+- [27 訂單處理](chapter27-order.md)
 - 28 金流串接(使用智付寶)
 - 29 網站佈署(Heroku 及 Capistrano)
 - 30 ActionCable 即時聊天室
