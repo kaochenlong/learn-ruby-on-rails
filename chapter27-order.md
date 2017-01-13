@@ -60,7 +60,6 @@ end
 2. 存放狀態的欄位名稱預設叫做 `aasm_state`，型態是字串，但如果你的 Order Model 的狀態欄位不叫這個名字的話，要不可以透過 Migration 改個名字，或是直接這樣修改也可以：
 
 ```ruby
-```ruby
 class Order < ApplicationRecord
   include AASM
 
