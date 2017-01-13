@@ -11,7 +11,7 @@
 
 因為我們這是練習用的範例，所以在登入的時候選的是「Sandbox」模式，在這個模式下的任何消費都不會真的刷卡或匯款。登入之後的樣子像這樣：
 
-![image](images/chapter28/dashboard.png)
+![image](images/chapter28/dash-board.png)
 
 點擊上方選單的「Help」→「API documentation」，可以在這個頁面查到串接金流服務的所有說明及範例。
 
@@ -136,7 +136,7 @@ Braintree::Configuration.private_key = "use_your_private_key"
 
 其中 `use_your_merchant_id`、`use_your_public_key` 以及 `use_your_private_key` 這三個資訊，請到 Braintree 的上方選單「Account」→「My User」頁面，下方有一個「API Keys, Tokenization Keys, Encryption Keys」段落，裡面可以新增或取得所需的資訊：
 
-![image](iamges/chapter28/api-keys.png)
+![image](images/chapter28/api-keys.png)
 
 > 注意：修改過 `config` 目錄下的檔案，通常都需要重新啟動 `rails server` 才會生效。
 
