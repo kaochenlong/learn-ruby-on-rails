@@ -7,8 +7,6 @@
 - [安裝 Rails](#install-rails)
 - [建立 Rails 專案](#build-rails-project)
 
-----
-
 ## <a name="install-ruby"></a>安裝 Ruby
 
 ### Unix/Linux 作業系統
@@ -37,7 +35,6 @@
 
 更多其它平台的安裝方式，或是想要直接下載原始碼自行編譯，請參閱 [Ruby 官方網站](https://www.ruby-lang.org/)的安裝說明。
 
-----
 
 ## <a name="use-rvm"></a>用 RVM 來管理 Ruby 版本
 
@@ -66,7 +63,7 @@ RVM 的安裝滿簡單的，只要二行指令即可完成。安裝步驟請直�
     [ruby-]2.1[.10]
     [ruby-]2.2[.6]
     [ruby-]2.3[.3]
-    [ruby-]2.4[.0-rc1]
+    [ruby-]2.4[.0]
     ruby-head
 
     [...略...]
@@ -83,7 +80,7 @@ RVM 的安裝滿簡單的，只要二行指令即可完成。安裝步驟請直�
 
     $ rvm install 2.3
 
-RVM 會自動找 `[ruby-]2.3[.3]` 這個版本的 Ruby 來安裝。前面提到可以安裝多個不同的版本，所以如果你喜歡，也可以再裝個 `1.9.3` 的版本：
+RVM 會自動找 `[ruby-]2.4[.0]` 這個版本的 Ruby 來安裝。前面提到可以安裝多個不同的版本，所以如果你喜歡，也可以再裝個 `1.9.3` 的版本：
 
     $ rvm install 1.9.3
 
@@ -92,20 +89,21 @@ RVM 會自動找 `[ruby-]2.3[.3]` 這個版本的 Ruby 來安裝。前面提到�
     $ rvm list
 
        ruby-1.9.3-p551 [ x86_64 ]
+       ruby-2.2.1 [ x86_64 ]
+       ruby-2.2.2 [ x86_64 ]
        ruby-2.3.0 [ x86_64 ]
        ruby-2.3.1 [ x86_64 ]
-    =* ruby-2.3.3 [ x86_64 ]
+       ruby-2.3.3 [ x86_64 ]
+    =* ruby-2.4.0 [ x86_64 ]
 
     # => - current
     # =* - current && default
     #  * - default
 
-因為業務的需求，所以在我的電腦上裝了好幾個版本的 Ruby。在 2.3.3 版前面的 `=*` 符號則是表示我目前正在使用這個版本。
-
-我們可以在終端機下輸入這個指令，看看目前 Ruby 的版本：
+因為工作上需求，所以在我的電腦上裝了好幾個版本的 Ruby。在 2.4.0 版前面的 `=*` 符號則是表示我目前正在使用這個版本。你可以在終端機下輸入這個指令，看看目前 Ruby 的版本：
 
     $ ruby -v
-    ruby 2.3.3p222 (2016-11-21 revision 56859) [x86_64-darwin15]
+    ruby 2.4.0p0 (2016-12-24 revision 57164) [x86_64-darwin15]
 
 如果要切換到其它版本的 Ruby，例如想要切換到 1.9.3 版本：
 
@@ -120,38 +118,36 @@ RVM 會自動找 `[ruby-]2.3[.3]` 這個版本的 Ruby 來安裝。前面提到�
     $ ruby -v
     ruby 1.9.3p551 (2014-11-13 revision 48407) [x86_64-darwin13.4.0]
 
-這樣就切換到 Ruby 1.9.3 了，相當便利!
+這樣就切換到 Ruby 1.9.3 了，相當便利! 不過有個小問題是，RVM 會在每次開啟新的終端機視窗的時候回到預設值(也就是變回系統內建的 Ruby 版本)，所以如果你希望每次開終端機視窗的時候都會自動切到 `2.4.0` 版的話：
 
-不過有個小問題是，RVM 會在每次重新開啟終端機視窗的時候回到預設值(也就是系統內建的 Ruby 版本)，所以如果你希望每次開終端機視窗的時候都會自動切到 `2.3.3` 版的話：
+    $ rvm 2.4.0 --default
 
-    $ rvm 2.3.3 --default
-
-這樣你每次開終端機視窗就會自動幫你切換到 2.3.3 版了。如果你想切回到原來系統內建的版本，只要執行這個指令：
+這樣你每次開終端機視窗就會自動幫你切換到 2.4.0 版了。如果你想切回到原來系統內建的版本，只要執行這個指令：
 
     $ rvm system
 
 不要了，想砍掉它?
 
-    $ rvm uninstall 1.9.2
+    $ rvm uninstall 2.4.0
 
-這樣就可以把指定的版本移除掉了。如果你整個 RVM 都不想要了，只要把個人帳號 home 資料夾底下的 `.rvm` 資料夾整個移除，就會整個清潔溜溜了，完全不會動到系統內建的 Ruby。
+這樣就可以把指定的版本移除掉了。如果你是整個 RVM 都不想要了，只要把個人帳號 home 資料夾底下的 `.rvm` 資料夾整個移除，就會整個清潔溜溜了，完全不會動到系統內建的 Ruby。
 
 ### 運作原理
 
 你也許會好奇為什麼 RVM 可以這麼神奇的切換 Ruby 的環境。讓我們來把系統的 PATH 變數印出來看看：
 
     $ echo $PATH
-    /Users/user/.rvm/gems/ruby-2.3.3/bin:/Users/user/.rvm/gems/ruby...[略]...
+    /Users/user/.rvm/gems/ruby-2.4.0/bin:/Users/user/.rvm/gems/ruby...[略]...
 
 然後查看一下 Ruby 的位置：
 
     $ which ruby
-    /Users/user/.rvm/rubies/ruby-2.3.3/bin/ruby
+    /Users/user/.rvm/rubies/ruby-2.4.0/bin/ruby
 
 再查一下 Ruby 版本：
 
     $ ruby -v
-    ruby 2.3.3p222 (2016-11-21 revision 56859) [x86_64-darwin15]
+    ruby 2.4.0p0 (2016-12-24 revision 57164) [x86_64-darwin15]
 
 (以上內容是我自己電腦裡的設定，應該跟各位的環境不同)
 
@@ -170,13 +166,11 @@ RVM 會自動找 `[ruby-]2.3[.3]` 這個版本的 Ruby 來安裝。前面提到�
     $ ruby -v
     ruby 1.9.3p551 (2014-11-13 revision 48407) [x86_64-darwin13.4.0]
 
-仔細看上面的輸出結果，就可以發現其實 RVM 是把不同版本的 Ruby 安裝在你的個人帳號底下的 `.rvm` 目錄裡。當你切換不同版本的 Ruby 的時候，RVM 會幫你把系統預設的 PATH 的最前面加上這個 `.rvm` 的資料夾，當你在終端機底下輸入 `ruby` 指令時，系統原本的 `/usr/bin/ruby` 因為在 PATH 的比較後面的位置，所以系統只會先找到 RVM 版本的 Ruby(也就是原來系統的 Ruby 被鬼摭眼啦)。如果各位有興趣，也可以試著輸入 `rvm info` 指令來看看 RVM 幫你做了哪些設定。
+仔細看上面的輸出結果，就可以發現其實 RVM 是把不同版本的 Ruby 安裝在你的個人帳號底下的 `.rvm` 目錄裡。當你切換不同版本的 Ruby 的時候，RVM 會幫你把系統預設的 PATH 的最前面加上這個 `.rvm` 的資料夾。接下來當你在終端機底下輸入 `ruby` 指令時，系統原本的 `/usr/bin/ruby` 因為在 PATH 的比較後面的位置，所以系統只會先找到 RVM 版本的 Ruby(也就是原來系統的 Ruby 被鬼摭眼啦)。如果各位有興趣，也可以試著輸入 `rvm info` 指令來看看 RVM 幫你做了哪些設定。
 
 ### 除了 RVM 之外...
 
 我自己個人習慣使用 RVM，除了 RVM 之外還有其它的選擇，例如 [rbenv](https://github.com/rbenv/rbenv) 及 [chruby](https://github.com/postmodern/chruby)，這些 Ruby 版本管理工具各有其優、缺點，還請大家自己去試用看看，然後選一套自己覺得順手的來用吧。
-
-----
 
 ## <a name="install-rails"></a>安裝 Rails
 
@@ -189,29 +183,19 @@ RVM 會自動找 `[ruby-]2.3[.3]` 這個版本的 Ruby 來安裝。前面提到�
     Successfully installed thread_safe-0.3.5
     Fetching: tzinfo-1.2.2.gem (100%)
     Successfully installed tzinfo-1.2.2
-    Fetching: concurrent-ruby-1.0.2.gem (100%)
-    Successfully installed concurrent-ruby-1.0.2
-    Fetching: activesupport-5.0.0.1.gem (100%)
-    Successfully installed activesupport-5.0.0.1
+    Fetching: concurrent-ruby-1.0.4.gem (100%)
+    Successfully installed concurrent-ruby-1.0.4
+    Fetching: activesupport-5.0.1.gem (100%)
+    Successfully installed activesupport-5.0.1
     ...[略]...
-    Installing ri documentation for bundler-1.13.6
-    Parsing documentation for sprockets-3.7.0
-    Installing ri documentation for sprockets-3.7.0
-    Parsing documentation for sprockets-rails-3.2.0
-    Installing ri documentation for sprockets-rails-3.2.0
-    Parsing documentation for rails-5.0.0.1
-    Installing ri documentation for rails-5.0.0.1
-    Done installing documentation for i18n, ...[略]... sprockets-rails, rails after 69 seconds
     36 gems installed
 
-從安裝過程的訊息可大概看到 `5.0.0.1` 的字眼。如果過程沒發生錯誤訊息的話，接下來可確認一下是不是正確的版本：
+從安裝過程的訊息可大概看到 `5.0.1` 的字眼。如果過程沒發生錯誤訊息的話，接下來可確認一下是不是正確的版本：
 
     $ rails -v
-    Rails 5.0.0.1
+    Rails 5.0.1
 
 接下來，我們就要用它來建立第一個 Rails 專案了。
-
-----
 
 ## <a name="build-rails-project"></a>建立 Rails 專案
 
@@ -225,23 +209,17 @@ Rails 安裝完成後，接下來就用它來產生一個名為 `hello_rails` �
           create  .gitignore
           create  Gemfile
           create  app
-          create  app/assets/config/manifest.js
-          create  app/assets/javascripts/application.js
-          create  app/assets/javascripts/cable.js
           ...[略]...
-          create  app/assets/stylesheets/application.css
-          create  app/channels/application_cable/channel.rb
-          create  app/channels/application_cable/connection.rb
+          create  vendor/assets/javascripts/.keep
+          create  vendor/assets/stylesheets
           create  vendor/assets/stylesheets/.keep
           remove  config/initializers/cors.rb
              run  bundle install
-    Fetching gem metadata from https://rubygems.org/..............
-    Fetching version metadata from https://rubygems.org/...
-    Fetching dependency metadata from https://rubygems.org/..
-    Resolving dependencies...
-    Installing rake 12.0.0
+    Fetching gem metadata from https://rubygems.org/..........
+    Fetching version metadata from https://rubygems.org/..
+    Fetching dependency metadata from https://rubygems.org/.
     ...[略]...
-    Using rails 5.0.0.1
+    Using rails 5.0.1
     Installing sass-rails 5.0.6
     Bundle complete! 15 Gemfile dependencies, 62 gems now installed.
     Use `bundle show [gemname]` to see where a bundled gem is installed.
@@ -249,7 +227,7 @@ Rails 安裝完成後，接下來就用它來產生一個名為 `hello_rails` �
     * bin/rake: spring inserted
     * bin/rails: spring inserted
 
-接下來，使用 `cd` 指令進到剛剛產生的這個專案目錄：
+`rails new hello_rails` 這個指令幫你轉生了一個名為 `hello_rails` 的目錄，接下來請使用 `cd` 指令進到剛剛產生的這個目錄：
 
     $ cd hello_rails
 
@@ -257,10 +235,10 @@ Rails 安裝完成後，接下來就用它來產生一個名為 `hello_rails` �
 
     $ rails server
     => Booting Puma
-    => Rails 5.0.0.1 application starting in development on http://localhost:3000
+    => Rails 5.0.1 application starting in development on http://localhost:3000
     => Run `rails server -h` for more startup options
     Puma starting in single mode...
-    * Version 3.6.2 (ruby 2.3.3-p222), codename: Sleepy Sunday Serenity
+    * Version 3.6.2 (ruby 2.4.0-p0), codename: Sleepy Sunday Serenity
     * Min threads: 5, max threads: 5
     * Environment: development
     * Listening on tcp://localhost:3000
