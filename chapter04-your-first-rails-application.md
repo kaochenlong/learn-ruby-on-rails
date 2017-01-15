@@ -222,13 +222,17 @@ end
 
 ## <a name="rails-shortcuts"></a>Rails 常用快速鍵
 
-這是一些常用到的快速鍵，可以讓你少敲幾個字：
+Rails 專案裡常用到的指令都有簡寫，可以讓你少敲幾個字：
 
-* `rails generate` :point_right: `rails g`
-* `rails destroy` :point_right: `rails d`
-* `rails server` :point_right: `rails s`
-* `rails console` :point_right: `rails c`
-* `bundle install` :point_right: `bundle`
+| 原本的指令      | 簡寫     | 用途                                                                               |
+|-----------------|----------|------------------------------------------------------------------------------------|
+| rails generate  | rails g  | 用來產生各種需要的檔案，例如 scaffold、controller、model 等等                      |
+| rails destroy   | rails d  | 可刪除產生器所產生的檔案                                                           |
+| rails server    | rails s  | 啟動 Rails 伺服器，讓你可以檢視目前專案的成課                                      |
+| rails console   | rails c  | 進類似乎 Ruby 的 IRB 介面，但是有載入整個 Rails 專案的環境，可以在這裡直接操作資料 |
+| rails dbconsole | rails db | 直接進到資料庫裡，使用 SQL 語法對資料庫進行存取                                    |
+| bundle install  | bundle   | 安裝套件                                                                           |
+| rake test       | rake     | 執行測試                                                                           |
 
 ## <a name="note"></a>小結
 
