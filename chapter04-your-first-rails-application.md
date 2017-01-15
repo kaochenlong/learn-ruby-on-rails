@@ -12,11 +12,9 @@
 新手上路，讓我們來做一個讓使用者可以發文的 Blog 系統吧! 先想一下這個系統的使用者故事(User Story)大概會長什麼樣子：
 
 - 可以新增使用者(User)
-- 每個使用者(User)可以新增、修改或刪除自己寫的文章(Post)
+- 每個使用者(User)可以新增、修改或刪除文章(Post)
 
 雖然 Ruby 的世界有非常多厲害的套件(gem)，像是如果要做會員系統，只要用 [devise](https://github.com/plataformatec/devise) 就可以在幾分鐘甚至是幾十秒內就把會員註冊、登入、登出等基本的功能完成。不過這裡我們先不用任何套件，僅靠 Rails 內建的功能來完成它。
-
-----
 
 ## <a name="user-scaffold"></a>使用者功能
 
@@ -34,7 +32,6 @@
 
     $ rails generate scaffold User name:string email:string tel:string
     Running via Spring preloader in process 17922
-    Expected string default value for '--jbuilder'; got true (boolean)
           invoke  active_record
           create    db/migrate/20161220041724_create_users.rb
           create    app/models/user.rb
@@ -69,7 +66,7 @@
 
 ### Step 2 把描述具現化
 
-在上一步產生的一堆檔案裡，有一個特別的檔案，在專案的 `db/migrate` 目錄裡，有個可能長得像 `20161220041724_create_users.rb` 的檔案(前面的數字是時間，所以可能會跟你的不一樣)，裡面的內容大概長這樣：
+在上一步產生的一堆檔案裡，有一個特別的檔案，在專案的 `db/migrate` 目錄裡，有個可能長得像 `20161220041724_create_users.rb` 的檔案(前面的數字是時間，所以應該會跟各位的檔名不太一樣)，裡面的內容大概長這樣：
 
 ```ruby
 class CreateUsers < ActiveRecord::Migration[5.0]
@@ -107,10 +104,10 @@ end
 
     $ rails server
     => Booting Puma
-    => Rails 5.0.0.1 application starting in development on http://localhost:3000
+    => Rails 5.0.1 application starting in development on http://localhost:3000
     => Run `rails server -h` for more startup options
     Puma starting in single mode...
-    * Version 3.6.2 (ruby 2.3.3-p222), codename: Sleepy Sunday Serenity
+    * Version 3.6.2 (ruby 2.4.0-p0), codename: Sleepy Sunday Serenity
     * Min threads: 5, max threads: 5
     * Environment: development
     * Listening on tcp://localhost:3000
@@ -124,13 +121,11 @@ end
 
 ![image](images/chapter04/user-scaffold-2.png)
 
-你會發現已經整個新增、修改、刪除的功能都完成了：
+你會發現你根本沒寫到什麼程式碼，一個簡單的 Scaffold 指令，已經把整個新增、修改、刪除的功能都完成了：
 
 ![image](images/chapter04/user-scaffold-3.png)
 
 相當神奇吧!
-
-----
 
 ## <a name="post-scaffold"></a>文章功能
 
@@ -156,7 +151,6 @@ end
 
     $ rails g scaffold Post title content:text user:references is_available:boolean
     Running via Spring preloader in process 18657
-    Expected string default value for '--jbuilder'; got true (boolean)
           invoke  active_record
           create    db/migrate/20161220050455_create_posts.rb
           create    app/models/post.rb
@@ -226,8 +220,6 @@ end
 
 其實這裡還有一些效能問題(N+1 Query)，不過也讓我們留到以後再說明。
 
-----
-
 ## <a name="rails-shortcuts"></a>Rails 常用快速鍵
 
 這是一些常用到的快速鍵，可以讓你少敲幾個字：
@@ -238,13 +230,9 @@ end
 * `rails console` :point_right: `rails c`
 * `bundle install` :point_right: `bundle`
 
-----
-
 ## <a name="note"></a>小結
 
-Scaffold 好用歸好用，我當年第一次接觸 Rails 就是被 Scaffold 給騙進來的。但實際在工作的時候不見得常用，比較常見是手動建立 controller 或 model，畢竟 Scaffold 一口氣生出太多用不到的檔案，而且也有種用牛刀殺小雞的感覺。
+Scaffold 好用歸好用，我當年第一次接觸 Rails 就是被 Scaffold 給騙進來的。但實際在工作的時候不見得常用，比較常見是使用產生器(generator)各別建立 Controller 或 Model，畢竟 Scaffold 一口氣生出太多用不到的檔案，有種用牛刀殺小雞的感覺。
 
 基本上 Rails 是不可能靠用聽的或用看的就學得會的，一定多要練習，建議有空可試著照 Rails Guide 的這篇 [Getting Started](http://guides.rubyonrails.org/getting_started.html) 操練一遍，應該就對 Rails 更有概念了，加油!
-
-有任何問題可於 [GitHub issue](https://github.com/kaochenlong/learn-ruby-on-rails/issues) 討論。原始碼可於 [這裡](https://github.com/kaochenlong/hello_rails) 取得
 
