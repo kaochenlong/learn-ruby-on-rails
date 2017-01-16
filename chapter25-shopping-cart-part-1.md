@@ -99,10 +99,10 @@ Gem 安裝完成之後，接著照 `rspec-rails` 的說明頁面，安裝 `rspec
 
     $ rspec
     /private/tmp/shopping_mall/spec/models/cart_spec.rb:3:in `<top (required)>': uninitialized constant Cart (NameError)
-      from /Users/user/.rvm/gems/ruby-2.3.3/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `load'
+      from /Users/user/.rvm/gems/ruby-2.4.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `load'
       ...[略]...
-      from /Users/user/.rvm/gems/ruby-2.3.3/bin/ruby_executable_hooks:15:in `eval'
-      from /Users/user/.rvm/gems/ruby-2.3.3/bin/ruby_executable_hooks:15:in `<main>'
+      from /Users/user/.rvm/gems/ruby-2.4.0/bin/ruby_executable_hooks:15:in `eval'
+      from /Users/user/.rvm/gems/ruby-2.4.0/bin/ruby_executable_hooks:15:in `<main>'
 
 不意外，因為我們根本還沒寫。
 

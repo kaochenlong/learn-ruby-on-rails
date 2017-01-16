@@ -58,7 +58,7 @@ Controller 就是放在專案的 `app/controllers` 目錄裡：
 
     $ rails console
     Running via Spring preloader in process 38922
-    Loading development environment (Rails 5.0.0.1)
+    Loading development environment (Rails 5.0.1)
     >> "PostsController".underscore
     => "posts_controller"
 

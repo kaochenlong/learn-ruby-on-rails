@@ -225,10 +225,10 @@ end
     >> store1.user
     NoMethodError: undefined method `user' for #<Store:0x007fc2b2fbaf00>
     Did you mean?  user_id
-      from /Users/user/.rvm/gems/ruby-2.3.3/gems/activemodel-5.0.1/lib/active_model/attribute_methods.rb:433:in `method_missing'
+      from /Users/user/.rvm/gems/ruby-2.4.0/gems/activemodel-5.0.1/lib/active_model/attribute_methods.rb:433:in `method_missing'
       from (irb):2
-      from /Users/user/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/commands/console.rb:65:in `start'
-      from /Users/user/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/commands/console_helper.rb:9:in `start'
+      from /Users/user/.rvm/gems/ruby-2.4.0/gems/railties-5.0.1/lib/rails/commands/console.rb:65:in `start'
+      from /Users/user/.rvm/gems/ruby-2.4.0/gems/railties-5.0.1/lib/rails/commands/console_helper.rb:9:in `start'
       ...[略]...
 
 就會出現找不到 `user` 這個方法的錯誤訊息。
@@ -364,11 +364,11 @@ end
     NoMethodError: undefined method `products' for #<Store:0x007fbb1a628e28>
     Did you mean?  product
                    product=
-      from /Users/user/.rvm/gems/ruby-2.3.3/gems/activemodel-5.0.1/lib/active_model/attribute_methods.rb:433:in `method_missing'
+      from /Users/user/.rvm/gems/ruby-2.4.0/gems/activemodel-5.0.1/lib/active_model/attribute_methods.rb:433:in `method_missing'
       from (irb):2
-      from /Users/user/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/commands/console.rb:65:in `start'
+      from /Users/user/.rvm/gems/ruby-2.4.0/gems/railties-5.0.1/lib/rails/commands/console.rb:65:in `start'
       ...[略]...
-      from /Users/user/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/commands.rb:18:in `<top (required)>'
+      from /Users/user/.rvm/gems/ruby-2.4.0/gems/railties-5.0.1/lib/rails/commands.rb:18:in `<top (required)>'
       from bin/rails:4:in `require'
       from bin/rails:4:in `<main>'
 

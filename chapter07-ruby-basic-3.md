@@ -7,8 +7,6 @@ Rails 不是一種程式語言，它是一種用 Ruby 這個程式語言所開�
 - [方法 (Method)](#method)
 - [程式碼區塊 (Block)](#block)
 
-----
-
 ## <a name="method"></a>方法 (Method)
 
 ### 定義方法
@@ -201,8 +199,6 @@ say_hello_to "eddie", age: 18, favorite: 'ruby'
 所以，其實參數個數只有 3 個，最後一個參數是一個 Hash。也因為最後一個是 Hash，Hash 本身是沒有順序的，所以 Hash 裡的 `method` 要放後面或是 `class` 要放前面其實都可已。
 
 Ruby 的語法可以適時的省略小括號、大括號以及 return，程式碼寫起來雖然會更像在寫文章，但對新手來說可能會容易混淆，需要花一點時間了解到底省略了哪些東西。
-
-----
 
 ## <a name="block"></a>程式碼區塊 (Block)
 

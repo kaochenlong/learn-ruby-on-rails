@@ -29,10 +29,16 @@
     $ gem env
     RubyGems Environment:
       - RUBYGEMS VERSION: 2.6.8
-      - RUBY VERSION: 2.3.3 (2016-11-21 patchlevel 222) [x86_64-darwin15]
-      - INSTALLATION DIRECTORY: /Users/user/.rvm/gems/ruby-2.3.3
-      - USER INSTALLATION DIRECTORY: /Users/user/.gem/ruby/2.3.0
-      - RUBY EXECUTABLE: /Users/user/.rvm/rubies/ruby-2.3.3/bin/ruby
+      - RUBY VERSION: 2.4.0 (2016-12-24 patchlevel 0) [x86_64-darwin15]
+      - INSTALLATION DIRECTORY: /Users/user/.rvm/gems/ruby-2.4.0
+      - USER INSTALLATION DIRECTORY: /Users/user/.gem/ruby/2.4.0
+      - RUBY EXECUTABLE: /Users/user/.rvm/rubies/ruby-2.4.0/bin/ruby
+      - EXECUTABLE DIRECTORY: /Users/user/.rvm/gems/ruby-2.4.0/bin
+      - SPEC CACHE DIRECTORY: /Users/user/.gem/specs
+      - SYSTEM CONFIGURATION DIRECTORY: /Users/user/.rvm/rubies/ruby-2.4.0/etc
+      - RUBYGEMS PLATFORMS:
+        - ruby
+        - x86_64-darwin-15
       ... 略 ...
 
 那個 `INSTALLATION DIRECTORY` 就是 gem 安裝的地方，裡面翻一下應該就可以找得到剛剛安裝的 `takami` 套件了。因為我是使用 [RVM](https://rvm.io/)，所以 gem 的安裝路徑會在 .rvm 目錄裡。
@@ -75,27 +81,34 @@ gem 裝好了要怎麼使用呢? 剛好趁這個機會介紹一個我很喜歡�
 ```ruby
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
+gem 'rails', '~> 5.0.1'
 gem 'sqlite3'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
+
 gem 'jquery-rails'
+gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-#... [略] ...
 
 group :development, :test do
   gem 'byebug', platform: :mri
 end
 
 group :development do
-  gem 'web-console'
+  gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ```
 
@@ -110,17 +123,17 @@ gem 'sqlite3'
 gem 'jquery-rails'
 ```
 
-這樣的寫法將會在安裝的時候選用「最新的穩定(stable)版本」，要注意這裡的重點是「穩定」而不是「最新」。以 Rails 來說，假設最新的版本是 5.0.0 beta 4，但最新的「穩定」版本是 4.2.6 版，當沒有加註版本號的時候，它會選擇安裝 4.2.6 版本。
+這樣的寫法將會在安裝的時候選用「最新的穩定(stable)版本」，要注意這裡的重點是「穩定」而不是「最新」。以 Rails 來說，假設最新的版本是 5.0.2 beta 4，但最新的「穩定」版本是 5.0.1 版，當沒有加註版本號的時候，它會選擇安裝 5.0.1 版本。
 
 ### 加註明確版號
 
 例如像這樣：
 
 ```ruby
-gem "rails", "4.2.6"
+gem "rails", "5.0.1"
 ```
 
-這相當明顯了，這就是說「我要安裝 rails 4.2.6 版」，應該不需要特別解釋。
+這相當明顯了，這就是說「我要安裝 rails 5.0.1 版」，應該不需要特別解釋。
 
 ### 大於、小於版號
 
@@ -128,13 +141,13 @@ gem "rails", "4.2.6"
 gem 'uglifier', '>= 1.3.0'
 ```
 
-我想這個光用看的就猜得出來，就是要選用大於或等於 1.3.0 版本。
+我想這個光用看的就猜得出來，就是要選用大於或等於 1.3.0 版本。如果是這樣：
 
 ```ruby
 gem 'rails', '>= 5.0.0.beta4', '< 5.1'
 ```
 
-這樣則是會選用在 5.0.0.beta4 跟 5.1 之間的版本。
+則是會選用在 5.0.0.beta4 跟 5.1 之間的版本。
 
 ### 差不多...
 

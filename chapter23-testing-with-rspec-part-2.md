@@ -87,11 +87,11 @@ TDD 的流程，大概是一個「紅綠燈」的概念:
 
     $ rspec bank_account_spec.rb
     /private/tmp/bank/bank_spec.rb:1:in `<top (required)>': uninitialized constant BankAccount (NameError)
-      from /Users/user/.rvm/gems/ruby-2.3.3/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `load'
-      from /Users/user/.rvm/gems/ruby-2.3.3/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `block in load_spec_files'
+      from /Users/user/.rvm/gems/ruby-2.4.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `load'
+      from /Users/user/.rvm/gems/ruby-2.4.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `block in load_spec_files'
       ...[略]...
-      from /Users/user/.rvm/gems/ruby-2.3.3/bin/ruby_executable_hooks:15:in `eval'
-      from /Users/user/.rvm/gems/ruby-2.3.3/bin/ruby_executable_hooks:15:in `<main>'
+      from /Users/user/.rvm/gems/ruby-2.4.0/bin/ruby_executable_hooks:15:in `eval'
+      from /Users/user/.rvm/gems/ruby-2.4.0/bin/ruby_executable_hooks:15:in `<main>'
 
 咦? 發生錯誤了! 如果你是第一次接觸 TDD 開發流程的話，可能會驚訝「哇! 好多錯誤訊息啊! 這怎麼解決?」
 

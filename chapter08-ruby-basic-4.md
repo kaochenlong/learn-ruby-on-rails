@@ -7,8 +7,6 @@ Rails 不是一種程式語言，它是一種用 Ruby 這個程式語言所開�
 - [類別 (Class)](#class)
 - [模組 (Module)](#module)
 
-----
-
 ## <a name="class"></a>類別 (Class)
 
 Ruby 是一款物件導向程式語言(Objected-Oriented Programming, OOP)，在 Ruby 的世界裡，幾乎所有的東西都是物件。但，到底什麼是「物件」?
