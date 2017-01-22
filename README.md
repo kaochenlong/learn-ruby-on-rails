@@ -49,7 +49,12 @@
 - [27 訂單處理](chapter27-order.md)
 - [28 金流串接(使用 Paypal)](chapter28-payment.md)
 - [29 網站部署(使用 Heroku)](chapter29-deployment.md)
-- 30 ActionCable 即時聊天室
+- 30 後台管理系統設計
+- 31 ActionCable 即時聊天室
+
+### 其它
+
+- 會員系統與社群帳號串接(以 Facebook 為例)
 
 ## 版本
 
@@ -58,9 +63,9 @@
 
 ## 關於我
 
-高見龍，這看起來有點像武俠小說的名字不是筆名，而是我父母給我的本名。目前是兩個小朋友的爸爸，是個愛寫程式而且希望可以寫一輩子程式的阿宅。
+高見龍，目前是兩個小朋友的爸爸，是個愛寫程式而且希望可以寫一輩子程式的阿宅。
 
-* [五倍紅寶石](https://5xruby.tw)共同發起人
+* [五倍紅寶石](https://5xruby.tw)發起人兼負責人
 * Blog: <http://kaochenlong.com>
 * Facebook: <https://www.facebook.com/eddiekao>
 * Twitter: <https://twitter.com/eddiekao>
