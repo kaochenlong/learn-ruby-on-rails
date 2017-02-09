@@ -1,3 +1,10 @@
+---
+
+title: 購物車 Part 2
+permalink: /chapters/26-shopping-cart-part-2
+
+---
+
 # 購物車 Part 2
 
 - [先寫測試，再寫程式](#tdd)
@@ -18,7 +25,7 @@ require 'rails_helper'
 RSpec.describe Cart, type: :model do
   describe "購物車基本功能" do
     # ...[略]...
-    it "每個 Cart Item 都可以計算它自己的金額(小計)" do
+    it "每個 Cart Item 都可以計算它自己的金額（小計）" do
     end
 
     # ...[略]...
@@ -40,7 +47,7 @@ end
 require 'rails_helper'
 
 RSpec.describe CartItem, type: :model do
-  it "每個 Cart Item 都可以計算它自己的金額(小計)" do
+  it "每個 Cart Item 都可以計算它自己的金額（小計）" do
     p1 = Product.create(title:"七龍珠", price: 80)      # 建立商品 1
     p2 = Product.create(title:"冒險野郎", price: 200)   # 建立商品 2
 
@@ -174,7 +181,7 @@ RSpec.describe Cart, type: :model do
       expect(cart.serialize).to eq session_hash
     end
 
-    it "可以把 Session 的內容(Hash 格式)，還原成購物車的內容" do
+    it "可以把 Session 的內容（Hash 格式），還原成購物車的內容" do
     end
   end
 
@@ -229,7 +236,7 @@ RSpec.describe Cart, type: :model do
       # ...[略]...
     end
 
-    it "可以把 Session 的內容(Hash 格式)，還原成購物車的內容" do
+    it "可以把 Session 的內容（Hash 格式），還原成購物車的內容" do
       cart = Cart.from_hash(session_hash)
 
       expect(cart.items.first.product_id).to be 2
@@ -299,10 +306,9 @@ end
 2. 在 `self.from_hash` 方法中，不管傳進來的 Hash 是空的還是有資料，最終都還是呼叫 `new` 方法產生一個 `Cart` 實體，並且把傳入的 Hash 的內容轉換成 `CartItem` 物件。
 3. 因此，在 `Cart` 類別的 `initialize` 方法需要稍做調整，讓它可以接收一個參數，並把參數直接指定給 `@items` 實體變數。
 
-這樣測試應該就可以通過了! YES!
+這樣測試應該就可以通過了！YES！
 
 ## 小結
 
-請記得，TDD (Test-Driven Development) 的重點在於 "Development" 而不在於 "Test"，它是一種「測試先行」的「開發方法」。
-一開始會有不小的阻力，畢竟跟平常的開發習慣不同，但逐漸習慣後會開始嘗到甜頭，並慢慢建立自信。甚到當你熟悉這個流程之後，沒先寫測試就開始實作反而會覺得晚上睡不著覺。
+請記得，TDD（Test-Driven Development）的重點在於「Development」而不在於「Test」，它是一種「測試先行」的「開發方法」。c 使用 TDD 方式進行開發一開始會有不小的阻力，畢竟跟平常的開發習慣不同，但逐漸習慣後會開始嘗到甜頭，並慢慢建立自信。甚到當你熟悉這個流程之後，沒先寫測試就開始實作反而會覺得晚上睡不著覺。
 

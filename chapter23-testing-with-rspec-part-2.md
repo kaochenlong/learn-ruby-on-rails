@@ -1,3 +1,10 @@
+---
+
+title: 寫測試讓你更有信心 Part 2
+permalink: /chapters/23-testing-with-rspec-part-2
+
+---
+
 # 寫測試讓你更有信心 Part 2
 
 - [哥寫的不是測試，是規格](#spec)
@@ -5,7 +12,7 @@
 - [紅綠燈](#red-green-light)
 - [小結](#note)
 
-前面介紹了什麼是測試，接下來就讓我們捲起袖子，動手寫測試吧!
+前面介紹了什麼是測試，接下來就讓我們捲起袖子，動手寫測試吧！
 
 ## <a name="spec"></a>哥寫的不是測試，是規格
 
@@ -15,11 +22,11 @@
 
 - 存錢功能
     - 原本帳戶有 10 元，存入 5 元之後，帳戶餘額變 15 元
-    - 原本帳戶有 10 元，存入 -5 元之後，帳戶餘額還是 10 元(不能存入小於等於零的金額)
+    - 原本帳戶有 10 元，存入 -5 元之後，帳戶餘額還是 10 元（不能存入小於等於零的金額）
 - 領錢功能
     - 原本帳戶有 10 元，領出 5 元之後，帳戶餘額變 5 元
-    - 原本帳戶有 10 元，試圖領出 20 元，帳戶餘額還是 10 元，但無法領出(餘額不足)
-    - 原本帳戶有 10 元，領出 -5 元之後，帳戶餘額還是 10 元(不能領出小於或等於零的金額)
+    - 原本帳戶有 10 元，試圖領出 20 元，帳戶餘額還是 10 元，但無法領出（餘額不足）
+    - 原本帳戶有 10 元，領出 -5 元之後，帳戶餘額還是 10 元（不能領出小於或等於零的金額）
 
 以上這些就是「規格」。再次強調一次，我們其實不是在「寫測試」，而是在「寫規格」，然後藉由一步一步滿足這些規格的過程來完成系統功能。
 
@@ -50,7 +57,7 @@ RSpec.describe BankAccount do
     it "原本帳戶有 10 元，存入 5 元之後，帳戶餘額變 15 元" do
     end
 
-    it "原本帳戶有 10 元，存入 -5 元之後，帳戶餘額還是 10 元(不能存入小於等於零的金額)" do
+    it "原本帳戶有 10 元，存入 -5 元之後，帳戶餘額還是 10 元（不能存入小於等於零的金額）" do
     end
   end
 
@@ -58,10 +65,10 @@ RSpec.describe BankAccount do
     it "原本帳戶有 10 元，領出 5 元之後，帳戶餘額變 5 元" do
     end
 
-    it "原本帳戶有 10 元，試圖領出 20 元，帳戶餘額還是 10 元，但無法領出(餘額不足)" do
+    it "原本帳戶有 10 元，試圖領出 20 元，帳戶餘額還是 10 元，但無法領出（餘額不足）" do
     end
 
-    it "原本帳戶有 10 元，領出 -5 元之後，帳戶餘額還是 10 元(不能領出小於或等於零的金額)" do
+    it "原本帳戶有 10 元，領出 -5 元之後，帳戶餘額還是 10 元（不能領出小於或等於零的金額）" do
     end
   end
 end
@@ -77,11 +84,11 @@ end
 
 TDD 的流程，大概是一個「紅綠燈」的概念:
 
-1. 先寫規格(測試)，執行它，這時候一定會發生錯誤(紅燈)
-2. 實作功能，想辦法通過第 1 步發生錯誤的測試(綠燈)
-3. 回到第 1 步
+1. 先寫規格（測試），執行它，這時候一定會發生錯誤（紅燈）。
+2. 實作功能，想辦法通過第 1 步發生錯誤的測試（綠燈）。
+3. 回到第 1 步。
 
-### 測試失敗!(紅燈)
+### 測試失敗！（紅燈）
 
 接下來使用 `rspec` 程式來執行一下剛剛這個「規格」：
 
@@ -93,11 +100,11 @@ TDD 的流程，大概是一個「紅綠燈」的概念:
       from /Users/user/.rvm/gems/ruby-2.4.0/bin/ruby_executable_hooks:15:in `eval'
       from /Users/user/.rvm/gems/ruby-2.4.0/bin/ruby_executable_hooks:15:in `<main>'
 
-咦? 發生錯誤了! 如果你是第一次接觸 TDD 開發流程的話，可能會驚訝「哇! 好多錯誤訊息啊! 這怎麼解決?」
+咦？發生錯誤了！如果你是第一次接觸 TDD 開發流程的話，可能會驚訝「哇！好多錯誤訊息啊！這怎麼解決？」
 
 請不要擔心，也請大家要開始習慣，在寫測試的時候，這樣的錯誤是很常見的，甚至應該說這是正常的。仔細看一下錯誤訊息，錯誤訊息是 `uninitialized constant BankAccount`，表示還沒有 `BankAccount` 這個類別。這是當然的，因為我們根本還沒寫啊，這時候執行測試如果會過，如果不是你有養小精靈幫你寫程式，就是你在做夢還沒醒。
 
-### 想辦法解決錯誤(綠燈)
+### 想辦法解決錯誤（綠燈）
 
 我們來把 `BankAccount` 類別做出來吧，在同一個目錄下新增一個名為 `bank_account.rb` 的檔案，內容如下：
 
@@ -122,7 +129,7 @@ require "./bank_account"
 
 雖然我們的測試裡面還沒有寫任何的內容，但至少沒有剛剛的錯誤訊息了。
 
-### 繼續寫測試(紅燈)
+### 繼續寫測試（紅燈）
 
 ```ruby
 require "./bank_account"
@@ -135,7 +142,7 @@ RSpec.describe BankAccount do
       expect(account.balance).to be 15
     end
 
-    it "原本帳戶有 10 元，存入 -5 元之後，帳戶餘額還是 10 元(不能存入小於等於零的金額)" do
+    it "原本帳戶有 10 元，存入 -5 元之後，帳戶餘額還是 10 元（不能存入小於等於零的金額）" do
     end
   end
 
@@ -145,7 +152,7 @@ RSpec.describe BankAccount do
 end
 ```
 
-等等! 那個 `deposit` 跟 `balance` 功能是哪來的? 其實現在這個當下還沒寫，我們只是先假設(或期待)這個類別有這些功能，而且在最後算出來的餘額數字是對的。
+等等！那個 `deposit` 跟 `balance` 功能是哪來的？其實現在這個當下還沒寫，我們只是先假設（或期待）這個類別有這些功能，而且在最後算出來的餘額數字是對的。
 
 所以這時候執行測試，沒意外的話應該會出錯：
 
@@ -170,9 +177,9 @@ end
 
     rspec ./bank_account_spec.rb:5 # BankAccount 存錢功能 原本帳戶有 10 元，存入 5 元之後，帳戶餘額變 15 元
 
-果然出錯了! 有錯才是正確的，因為我們根本還沒寫真正的功能啊，這個測試只是先假設我們有這些功能而已。
+果然出錯了！有錯才是正確的，因為我們根本還沒寫真正的功能啊，這個測試只是先假設我們有這些功能而已。
 
-### 繼續想辦法解決錯誤(綠燈)
+### 繼續想辦法解決錯誤（綠燈）
 
 好啦，即然知道這個 `BankAccount` 類別要有 `deposit` 跟 `balance` 功能，那就來寫吧。回到 `bank_account.rb`，先讓我們把上面需要的功能寫出來：
 
@@ -200,9 +207,9 @@ end
     Finished in 0.00143 seconds (files took 0.09033 seconds to load)
     5 examples, 0 failures
 
-過了!! 搞定一個測試，再讓我們繼續往下看下一個測試。
+過了！搞定一個測試，再讓我們繼續往下看下一個測試。
 
-### 繼續寫測試(紅燈)
+### 繼續寫測試（紅燈）
 
 接下來是存錢功能的第二個測試：
 
@@ -217,7 +224,7 @@ RSpec.describe BankAccount do
       expect(account.balance).to be 15
     end
 
-    it "原本帳戶有 10 元，存入 -5 元之後，帳戶餘額還是 10 元(不能存入小於等於零的金額)" do
+    it "原本帳戶有 10 元，存入 -5 元之後，帳戶餘額還是 10 元（不能存入小於等於零的金額）" do
       account = BankAccount.new(10)
       account.deposit -5
       expect(account.balance).to be 10
@@ -237,7 +244,7 @@ end
 
     Failures:
 
-      1) BankAccount 存錢功能 原本帳戶有 10 元，存入 -5 元之後，帳戶餘額還是 10 元(不能存入小於等於零的金額)
+      1) BankAccount 存錢功能 原本帳戶有 10 元，存入 -5 元之後，帳戶餘額還是 10 元（不能存入小於等於零的金額）
          Failure/Error: expect(account.balance).to be 10
 
            expected #<Fixnum:21> => 10
@@ -250,11 +257,11 @@ end
 
     Failed examples:
 
-    rspec ./bank_account_spec.rb:11 # BankAccount 存錢功能 原本帳戶有 10 元，存入 -5 元之後，帳戶餘額還是 10 元(不能存入小於等於零的金額)
+    rspec ./bank_account_spec.rb:11 # BankAccount 存錢功能 原本帳戶有 10 元，存入 -5 元之後，帳戶餘額還是 10 元（不能存入小於等於零的金額）
 
-咦? 又壞了! 先想一下，為什麼測試會壞掉?
+咦？又壞了！先想一下，為什麼測試會壞掉？
 
-### 繼續想辦法解決錯誤(綠燈)
+### 繼續想辦法解決錯誤（綠燈）
 
 如果回去看我們 `BankAccount` 的 `deposit` 方法的實作就會發現，我們根本沒檢查傳入的金額是不是小於零。修正一下：
 
@@ -304,14 +311,14 @@ RSpec.describe BankAccount do
       expect(account.balance).to be 5
     end
 
-    it "原本帳戶有 10 元，試圖領出 20 元，帳戶餘額還是 10 元，但無法領出(餘額不足)" do
+    it "原本帳戶有 10 元，試圖領出 20 元，帳戶餘額還是 10 元，但無法領出（餘額不足）" do
       account = BankAccount.new(10)
       amount = account.withdraw(20)
       expect(amount).to be 0
       expect(account.balance).to be 10
     end
 
-    it "原本帳戶有 10 元，領出 -5 元之後，帳戶餘額還是 10 元(不能領出小於或等於零的金額)" do
+    it "原本帳戶有 10 元，領出 -5 元之後，帳戶餘額還是 10 元（不能領出小於或等於零的金額）" do
       account = BankAccount.new(10)
       amount = account.withdraw(-5)
       expect(amount).to be 0
@@ -335,14 +342,14 @@ end
              undefined method `withdraw' for #<BankAccount:0x007ffe4c02e818 @amount=10>
            # ./bank_account_spec.rb:21:in `block (3 levels) in <top (required)>'
 
-        2) BankAccount 領錢功能 原本帳戶有 10 元，試圖領出 20 元，帳戶餘額還是 10 元，但無法領出(餘額不足)
+        2) BankAccount 領錢功能 原本帳戶有 10 元，試圖領出 20 元，帳戶餘額還是 10 元，但無法領出（餘額不足）
            Failure/Error: amount = account.withdraw(20)
 
            NoMethodError:
              undefined method `withdraw' for #<BankAccount:0x007ffe4cd43300 @amount=10>
            # ./bank_account_spec.rb:28:in `block (3 levels) in <top (required)>'
 
-        3) BankAccount 領錢功能 原本帳戶有 10 元，領出 -5 元之後，帳戶餘額還是 10 元(不能領出小於或等於零的金額)
+        3) BankAccount 領錢功能 原本帳戶有 10 元，領出 -5 元之後，帳戶餘額還是 10 元（不能領出小於或等於零的金額）
            Failure/Error: amount = account.withdraw(-5)
 
            NoMethodError:
@@ -355,8 +362,8 @@ end
       Failed examples:
 
       rspec ./bank_account_spec.rb:19 # BankAccount 領錢功能 原本帳戶有 10 元，領出 5 元之後，帳戶餘額變 5 元
-      rspec ./bank_account_spec.rb:26 # BankAccount 領錢功能 原本帳戶有 10 元，試圖領出 20 元，帳戶餘額還是 10 元，但無法領出(餘額不足)
-      rspec ./bank_account_spec.rb:33 # BankAccount 領錢功能 原本帳戶有 10 元，領出 -5 元之後，帳戶餘額還是 10 元(不能領出小於或等於零的金額)
+      rspec ./bank_account_spec.rb:26 # BankAccount 領錢功能 原本帳戶有 10 元，試圖領出 20 元，帳戶餘額還是 10 元，但無法領出（餘額不足）
+      rspec ./bank_account_spec.rb:33 # BankAccount 領錢功能 原本帳戶有 10 元，領出 -5 元之後，帳戶餘額還是 10 元（不能領出小於或等於零的金額）
 
 ### 實作領錢功能，繼續想辦法解決錯誤
 
@@ -405,5 +412,5 @@ end
 
 不過，測試全部都通過也不表示程式就完全不會有 Bug，只能說「目前的程式碼實作都有滿足現有的規格」。但藉由越完整的測試，除了可以減少 Bug 的出現，最重要的是可避免「修改完 A 功能結果 B 功能跟著壞掉」的問題。
 
-在 Ruby/Rails 的世界，寫測試是算是業界標準的技能，希望大家可以趕快習慣寫測試的「紅綠燈」手感，藉由測試讓你對你的程式碼實作更有信心!
+在 Ruby/Rails 的世界，寫測試是算是業界標準的技能，希望大家可以趕快習慣寫測試的「紅綠燈」手感，藉由測試讓你對你的程式碼實作更有信心！
 

@@ -1,3 +1,10 @@
+---
+
+title: 程式碼整理
+permalink: /chapters/24-organize-your-code
+
+---
+
 # 程式碼整理
 
 當 Rails 專案成長到一定程度後，如果沒有好好的整理程式碼，很有可能發生重複的程式碼到處散落的情況。接下來這個章節是要介紹如何使用 Ruby 跟 Rails 內建的方法或設計來整理重複的程式碼。
@@ -6,9 +13,9 @@
 
 先看一下這個畫面：
 
-![image](images/chapter24/user-list-1.png)
+![image](/images/chapter24/user-list-1.png)
 
-因為某些因素，在設計使用者性別(Gender)欄位的時候，可能會用數字 `1` 表示男生，用數字 `0` 表示女生。如果我想直接印出「男」、「女」字樣，可能會這樣寫：
+因為某些因素，在設計使用者性別（Gender）欄位的時候，可能會用數字 `1` 表示男生，用數字 `0` 表示女生。如果我想直接印出「男」、「女」字樣，可能會這樣寫：
 
 ```ruby
 <tbody>
@@ -101,7 +108,7 @@ end
 <% end %>
 ```
 
-哪種做法比較好?
+哪種做法比較好？
 
 如果這個邏輯可能跟其它同一個 View 的變數有關，我會選擇第 1 種做法；如果就只是像這個例子一樣，資料的呈現僅與自身 Model 有關，我個人會比較偏好第 2 種寫法。
 
@@ -151,7 +158,7 @@ class UsersController < ApplicationController
 end
 ```
 
-定義一個 `set_user` 方法(通常會掛在 `private` 區塊)，然後掛在 `before_action` 這個 Callback 上，並且僅在 `show`、`edit`、`update` 以及 `destroy` 這 4 個 Action 執行前先執行。
+定義一個 `set_user` 方法（通常會掛在 `private` 區塊），然後掛在 `before_action` 這個 Callback 上，並且僅在 `show`、`edit`、`update` 以及 `destroy` 這 4 個 Action 執行前先執行。
 
 其它可以用的 Callback 還有 `after_action` 跟 `around_action` 等方法，更多詳細內容可參考 http://api.rubyonrails.org/classes/AbstractController/Callbacks/ClassMethods.html
 
@@ -197,7 +204,7 @@ end
 
 在 Rails 的 Controller，如果沒有特別改過，預設應該是繼承自 `ApplicationController` 這個類別，大概像這樣：
 
-![image](images/chapter24/inheritance-1.png)
+![image](/images/chapter24/inheritance-1.png)
 
 但如果想讓每個後台管理系統都會在 `before_action` 做某件事，可以額外新增一個 `Admin::BaseController` 類別：
 
@@ -222,7 +229,7 @@ end
 
 原來的關係圖就會變成像這樣：
 
-![image](images/chapter24/inheritance-2.png)
+![image](/images/chapter24/inheritance-2.png)
 
 利用物件導向的繼承功能，可以把共同的程式碼集中在上層類別。
 

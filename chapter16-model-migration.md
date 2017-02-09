@@ -1,3 +1,10 @@
+---
+
+title: Model Migration
+permalink: /chapters/16-model-migration
+
+---
+
 # Model Migration
 
 - [什麼是 Migration](#what-is-migration)
@@ -5,7 +12,7 @@
 - [修改 Migration](#update-migration)
 - [種子資料](#seed-data)
 
-資料遷移(Migration)是很多剛接觸 Rails 的新手容易卡關的地方，對 Migration 常見的誤解有：
+資料遷移（Migration）是很多剛接觸 Rails 的新手容易卡關的地方，對 Migration 常見的誤解有：
 
 1. Migration 就是資料庫。
 2. 只要在 Migration 修改欄位後，網頁上自動就會呈現修改後的效果。
@@ -19,7 +26,7 @@ Migration 是用來描述「資料庫的架構長什麼樣子」的檔案，它�
 >
 > 同事 B：「好，那我待會要建一個 Product 資料表用來放產品資訊的」
 >
-> 同事 C：「咦? 等等，這個 User 資料表少一個地址欄位啦，我要加上去喔」
+> 同事 C：「咦？等等，這個 User 資料表少一個地址欄位啦，我要加上去喔」
 >
 > 同事 A：「Product 資料表的 name 欄位不太好記，我要把它改名成 title 喔」
 >
@@ -74,7 +81,7 @@ Migration 檔的內容本質上就是一個 Ruby 程式，從語法大概能猜�
 
 在 Rails 專案中如果有 Migration 檔案還沒有「處理」過，在你開瀏覽器檢視頁面的時候會看到「ActiveRecord::PendingMigrationError」的錯誤訊息：
 
-![image](images/chapter16/pending-migration-error.png)
+![image](/images/chapter16/pending-migration-error.png)
 
 不用太擔心，這時候只要執行一下 `rails db:migrate` 指令就可以解決問題了 :)
 
@@ -88,11 +95,11 @@ Migration 檔的內容本質上就是一個 Ruby 程式，從語法大概能猜�
 
 ## <a name="update-migration"></a>修改 Migration
 
-剛執行完一個 Migration，才發現欄位名字打錯了，想要修改該怎麼做? 直覺做法是「修改剛剛那個 Migration 檔案，存檔後再執行一次 `rails db:migrate` 吧」
+剛執行完一個 Migration，才發現欄位名字打錯了，想要修改該怎麼做？直覺做法是「修改剛剛那個 Migration 檔案，存檔後再執行一次 `rails db:migrate` 吧」
 
 但這方法行不通的，因為 `rails db:migrate` 這個指令只會針對還沒執行過的 Migration 檔案有效果，已經做過的 Migration ，再做一次是不會有反應的，所以即使修改同一個 Migration 檔再重新執行是沒用的。
 
-那怎辦? 其實做法有好幾款，其中一款，就是執行 Rollback 指令，把執行過的 Migration 倒回去：
+那怎辦？其實做法有好幾款，其中一款，就是執行 Rollback 指令，把執行過的 Migration 倒回去：
 
     $ rails db:rollback
     == 20161231224701 CreateArticles: reverting ===================================
@@ -108,11 +115,11 @@ Migration 檔的內容本質上就是一個 Ruby 程式，從語法大概能猜�
 
 在執行 Rollback 的時候，如果正向 Migration 是建立資料表，那逆轉 Migration 就是刪除資料表；同理，如果正向是新增欄位，逆轉就會是刪除欄位。
 
-> 注意：Rollback 是有風險的!
+> 注意：Rollback 是有風險的！
 >
 > 因為 Rollback 通常會造成刪除資料表或是刪除欄位的效果，所以如果原本該資料表或該欄位已經有資料的話，請儘量不要使用 Rollback 方式來修正 Migration，建議直接再新增一個 Migration 來進行修正。
 
-### Rails 怎麼知道哪些 Migration 有做過?
+### Rails 怎麼知道哪些 Migration 有做過？
 
 其實在資料庫裡有一個名為 `schema_migrations` 的資料表，裡面有記錄哪些 Migration 已經做過的。除了可以直接進這個資料表看之外，也可使用這個指令查看：
 
@@ -157,7 +164,7 @@ class AddPhotoToArticles < ActiveRecord::Migration[5.0]
 end
 ```
 
-`add_column` 這個方法，第一個參數是「資料表名稱」(注意：不是 Model 名稱喔)，第二個參數是「要新增的欄位名稱」，第三個參數是這個欄位的「資料型態」。完成並存檔之後，則可繼續執行 Migration：
+`add_column` 這個方法，第一個參數是「資料表名稱」（注意：不是 Model 名稱喔），第二個參數是「要新增的欄位名稱」，第三個參數是這個欄位的「資料型態」。完成並存檔之後，則可繼續執行 Migration：
 
     $ rails db:migrate
     == 20170101081107 AddPhotoToArticles: migrating ===============================
@@ -187,11 +194,11 @@ class AddCandidateIdToArticles < ActiveRecord::Migration[5.0]
 end
 ```
 
-突然就很魔術的寫好了!!
+突然就很魔術的寫好了！
 
 雖然說這樣挺方便，但我沒辦法記得太多這樣的魔術寫法，我個人比較偏好開一個 Migration 再慢慢自己寫，反正也不會慢到哪裡去。如果你對這樣的寫法有興趣，請查閱 Rails Guide 的 [Migration 章節](http://guides.rubyonrails.org/active_record_migrations.html)
 
-### schema.rb 是什麼東西?
+### schema.rb 是什麼東西？
 
 在執行 `rails db:migrate` 指令之後，在專案的 `db` 目錄裡有個名為 `schema.rb` 的檔案，內容可能長得像這樣：
 
@@ -215,7 +222,7 @@ end
 
 另外，因為這個檔案的內容是由 `rails db:migrate` 指令產生，所以偶爾會遇到新手「Migration 寫好但還沒存檔就執行」的狀況，這時候從這個 `schema.rb` 檔案就可以看得出來。
 
-### 「Migration 寫好但還沒存檔就執行」會怎樣?
+### 「Migration 寫好但還沒存檔就執行」會怎樣？
 
 其實不會怎樣，就只是執行了一個空的 Migration 而已。
 
@@ -246,7 +253,7 @@ end
 
 這樣的技巧常用在建立資料表的時候順便建立初始資料，例如預設的系統管理帳號。以上面這段範例來說，當執行 `rails db:migrate` 的同時也會順便一併新增兩筆資料到 `articles` 資料表。
 
-雖然這樣可以寫入預設資料沒錯，但 Migration 的特性之一，就是已經處理過的 Migration 不會再執行(除非 Rollback 回去)，所以如果要重新再重建這些預設資料會有點麻煩。在 Rails 裡有個更適合做這件事的地方，就是在 `db/seeds.rb` 這個檔案，請直接編輯這個檔案的內容：
+雖然這樣可以寫入預設資料沒錯，但 Migration 的特性之一，就是已經處理過的 Migration 不會再執行（除非 Rollback 回去），所以如果要重新再重建這些預設資料會有點麻煩。在 Rails 裡有個更適合做這件事的地方，就是在 `db/seeds.rb` 這個檔案，請直接編輯這個檔案的內容：
 
 ```ruby
 Article.create(title: "五倍紅寶石 part 1", content: "斷開鎖鍊吧!")

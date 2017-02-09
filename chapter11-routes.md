@@ -1,3 +1,10 @@
+---
+
+title: Routes
+permalink: /chapters/11-routes
+
+---
+
 # Routes
 
 - [Route 起步走](#route-intro)
@@ -7,9 +14,9 @@
 
 先讓我們回顧一下前一個章節的這張圖解：
 
-![image](images/chapter10/mvc.png)
+![image](/images/chapter10/mvc.png)
 
-Route 是整個網站對外公開的網站路徑對照表，當使用者連上你的網站的時候，Rails 會解析使用者所輸入的網址及參數，再根據解析的結果，去找到該負責處理的單位(哪個 Controller 跟 Action)。
+Route 是整個網站對外公開的網站路徑對照表，當使用者連上你的網站的時候，Rails 會解析使用者所輸入的網址及參數，再根據解析的結果，去找到該負責處理的單位（哪個 Controller 跟 Action）。
 
 ## <a name="route-intro"></a>Route 起步走
 
@@ -33,27 +40,27 @@ get "/posts", to: "posts#index"
 get "/posts/:id", to: "posts#show"
 ```
 
-的意思就是，「當使用者輸入 `posts` 這個網址，它會交由 `posts#index` 來處理，也就是 `PostsController` 上的 `index` 方法；同理，當使用者輸入 `/posts/123` 這個網址之後，它會轉由 `PostsController` 上的 `show` 方法，並且把 `123` 當做參數(:id)傳給 Controller」。
+的意思就是，「當使用者輸入 `posts` 這個網址，它會交由 `posts#index` 來處理，也就是 `PostsController` 上的 `index` 方法；同理，當使用者輸入 `/posts/123` 這個網址之後，它會轉由 `PostsController` 上的 `show` 方法，並且把 `123` 當做參數（:id）傳給 Controller」。
 
 想像一下這個情境：
 
 > 客人上門了...
 >
-> 客人：「你好，我想要看所有的文章列表(輸入網址 `/posts`)」
+> 客人：「你好，我想要看所有的文章列表（輸入網址 `/posts`）」
 >
 > Route：「好的，我幫你轉接到 `PostsController` 部門的 `index` 櫃台，請他幫您服務」
 >
-> 客人：「等等，我改變主意了，我只想要看第 87 號文章就好(輸入網址 `/posts/87`)」
+> 客人：「等等，我改變主意了，我只想要看第 87 號文章就好（輸入網址 `/posts/87`）」
 >
 > Route：「沒問題，請您一樣到 `PostsController` 部門，但這次請找 `show` 櫃台，並且把 `87` 這個號碼牌給他，他會替您調閱資料」
 >
-> 客人：「那請問可以給我看看使用者的列表嗎 (輸入網址 `/users`)」
+> 客人：「那請問可以給我看看使用者的列表嗎（輸入網址 `/users`）」
 >
-> Route：「不好意思，目前我們沒有相關資料喔 (回應 HTTP 404)」
+> Route：「不好意思，目前我們沒有相關資料喔（回應 HTTP 404）」
 
-Route 的角色就類似是這樣，負責解讀使用者輸入的網址，然後轉去對應的地方，剩下的，就是 MVC(Model, View, Controller) 你們的事了。但如果找不到路徑，會出現 `HTTP 404` 找不到頁面的錯誤訊息，在開發模式下會出現這個畫面：
+Route 的角色就類似是這樣，負責解讀使用者輸入的網址，然後轉去對應的地方，剩下的，就是 MVC（Model, View, Controller）你們的事了。但如果找不到路徑，會出現 `HTTP 404` 找不到頁面的錯誤訊息，在開發模式下會出現這個畫面：
 
-![image](images/chapter11/no-route-error.png)
+![image](/images/chapter11/no-route-error.png)
 
 ### Route 跟 Controller 的關係
 
@@ -63,27 +70,27 @@ Route 的角色就類似是這樣，負責解讀使用者輸入的網址，然�
 
 > 客人又上門了
 >
-> 客人：「我想要看所有的文章列表(輸入網址 `/posts`)」
+> 客人：「我想要看所有的文章列表（輸入網址 `/posts`）」
 >
 > Route: 「好的，我幫你轉接到 `PostsController` 部門的 `index` 櫃台，請他幫您服務」
 >
-> 客人想要依照指示前往 `PostsController` 部門，發現根本沒有這個部門!!
+> 客人想要依照指示前往 `PostsController` 部門，發現根本沒有這個部門！
 
 然後就會看到這個畫面：
 
-![image](images/chapter11/no-controller-error.png)
+![image](/images/chapter11/no-controller-error.png)
 
 這個 `uninitialized constant PostsController` 錯誤訊息是指找不到 `PostsController` 這個常數，其實就是指找不到這個類別。
 
 > 客人又再次上門了
 >
-> 客人：「我想要看所有的文章列表(輸入網址 `/posts`)」
+> 客人：「我想要看所有的文章列表（輸入網址 `/posts`）」
 >
 > Route: 「好的，我幫你轉接到 `PostsController` 部門的 `index` 櫃台，請他幫您服務」
 >
-> 客人依照指示來到 `PostsController` 部門，這次有找到部門了，但卻發現沒有 `index` 這個櫃台!!
+> 客人依照指示來到 `PostsController` 部門，這次有找到部門了，但卻發現沒有 `index` 這個櫃台！
 
-![image](images/chapter11/no-action-error.png)
+![image](/images/chapter11/no-action-error.png)
 
 也就是說，即使 Route 有這條路徑，也不表示那個 Controller 就檔案就一定需要事先存在；就算 Controller 存在，也不表示 Action 存在。所以下回看到這些錯誤訊息就不用太擔心了。
 
@@ -137,7 +144,7 @@ get '/5xruby', to: redirect('https://5xruby.tw')
 
 這樣當使用者輸入 `/5xruby` 這個網址的時候，就會立馬被轉址到指定的網站了。
 
-### 見山不是山，看到 PHP 一定是 PHP 嗎? 假的!
+### 見山不是山，看到 PHP 一定是 PHP 嗎？假的！
 
 在以前，當我們看到這樣的網址：
 
@@ -155,7 +162,7 @@ end
 
 當網址是 `about.php` 的時候，會轉由 `pages_controller` 的 `about` 方法處理。
 
-![image](images/chapter11/not-php.png)
+![image](/images/chapter11/not-php.png)
 
 網址看起來是 PHP，但實際上它是 Rails 喔 :)
 
@@ -181,9 +188,9 @@ end
 
 ## <a name="restful-routes"></a>RESTful 網址設計
 
-[REST](https://zh.wikipedia.org/wiki/REST) 是 Representational State Transfer 的縮寫，中文翻譯成「具象狀態傳輸」，它是由 Roy Thomas Fielding 博士在 2000 年時提出的軟體架構。簡單的說，就是把每個網址當做資源(Resource)來看待，對同一個資源做不同的動作 (HTTP Verb) 會得到不同的結果。符合 REST 概念設計的網址，又稱之 RESTFul Route。
+[REST](https://zh.wikipedia.org/wiki/REST) 是 Representational State Transfer 的縮寫，中文翻譯成「具象狀態傳輸」，它是由 Roy Thomas Fielding 博士在 2000 年時提出的軟體架構。簡單的說，就是把每個網址當做資源（Resource）來看待，對同一個資源做不同的動作（HTTP Verb）會得到不同的結果。符合 REST 概念設計的網址，又稱之 RESTFul Route。
 
-### 有什麼好處?
+### 有什麼好處？
 
 假設某網站的會員系統「編輯會員個人資料」功能的網址是：
 
@@ -193,7 +200,7 @@ end
 
     http://kaochenlong.com/edit_member.php?id=2
 
-網址(或檔名)的設計如果沒有統一的規則，有的用 `member_edit.php`，有的用 `edit_member.php`，對後面接手的開發者來說就會不知道哪個檔案才是正在使用的版本，甚至可能得用最後修改日期去猜。
+網址（或檔名）的設計如果沒有統一的規則，有的用 `member_edit.php`，有的用 `edit_member.php`，對後面接手的開發者來說就會不知道哪個檔案才是正在使用的版本，甚至可能得用最後修改日期去猜。
 
 但如果是在 Rails 的話比較沒這困擾，如果 `member` 當做「資源」的話，那「編輯會員個人資料」的網址大概會長這樣：
 
@@ -251,7 +258,7 @@ end
 | PUT    | user       | /users/:id      | UserController | update  | 更新使用者      |
 | DELETE | user       | /users/:id      | UserController | destroy | 刪除使用者      |
 
-### 前面那個 prefix 是幹嘛的?
+### 前面那個 prefix 是幹嘛的？
 
 在 `rails routes` 指令所秀出來的各項資訊中，有一欄叫 `Prefix`：
 
@@ -280,7 +287,7 @@ end
 
 通常在寄發 Email 的時候會在信件內容裡使用 `_url` 的完整路徑寫法。
 
-### 問題：resources 後面一定要是複數嗎?
+### 問題：resources 後面一定要是複數嗎？
 
 其實不一定，這只是 Rails 的其中一個慣例罷了，不遵照這個慣例其實也不會怎麼樣，例如這樣寫：
 
@@ -346,7 +353,7 @@ end
 
 跟複數的 resources 比起來，單數的路徑除了沒有帶有 `id` 之外，也沒有 `index`。
 
-什麼時候會用到單數 resource ，什麼時候用複數 resources? 舉例來說，像是會員個人 profile，如果想要設計「使用者只能檢視、更新、刪除自己的 profile」的效果就可使用單數 resource，網址就會長得像：
+什麼時候會用到單數 resource ，什麼時候用複數 resources？舉例來說，像是會員個人 profile，如果想要設計「使用者只能檢視、更新、刪除自己的 profile」的效果就可使用單數 resource，網址就會長得像：
 
     /profile
 
@@ -408,7 +415,7 @@ end
 
     /posts/3
 
-不僅網址較短，也比較清楚就是要「檢視 3 號文章」。事實上「編輯」、「更新」以及「刪除」功能也沒有必要一定要跟在 User 後面，所以原來這樣大腸包小腸式的寫法，可以使用 `only` (或 `except`) 參數修正成這樣：
+不僅網址較短，也比較清楚就是要「檢視 3 號文章」。事實上「編輯」、「更新」以及「刪除」功能也沒有必要一定要跟在 User 後面，所以原來這樣大腸包小腸式的寫法，可以使用 `only`（或 `except`）參數修正成這樣：
 
 ```ruby
 Rails.application.routes.draw do
@@ -454,7 +461,7 @@ end
 
 ### 如果覺得 Resources 內建的路徑不夠用...
 
-假設我幫訂單(order)用 `resources` 產生 RESTFul 的路徑：
+假設我幫訂單（order）用 `resources` 產生 RESTFul 的路徑：
 
 ```ruby
 Rails.application.routes.draw do

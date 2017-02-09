@@ -1,3 +1,10 @@
+---
+
+title: CRUD 分解動作 - 簡易票選系統實作
+permalink: /chapters/13-crud
+
+---
+
 # CRUD 分解動作 - 簡易票選系統實作
 
 - [第 00 步 - 修改 Route](#step00)
@@ -22,13 +29,13 @@ CRUD 是 Create, Read, Update 跟 Delete 四個字的縮寫，對 Rails 來說�
 
 我們直接實作一個簡單的投票系統，藉此熟悉 Rails 的 MVC 運作方式以及表單處理。在開始前，先再次複習一下這張 MVC 的圖解：
 
-![image](images/chapter13/form-vs-mvc.png)
+![image](/images/chapter13/form-vs-mvc.png)
 
-當你填寫表單完成並按下送出後，表單會以 GET 或 POST 的方式傳送資料，Route 就會根據路徑以及動作(HTTP Verb)來決定這次的任務該由哪個 Controller 的哪個 Action 處理。
+當你填寫表單完成並按下送出後，表單會以 GET 或 POST 的方式傳送資料，Route 就會根據路徑以及動作（HTTP Verb）來決定這次的任務該由哪個 Controller 的哪個 Action 處理。
 
 ### 系統功能
 
-1. 可以新增、修改、刪除候選人資料(姓名、黨派、年齡、政見，以上資料都是必填欄位)
+1. 可以新增、修改、刪除候選人資料（姓名、黨派、年齡、政見，以上資料都是必填欄位）
 2. 可以投票給候選人
 
 ### <a name="step00"></a>第 00 步 - 修改 Route
@@ -88,15 +95,15 @@ end
 
 ### <a name="step02"></a>第 02 步 - 新增 Model
 
-讓我們想一下這個候選人(Candidate) 的 Model 要有哪些欄位：
+讓我們想一下這個候選人（Candidate）的 Model 要有哪些欄位：
 
-| 欄位名稱 | 資料型態                |   說明     |
-|:---------|:-----------------------:|:-----------|
-|name      | 字串(string)            | 候選人姓名 |
-|party     | 字串(string)            | 政黨       |
-|age       | 數字(integer)           | 年齡       |
-|politics  | 文字(text)              | 政見       |
-|votes     | 數字(integer)，預設值 0 | 得票數     |
+| 欄位名稱 | 資料型態                  |   說明     |
+|:---------|:-------------------------:|:-----------|
+|name      | 字串（string）            | 候選人姓名 |
+|party     | 字串（string）            | 政黨       |
+|age       | 數字（integer）           | 年齡       |
+|politics  | 文字（text）              | 政見       |
+|votes     | 數字（integer），預設值 0 | 得票數     |
 
 
 候選人的資料表大概先這樣設計，但其實直接把得票數放在這裡不是很適當，應該另外開一個 Model 記錄得票過程，但這個功能會留到後面說明 Model 關連的時候再實作這個功能會更有感覺。讓我們使用產生器幫你建立 Model 吧：
@@ -110,7 +117,7 @@ end
           create      test/models/candidate_test.rb
           create      test/fixtures/candidates.yml
 
-因為我們想要給得票數(`votes`)的預設值設定成 0，但這件事沒辦法直接從產生器的指令完成，所以請先編輯一下 migration 檔，在 `t.integer :votes` 那行後面加上 `default: 0` 以設定這個欄位的預設值：
+因為我們想要給得票數（`votes`）的預設值設定成 0，但這件事沒辦法直接從產生器的指令完成，所以請先編輯一下 migration 檔，在 `t.integer :votes` 那行後面加上 `default: 0` 以設定這個欄位的預設值：
 
 ```ruby
 class CreateCandidates < ActiveRecord::Migration[5.0]
@@ -152,7 +159,7 @@ Rails 裡沒有專門為 View 設計的產生器，所以請自己手動新增�
 
 ### <a name="step04"></a>第 04 步 -「候選人列表」功能
 
-「候選人列表」頁面要把所有的候選人的資料從資料表抓出來，然後顯示在畫面上，所以這個步驟需要動到 Controller、View 以及 Model (不過事實上 Model 在這個步驟不需要做什麼事)。這個步驟需要先修改 Controller 跟 `index.html.erb` 頁面，先讓我們看一下 Controller：
+「候選人列表」頁面要把所有的候選人的資料從資料表抓出來，然後顯示在畫面上，所以這個步驟需要動到 Controller、View 以及 Model（不過事實上 Model 在這個步驟不需要做什麼事）。這個步驟需要先修改 Controller 跟 `index.html.erb` 頁面，先讓我們看一下 Controller：
 
 ```ruby
 class CandidatesController < ApplicationController
@@ -202,12 +209,12 @@ end
 這裡有幾個地方需要說明一下：
 
 1. 最上面的「新增候選人」連結，雖然可以使用一般的 `<a href="...">..</a>` 方式來寫，但在 Rails 裡更建議使用 `link_to` 方法來製作。
-2. 中間的那段 Block 裡面的變數命名，慣例上會使用前面那個實體變數(`@candidates`)的單數名詞(`candidate`)。
+2. 中間的那段 Block 裡面的變數命名，慣例上會使用前面那個實體變數（`@candidates`）的單數名詞（`candidate`）。
 3. 你有發現我們在這個檔案只有從 `<h1>` 開始寫，但檢視原始碼的時候卻發現像是 `<html>`、`<title>` 跟 `<body>` 等標籤都出現了，這個其實是 Rails 裡的 Layout 做的好事，會在下個章節介紹。
 
 現在的畫面應該會長得像這樣：
 
-![image](images/chapter13/vote-candidate-01.png)
+![image](/images/chapter13/vote-candidate-01.png)
 
 目前因為都還沒有資料所以一片空白很正常。
 
@@ -258,9 +265,9 @@ end
 
 多加了一個 `new` 方法，裡面只放了簡單的一行，就是使用 `Candidate` 這個 Model 做出一個新的實體，並存為 `@candidate` 實體變數供 View 使用。現在的畫面應該是這個樣子：
 
-![image](images/chapter13/vote-candidate-02.png)
+![image](/images/chapter13/vote-candidate-02.png)
 
-不怎麼美觀! 沒關係，晚點我們再想辦法。
+不怎麼美觀！沒關係，晚點我們再想辦法。
 
 在 Controller 的 `new` 方法裡設定的實體變數 `@candidate`，就是要給剛剛前面 `form_for` 用的。`form_for` 除了可以產生 `<form>` 標籤之外，它的 `action`，也就是當你按下送出按鈕要去的那個地方，會根據傳給它的這個物件是新的還是舊的而自己判斷。在這裡因為是剛剛才做出來的，`form_for` 會認為你現在是要做「新增」這件事。檢視一下原始碼，看一下 `<form>` 的那段：
 
@@ -284,7 +291,7 @@ end
 
 對 `/candidates` 路徑使用 `POST` 方法，Route 會去找 `candidates#create` 處理。
 
-咦? 怎麼這麼巧? 其實這不是巧合，這就是 Rails 的慣例。
+咦？怎麼這麼巧？其實這不是巧合，這就是 Rails 的慣例。
 
 ### <a name="step06"></a>第 06 步 -「新增候選人資料」功能 Part 2
 
@@ -308,11 +315,11 @@ class CandidatesController < ApplicationController
 end
 ```
 
-傳過來的那包資料會被收集在 `params` 裡，所以透過 `params[:candidate]` 把它丟給 Candidate Model，接著呼叫 `save` 方法準備存檔。如果存檔成功，便轉往候選人列表頁(`redirect_to`)，並帶有一提示訊息(Flash，後面的章節會再介紹)說「新增候選人成功!」；如果失敗，則重新 render 新增頁面，並顯示錯誤訊息。
+傳過來的那包資料會被收集在 `params` 裡，所以透過 `params[:candidate]` 把它丟給 Candidate Model，接著呼叫 `save` 方法準備存檔。如果存檔成功，便轉往候選人列表頁（`redirect_to`），並帶有一提示訊息（Flash，後面的章節會再介紹）說「新增候選人成功！」；如果失敗，則重新 render 新增頁面，並顯示錯誤訊息。
 
 看起來沒什麼問題，但當你按下新增之後會發生錯誤畫面如下：
 
-![image](images/chapter13/forbidden-attributes-error.png)
+![image](/images/chapter13/forbidden-attributes-error.png)
 
 這個 `ActiveModel::ForbiddenAttributesError` 錯誤訊息發生的原因，是因為我們試圖把 `params[:candidates]` 裡的資料一口氣塞進 Model 裡，這樣做會有安全上的問題，有心人士可以透過這個方式直接覆寫某個欄位的值而取得特別權限。
 
@@ -345,11 +352,11 @@ end
 
 應該就可以順利新增資料了，試著填寫一些資料：
 
-![image](images/chapter13/vote-candidate-03.png)
+![image](/images/chapter13/vote-candidate-03.png)
 
 按下按鈕後應該就可以新增資料了：
 
-![image](images/chapter13/vote-candidate-04.png)
+![image](/images/chapter13/vote-candidate-04.png)
 
 ### <a name="step07"></a>第 07 步 -「編輯候選人資料」功能 Part 1
 
@@ -396,7 +403,7 @@ end
 
 現在的畫面應該會長得像這樣：
 
-![image](images/chapter13/vote-candidate-05.png)
+![image](/images/chapter13/vote-candidate-05.png)
 
 ### <a name="step08"></a>第 08 步 -「編輯候選人資料」功能 Part 2
 
@@ -416,7 +423,7 @@ end
 
 使用 Model 的 `find_by` 方法，把 `id` 是 `params[:id]` 的資料抓出來，並存成實體變數 `@candidate`。
 
-這個 `params[:id]` 是什麼? 先讓我們執行 `rails routes` 來看一下：
+這個 `params[:id]` 是什麼？先讓我們執行 `rails routes` 來看一下：
 
     $ rails routes
             Prefix Verb   URI Pattern                    Controller#Action
@@ -455,11 +462,11 @@ end
 <%= link_to '回候選人列表', candidates_path %>
 ```
 
-咦? 等等! 這個程式碼的內容怎麼跟新增的頁面有九成像? 其實這就是 `form_for` 神奇的地方。因為 `form_for` 發現傳進來的那顆 `@candidate` 物件是舊的(就是從資料庫裡調出來的)，它會認定你是準備要「編輯」，所以不只 `<form>` 的 Action 網址會幫你依照慣例設定好，連值也會自動幫你帶進表單裡。
+咦？等等！這個程式碼的內容怎麼跟新增的頁面有九成像？其實這就是 `form_for` 神奇的地方。因為 `form_for` 發現傳進來的那顆 `@candidate` 物件是舊的（就是從資料庫裡調出來的），它會認定你是準備要「編輯」，所以不只 `<form>` 的 Action 網址會幫你依照慣例設定好，連值也會自動幫你帶進表單裡。
 
 這時候的畫面長這樣：
 
-![image](images/chapter13/vote-candidate-06.png)
+![image](/images/chapter13/vote-candidate-06.png)
 
 但這個程式碼跟新增的實在是太像了，所以我們可以把重複的地方抽出來，存在另一個檔案。請手動新增一個叫做 `_form.html.erb` 的檔案，放在 `app/views/candidates/` 裡，內容如下：
 
@@ -500,7 +507,7 @@ end
 <%= render "form" %>
 ```
 
-兩個頁面都變得短短的二、三行，把共同的內容都放到 `_form` 裡面了。這個技巧在 Rails 稱之局部渲染(Partial Render)，通常會用來整理重複的程式碼。檔名不一定要叫 `_form`，你也可以取做 `_abcdefg`，但要用的時候就要改寫成 `<%= render "abcdefg" %>`。
+兩個頁面都變得短短的二、三行，把共同的內容都放到 `_form` 裡面了。這個技巧在 Rails 稱之局部渲染（Partial Render），通常會用來整理重複的程式碼。檔名不一定要叫 `_form`，你也可以取做 `_abcdefg`，但要用的時候就要改寫成 `<%= render "abcdefg" %>`。
 
 > 注意：這個 Partial Render 的檔名必須要是底線開頭，不然會發生找不到的錯誤訊息
 
@@ -530,7 +537,7 @@ end
 
 `update` 方法寫起來其實跟 `new` 有點像，差別在於這邊是使用 `update_attributes` 方法更新資料。同樣的，為了安全考量，如果是直接丟沒有清洗過的 params 給它的話，也一樣會發生錯誤訊息。若編輯存檔成功，將會轉往候選人列表頁面，若失敗則重新 redner 編輯頁面。
 
-回瀏覽器試一下，這樣編輯功能應該就完成了喔!
+回瀏覽器試一下，這樣編輯功能應該就完成了喔！
 
 ### <a name="step10"></a>第 10 步 -「刪除候選人資料」功能
 
@@ -571,17 +578,17 @@ class CandidatesController < ApplicationController
 end
 ```
 
-一樣是先把那筆資料抓出來，增加 `votes` 欄位的值 (也可使用 `update_attributes` 方式更新)，投票完成轉往候選人首頁。測試一下功能：
+一樣是先把那筆資料抓出來，增加 `votes` 欄位的值（也可使用 `update_attributes` 方式更新），投票完成轉往候選人首頁。測試一下功能：
 
 按下「投給這位」連結，跳出確認視窗：
 
-![image](images/chapter13/vote-candidate-07.png)
+![image](/images/chapter13/vote-candidate-07.png)
 
 按下「確定」按鈕後即可進行投票：
 
-![image](images/chapter13/vote-candidate-08.png)
+![image](/images/chapter13/vote-candidate-08.png)
 
-票數的確增加了!
+票數的確增加了！
 
 ### <a name="step12"></a>第 12 步 - 整理重複的程式碼
 
@@ -675,11 +682,11 @@ end
 
 ### <a name="step13"></a>第 13 步 - 使用 bootstrap 來美化頁面
 
-現在的畫面其實有點醜醜的，如果你沒有設計師幫你設計頁面或調整 CSS，這樣的東西也不好意思拿出去見人。還好，網路上的厲害的善心人士很多，像是 Twitter Bootstrap(以下簡稱 bootstrap)就是一例，透過 bootstrap，只要簡單幾行就可以讓原來看起來有點陽春的畫面一下子就變得高大上。
+現在的畫面其實有點醜醜的，如果你沒有設計師幫你設計頁面或調整 CSS，這樣的東西也不好意思拿出去見人。還好，網路上的厲害的善心人士很多，像是 Twitter Bootstrap（以下簡稱 bootstrap）就是一例，透過 bootstrap，只要簡單幾行就可以讓原來看起來有點陽春的畫面一下子就變得高大上。
 
 要使用 bootstrap 有好幾種用法，根據 bootstrap 的[官方網站說明](http://getbootstrap.com/getting-started/)，可以使用 CDN 的方式，也可直接下載 JavaScript/CSS 檔案，但在 Rails 專案裡，我個人偏好使用另外把 bootstrap 打包好的 gem。
 
-這個 gem 的名字是 `bootstrap-sass`，原始程式碼及安裝說明請參閱[這裡](https://github.com/twbs/bootstrap-sass)。
+這個 gem 的名字是 `bootstrap-sass`，原始程式碼及安裝說明請參閱[Github 上的說明手冊](https://github.com/twbs/bootstrap-sass)。
 
 另外，為了讓全站每一頁都使用 bootstrap 的功能，請編輯 `app/views/layouts/application.html.erb` 檔案，把 `<%= yield %>` 外面用一個 `<div>` 包起來，並且設定這個 div 的 `class` 為 `container`：
 
@@ -707,7 +714,7 @@ Layout 的用途在後面的章節會有更詳細的介紹。
 > 注意：安裝完 gem 之後，可能會需要重新啟動 `rails server`。
 
 重新整理一下，原來的畫面有一些變化了：
-![image](images/chapter13/vote-candidate-09.png)
+![image](/images/chapter13/vote-candidate-09.png)
 
 讓我們用 bootstrap 幫原來醜醜的 `<table>` 化個妝。請打開 `app/views/candidates/index.html.erb`，幫原來的 `<table>` 加上一個 `class`：
 
@@ -725,7 +732,7 @@ Layout 的用途在後面的章節會有更詳細的介紹。
 ```
 
 重新整理一下，表格應該會立刻變一個樣子：
-![image](images/chapter13/vote-candidate-10.png)
+![image](/images/chapter13/vote-candidate-10.png)
 
 那個投票的連結不太明顯，讓我們用 bootstrap 把它化妝成一顆按鈕的樣子，就在原來的 `link_to` 後面加上 `class` 語法，像這樣：
 
@@ -733,13 +740,13 @@ Layout 的用途在後面的章節會有更詳細的介紹。
 <td><%= link_to "投給這位", vote_candidate_path(candidate), method: "post", data: { confirm: "確認要投給這位候選人嗎?!" }, class:"btn btn-danger btn-xs" %></td>
 ```
 
-後面那個 `btn btn-danger btn-xs` 的意思是指「一顆紅色(危險)但又是小號(xs)的按鈕」，存檔後重新整理，原來的連結看起來就像一顆按鈕了。
+後面那個 `btn btn-danger btn-xs` 的意思是指「一顆紅色（危險）但又是小號（xs）的按鈕」，存檔後重新整理，原來的連結看起來就像一顆按鈕了。
 
-![image](images/chapter13/vote-candidate-11.png)
+![image](/images/chapter13/vote-candidate-11.png)
 
 ### <a name="step14"></a>第 14 步 - 使用 gem 來簡化表單
 
-雖然使用 `form_for` 跟一些 form helper 來製作表單不是很困難的事，但有個叫做 `simple_form` 的 gem 可以再簡化這些語法，原始碼及使用方法請見[這裡](https://github.com/plataformatec/simple_form)。不過因為我們前面剛好有安裝 bootstrap，如果想要讓 simple_form 跟它更整合的話，在安裝的時候請記得使用這行指令(其實網站上就有提到)：
+雖然使用 `form_for` 跟一些 form helper 來製作表單不是很困難的事，但有個叫做 `simple_form` 的 gem 可以再簡化這些語法，原始碼及使用方法請見[這裡](https://github.com/plataformatec/simple_form)。不過因為我們前面剛好有安裝 bootstrap，如果想要讓 simple_form 跟它更整合的話，在安裝的時候請記得使用這行指令（其實網站上就有提到）：
 
     $ rails generate simple_form:install --bootstrap
 
@@ -785,9 +792,9 @@ simple_form 可以用來取代原來的 `form_for`，原來那個 Partial Render
 
 原本的 `f.text_field` 或是 `f.text_area`，都可統一改成 `f.input`，simple_form 會根據資料表的欄位型態，自動轉換成單行或多行輸入欄位。另外，也因為整合了 bootstrap，現在的畫面會變成這樣：
 
-![image](images/chapter13/vote-candidate-12.png)
+![image](/images/chapter13/vote-candidate-12.png)
 
 不僅程式碼變精簡了，畫面也變好看了。
 
-> 以上實作完整程式碼可在[這裡](https://github.com/kaochenlong/my_candidates)取得。
+> 以上實作完整程式碼可在[我的 GitHub 帳號](https://github.com/kaochenlong/my_candidates)裡取得。
 

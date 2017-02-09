@@ -1,15 +1,22 @@
+---
+
+title: Model 驗證及回呼
+permalink: /chapters/18-model-validation-and-callback
+
+---
+
 # Model 驗證及回呼
 
-- [資料驗證 (Validation)](#validation)
-- [回呼 (Callback)](#callback)
+- [資料驗證（Validation）](#validation)
+- [回呼（Callback）](#callback)
 
-## <a name="validation"></a>資料驗證 (Validation)
+## <a name="validation"></a>資料驗證（Validation）
 
 開發網站應用程式，資料的正確性是很重要的。大家應該都不會想被有意或無意的在資料庫裡塞了奇怪的資料，所以通常都會加上資料驗證的機制，確保寫入的資料是符合規定的。
 
-### 驗證該在哪裡做?
+### 驗證該在哪裡做？
 
-那，這個資料驗證機制該寫在哪裡比較好呢? 有常見的選項有：
+那，這個資料驗證機制該寫在哪裡比較好呢？有常見的選項有：
 
 1. 前端驗證：在 HTML 頁面使用 JavaScript 在使用者填寫資料的時候就先檢查。
 2. 後端驗證：資料傳進來在寫入資料庫之前之後再檢查。
@@ -23,7 +30,7 @@
 
 ### 在 Model 裡加上驗證
 
-假設我們有一個叫做 `Article` 的 Model，然後我們希望每篇文章的文章標題 (title) 是必填資訊，那我們可以這樣寫：
+假設我們有一個叫做 `Article` 的 Model，然後我們希望每篇文章的文章標題（title）是必填資訊，那我們可以這樣寫：
 
 ```ruby
 class Article < ApplicationRecord
@@ -110,7 +117,7 @@ user1.save(validate: false)
        (0.1ms)  rollback transaction
     => false
 
-失敗了! 這時候可以透過 `errors` 方法看一下到底是哪裡出錯：
+失敗了！這時候可以透過 `errors` 方法看一下到底是哪裡出錯：
 
     >> user1.errors
     => #<ActiveModel::Errors:0x007ff6b94aa7d8 ...[略]..., @messages={:name=>["can't be blank"]}, @details={:name=>[{:error=>:blank}]}>
@@ -119,7 +126,7 @@ user1.save(validate: false)
 
 喔，原來是 `name` 欄位沒填寫。
 
-### 在 `save` 的時候才發生驗證錯誤嗎?
+### 在 `save` 的時候才發生驗證錯誤嗎？
 
 有些人可能以為要呼叫 `save` 或 `create` 方法，試圖把資料寫入資料表的時候才會發生驗證錯誤，其實上不用寫入資料表也可以知道這筆資料是否有效。先用 `new` 方法建立一個 User 物件：
 
@@ -131,12 +138,12 @@ user1.save(validate: false)
     >> user1.errors.any?
     => false
 
-很好! 沒有任何錯誤訊息。這時候用 `valid?` 方法問一下這筆資料是否能通過驗證：
+很好！沒有任何錯誤訊息。這時候用 `valid?` 方法問一下這筆資料是否能通過驗證：
 
     >> user1.valid?
     => false
 
-啊，沒通過驗證! 再回頭看一下是不是有錯誤訊息：
+啊，沒通過驗證！再回頭看一下是不是有錯誤訊息：
 
     >> user1.errors.any?
     => true
@@ -148,7 +155,7 @@ user1.save(validate: false)
 
 ### 自訂驗證器 Validator
 
-現有的驗證器不夠用嗎? 有幾種方式可以自訂驗證器：
+現有的驗證器不夠用嗎？有幾種方式可以自訂驗證器：
 
 #### 1. 寫一個方法，掛到 `validate` 方法上：
 
@@ -167,7 +174,7 @@ end
 
 > 注意：這個方法是 `validate`，不是 `validates` 喔
 
-這種寫法滿簡單的，就是直接寫一個一般的方法(通常會放在 `private` 區塊)，當條件不符規定的時候，就在 `errors` 這個 Hash 裡面塞錯誤訊息。用起來就跟一般的驗證器差不多：
+這種寫法滿簡單的，就是直接寫一個一般的方法（通常會放在 `private` 區塊），當條件不符規定的時候，就在 `errors` 這個 Hash 裡面塞錯誤訊息。用起來就跟一般的驗證器差不多：
 
     $ rails console
     Running via Spring preloader in process 4628
@@ -184,7 +191,7 @@ end
 
 #### 2. 遵循 Rails 的驗證器規則：
 
-想寫出這樣的語法嗎?
+想寫出這樣的語法嗎？
 
 ```ruby
 class User < ActiveRecord::Base
@@ -232,13 +239,13 @@ end
     => ["Name 必需是 Ruby 開頭喔!"]
 
 
-## <a name="callback"></a>回呼 (Callback)
+## <a name="callback"></a>回呼（Callback）
 
-資料在要存到資料表的過程中，其實不是直接把資料放進去這麼簡單。不同的行為(例如存檔、或刪除)可能會有不同的流程，舉個例子來說，當呼叫 `save` 方法的時候，整個資料寫入的過程大概會是以下的流程：
+資料在要存到資料表的過程中，其實不是直接把資料放進去這麼簡單。不同的行為（例如存檔、或刪除）可能會有不同的流程，舉個例子來說，當呼叫 `save` 方法的時候，整個資料寫入的過程大概會是以下的流程：
 
-![image](images/chapter18/model-lifecycle.png)
+![image](/images/chapter18/model-lifecycle.png)
 
-其中，顏色比較深的那幾個流程是有機會可以掛上一些方法，又稱之回呼(Callback)，可以在這些流程執行的時候做一些事，像是這樣：
+其中，顏色比較深的那幾個流程是有機會可以掛上一些方法，又稱之回呼（Callback），可以在這些流程執行的時候做一些事，像是這樣：
 
 ```ruby
 require 'digest'

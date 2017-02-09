@@ -1,3 +1,10 @@
+---
+
+title: Controller
+permalink: /chapters/12-controllers
+
+---
+
 # Controller
 
 - [向你的用戶說聲哈囉](#say-hello-world)
@@ -10,7 +17,7 @@
 
 ### Controller 是幹嘛的
 
-Controller 中文可翻譯成「控制器」，顧名思義，就是用來控制流程，例如它可能需要跟 Model 要資料，可能需要跟 View 要 HTML template 來玩填空遊戲，或是可能需要存取外部服務(例如金流串接)等，這大多是 Controller 要做的工作。
+Controller 中文可翻譯成「控制器」，顧名思義，就是用來控制流程，例如它可能需要跟 Model 要資料，可能需要跟 View 要 HTML template 來玩填空遊戲，或是可能需要存取外部服務（例如金流串接）等，這大多是 Controller 要做的工作。
 
 ### 命名慣例
 
@@ -67,9 +74,9 @@ Rails.application.routes.draw do
 end
 ```
 
-當使用者輸入 `/hello_world` 網址的時候，會交給 `PagesController` 的 `hello` 方法處理。(是的，其實網址跟 Controller 上的 Action 不一定要同名喔)
+當使用者輸入 `/hello_world` 網址的時候，會交給 `PagesController` 的 `hello` 方法處理。（是的，其實網址跟 Controller 上的 Action 不一定要同名喔）
 
-### 第 2 步 - 把文字印出來吧!
+### 第 2 步 - 把文字印出來吧！
 
 有了 Route 之後，接下來回到 Controller 把 `hello` 這個 Action 加上去：
 
@@ -96,17 +103,17 @@ end
 
 使用 `puts` 方法把資料直接輸出在畫面上，看起來很直覺，但這樣不會有效果。事實上並不是 `puts` 方法不能用，它的確可以把東西印出來，只是不是印在瀏覽器上給你看到，而是印在 Rails 的 log 裡，仔細看一下正在執行 `rails server` 的那個畫面是不是有這樣的東西：
 
-![image](images/chapter12/puts-to-console.png)
+![image](/images/chapter12/puts-to-console.png)
 
 你就可以看到這樣的畫面：
 
-![image](images/chapter12/render-hello-world.png)
+![image](/images/chapter12/render-hello-world.png)
 
 ### 第 3 步 - 把工作交給 View 吧
 
 雖然第 2 步這樣可以把資料輸出在畫面上沒錯，但這樣實在是太辛苦了。在 Controller 裡的 Action，如果沒有特別指定 `render` 方法的話，它會到 `app/views/` 的目錄找「 Controller 名字」目錄裡的 Action 同名檔案。以這個例子來說，它會去找 `app/views/pages/hello.html.erb`。
 
-![image](images/chapter12/controller-view-mapping.png)
+![image](/images/chapter12/controller-view-mapping.png)
 
 如果這個 `hello.html.erb` 不存在，就自己手動建一個吧。即然輸出的事情交給 View，原來 `hello` 這個 Action 的 `render` 方法就可以拿掉：
 
@@ -126,9 +133,9 @@ end
 
 重新整理，應該就會看到跟剛才的差別：
 
-![image](images/chapter12/render-hello-world-with-view.png)
+![image](/images/chapter12/render-hello-world-with-view.png)
 
-這樣的好處是不用把 HTML 都寫在 Controller 裡(事實上也很少人會這麼做)，再來就是要跟設計師合作的時候也比較方便。
+這樣的好處是不用把 HTML 都寫在 Controller 裡（事實上也很少人會這麼做），再來就是要跟設計師合作的時候也比較方便。
 
 ## <a name="params"></a>Params 參數
 
@@ -149,7 +156,7 @@ end
 
 使用 `render` 方法，把 `params` 這個變數用 `JSON` 的方式印出來，可以看到這個結果：
 
-![image](images/chapter12/render-params-1.png)
+![image](/images/chapter12/render-params-1.png)
 
 Rails 會把剛剛後面那串東西，整理成一個類似 Hash 的東西，例如我只想要 `name` 參數的話：
 
@@ -161,13 +168,13 @@ class PagesController < ApplicationController
 end
 ```
 
-![image](images/chapter12/render-params-2.png)
+![image](/images/chapter12/render-params-2.png)
 
 不管是 GET 或是 POST 方式傳過來的參數，都會被收集到這個 `params` 裡。
 
 ## <a name="bmi-calculator"></a>實作練習：BMI 計算器
 
-大概知道 Route、Controller、View 以及 Params 的使用方法後，接下來我們來做一個可以計算 BMI(Body Mass Index，身體質量指數)的計算機。
+大概知道 Route、Controller、View 以及 Params 的使用方法後，接下來我們來做一個可以計算 BMI（Body Mass Index，身體質量指數）的計算機。
 
 ### 第 0 步 - 新增 Controller 及 Route
 
@@ -220,7 +227,7 @@ end
 
 這時候輸入路徑 `/bmi` 應該可以看到這個畫面：
 
-![image](images/chapter12/bmi-1.png)
+![image](/images/chapter12/bmi-1.png)
 
 #### 2 - 自動幫 Controller 加上 `index` Action：
 
@@ -259,9 +266,9 @@ end
 2. `text_field_tag` 會被轉換成 HTML 的 `<input type="text" />` 標籤。
 3. `submit_tag` 會被轉換成 HTML 的 `<input type="submit" />` 標籤。
 
-以上這些方法都統稱為 `View Helper`，更多相關的使用方法參考[這裡](http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.html)。這時候的畫面會長得像這樣：
+以上這些方法都統稱為 `View Helper`，更多相關的使用方法參考 [Form Helper](http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.html) 的 API 手冊。這時候的畫面會長得像這樣：
 
-![image](images/chapter12/bmi-2.png)
+![image](/images/chapter12/bmi-2.png)
 
 在繼續之前，先讓我們檢視一下這一頁的原始碼，仔細看一下跟表單有關的部份，稍做整理如下：
 
@@ -275,13 +282,13 @@ end
 </form>
 ```
 
-這邊有一段名字叫做 `authenticity_token` 的隱藏 input 標籤，不只內容看起來像是亂碼，而且每次重新整理又會得到不一樣的值，這個是做什麼用的呢?
+這邊有一段名字叫做 `authenticity_token` 的隱藏 input 標籤，不只內容看起來像是亂碼，而且每次重新整理又會得到不一樣的值，這個是做什麼用的呢？
 
-我在一開始接觸網路的時候做的工作是網路行銷，因為工作的關係，常常需要撰寫讓網友們票選或是填寫資料抽獎之類的程式。稍微有點技術底子的參加者，只要檢視網頁的原始碼，就可以看得出來這個表單要用什麼方式(GET 或 POST)、要送到什麼地方，以及要送的資料欄位名稱。有心人士只要寫一個簡單的小程式，仿照原頁面送資料到指定的地方，就可能可以造成灌票或是大量留言、灌水的情況，影響活動的公平性。若因此而再加一些驗證規則，反而又提高了一般參加者的的門檻。
+我在一開始接觸網路的時候做的工作是網路行銷，因為工作的關係，常常需要撰寫讓網友們票選或是填寫資料抽獎之類的程式。稍微有點技術底子的參加者，只要檢視網頁的原始碼，就可以看得出來這個表單要用什麼方式（GET 或 POST）、要送到什麼地方，以及要送的資料欄位名稱。有心人士只要寫一個簡單的小程式，仿照原頁面送資料到指定的地方，就可能可以造成灌票或是大量留言、灌水的情況，影響活動的公平性。若因此而再加一些驗證規則，反而又提高了一般參加者的的門檻。
 
 如果這個活動網站是用 Rails 開發的，Rails 預設在處理表單的時候會檢查這個 `authenticity_token` 是不是由本站所產生的，如果沒有這個欄位，或是這個欄位的值經 Rails 核對後發現並不是本身所產生，就會出現這個錯誤訊息：
 
-![image](images/chapter12/invalid-authenticity-token-error.png)
+![image](/images/chapter12/invalid-authenticity-token-error.png)
 
 不管是 `form_tag` 或是下個章節才介紹的 `form_for`，在產生 `<form>` 標籤的時候都會自動幫你加上並產生 `authenticity_token` 的欄位，確保比較不會太容易被有心人士所破壞。
 
@@ -315,7 +322,7 @@ class BmiController < ApplicationController
     height = params[:body_height].to_f / 100   # 把單位換算成公尺
     weight = params[:body_weight].to_f
 
-    # BMI 計算公式: BMI = 體重(單位：公斤) / 身高平方(單位：公尺).
+    # BMI 計算公式: BMI = 體重（單位：公斤） / 身高平方（單位：公尺）.
     @bmi = (weight / (height * height)).round(2)
   end
 end
@@ -328,23 +335,23 @@ BMI 的計算公式還滿單純的，不過要注意的是：
 
 ### 第 4 步 - 呈現結果
 
-最後一步，把結果印出來。編輯檔案 `app/views/bmi/result.html.erb` (如果檔案不存在請直接手動建立)：
+最後一步，把結果印出來。編輯檔案 `app/views/bmi/result.html.erb` （如果檔案不存在請直接手動建立）：
 
 ```erb
 <h1>您的 BMI 值為：<%= @bmi %></h1>
 ```
 
-搞定!  試玩一下，我輸入身高 178 公分、體重 80 公斤：
+搞定！試玩一下，我輸入身高 178 公分、體重 80 公斤：
 
-![image](images/chapter12/bmi-3.png)
+![image](/images/chapter12/bmi-3.png)
 
 按下送出即可得到計算結果：
 
-![image](images/chapter12/bmi-4.png)
+![image](/images/chapter12/bmi-4.png)
 
 ## 小結
 
 雖然這個計算機的功能相當陽春，而且也很多地方需要改善，例如防呆機制，或是根據計算結果嘲諷一下 BMI 值過高的胖子。但如果你能理解這個例子裡 Route、Controller、View 之間的基本運作原理，當下回遇到更複雜的應用程式開發相信也是可以迎刃而解。
 
-> 以上實作完整程式碼可在[這裡](https://github.com/kaochenlong/hello_rails)取得。
+> 以上實作完整程式碼可在[我的 GitHub 帳號](https://github.com/kaochenlong/hello_rails)取得。
 

@@ -1,4 +1,11 @@
-# 網站部署(使用 Heroku)
+---
+
+title: 網站部署（使用 Heroku）
+permalink: /chapters/29-deployment
+
+---
+
+# 網站部署（使用 Heroku）
 
 - [申請 Heroku 帳號](#sign-up-heroku)
 - [安裝 Heroku Cli](#install-heroku-toolkit)
@@ -10,11 +17,11 @@
 
 網站好不容易做好了，總不能老是在 localhost 孤芳自賞，該是把作品上傳到網路伺服器給大家欣賞一下了。
 
-在目前眾多款式的雲端伺服器當中，Heroku 可能可以說是對 Ruby/Rails 專案最友善、部署最簡單的選擇。(畢竟 Ruby 的老爸松本行弘以及 Ruby 的前幾名重要的核心開發人員都在 Heroku 工作)
+在目前眾多款式的雲端伺服器當中，Heroku 可能可以說是對 Ruby/Rails 專案最友善、部署最簡單的選擇。（畢竟 Ruby 的老爸松本行弘以及 Ruby 的前幾名重要的核心開發人員都在 Heroku 工作）
 
 網址：https://www.heroku.com/
 
-![image](images/chapter29/heroku.png)
+![image](/images/chapter29/heroku.png)
 
 這個章節將介紹如何把 Rails 專案推上 Heroku。
 
@@ -24,7 +31,7 @@
 
 ## <a name="install-heroku-toolkit"></a>安裝 Heroku Cli
 
-Heroku Cli 工具程式在好幾個平台上都有，請參考[這個頁面](https://devcenter.heroku.com/articles/heroku-cli)，找到自己適合的平台安裝。安裝完成後，在終端機環境下執行 `heroku login`，並輸入方才申請的帳號密碼：
+Heroku Cli 工具程式在好幾個平台上都有，請參考[Heroku 的安裝頁面說明](https://devcenter.heroku.com/articles/heroku-cli)，找到自己適合的平台安裝。安裝完成後，在終端機環境下執行 `heroku login`，並輸入方才申請的帳號密碼：
 
     $ heroku login
     Enter your Heroku credentials.
@@ -46,7 +53,7 @@ Heroku Cli 工具程式在好幾個平台上都有，請參考[這個頁面](htt
 
 這個指令會幫你做幾件事：
 
-1. 在 Heroku 上開一台伺服器(instance)，如果沒有指定名稱，Heroku 會隨機幫你搭配，像這邊我的伺服器的名字就是 `still-dawn-85623`。如果在建立的時候是下 `heroku create thank-you-9527`，只要這個名字沒被用掉，它就可以幫你建立一台 `thank-you-9527` 的機器。
+1. 在 Heroku 上開一台伺服器（instance），如果沒有指定名稱，Heroku 會隨機幫你搭配，像這邊我的伺服器的名字就是 `still-dawn-85623`。如果在建立的時候是下 `heroku create thank-you-9527`，只要這個名字沒被用掉，它就可以幫你建立一台 `thank-you-9527` 的機器。
 2. 會幫 Git 加上一個名為 `heroku` 的遠端節點：
 
     $ git remote -v
@@ -190,10 +197,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 如果你在 `bundle install` 的過程發生失敗，那很有可能是你目前的環境還沒有安裝 PostgreSQL 資料庫，所以在 `bundle install` 的過程會發生錯誤。解決方法有兩種：
 
-1. 就是把 PostgreSQL 資料庫安裝起來吧! (詳情請洽 [PostgreSQL 官網](https://www.postgresql.org/))
+1. 就是把 PostgreSQL 資料庫安裝起來吧！（詳情請洽 [PostgreSQL 官網](https://www.postgresql.org/)）
 2. 如果你還不想安裝這個資料庫，也可改執行 `bundle install --without production` 指令，暫時「跳過」安裝 production 這個群組裡面的套件。
 
-把 SQLite 換成 PG 之後，接下來準備來推第二次吧!
+把 SQLite 換成 PG 之後，接下來準備來推第二次吧！
 
 > 注意：做完 `bundle install` 之後別忘了要把剛剛做的這些變更再 commit 一次到 Git 版控，不然你再推一次也只是會把前一次 commit 的內容推上去而已，還是會發生一樣的錯誤。
 
@@ -235,7 +242,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 如果這是你第一次部署的話，你還會需要執行 `rails db:migrate` 指令，確保所有的 Migration 都有被執行到。但... 如果只是單純的執行 `rails db:migrate`，那只會在我們的本機環境執行而已，所以需要請 Heroku 幫我們執行這個指令：
 
-    $ heroku run rails db:migrate                                                                                                             22:18:50
+    $ heroku run rails db:migrate
     Running rails db:migrate on ⬢ still-dawn-85623... up, run.2491 (Free)
     D, [2017-01-14T14:39:58.762047 #4] DEBUG -- :    (11.5ms)  CREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)
     D, [2017-01-14T14:39:58.777120 #4] DEBUG -- :    (9.1ms)  CREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
@@ -269,13 +276,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 3. `git push heroku master`
 4. 必要的時候請 `heroku run` 幫你執行需要的指令，例如 `rails db:migrate`
 
-> 注意：Heroku 只有當你推的是 `master` 分支的時候才會有效果!
+> 注意：Heroku 只有當你推的是 `master` 分支的時候才會有效果！
 
 ## <a name="note"></a>小結
 
 以價錢來說，雖然 Heroku 有提供免費使用額度，但因為免費的機器有「30 分鐘沒有人連線的話就會進入休眠」以及「每天至少要休眠 8 小時」的限制，如果是創業初期，可先選擇每個月 7 元方案，待使用者變多、網站流量開始變大之後可再昇級更高等級的設備。
 
-![image](images/chapter29/heroku-pricing.png)
+![image](/images/chapter29/heroku-pricing.png)
 
-在眾多雲端平台中，Heroku 絕對不是最便宜的(事實上它可能是最貴的)，但因為不需要花太多時間在機器維護上，在創業初期人力不足的情況下，倒是個不錯的選擇。
+在眾多雲端平台中，Heroku 絕對不是最便宜的（事實上它可能是最貴的），但因為不需要花太多時間在機器維護上，在創業初期人力不足的情況下，倒是個不錯的選擇。
 

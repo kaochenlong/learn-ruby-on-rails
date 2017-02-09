@@ -1,3 +1,10 @@
+---
+
+title: Model 基本操作
+permalink: /chapters/15-model-basic
+
+---
+
 # Model 基本操作
 
 - [基本觀念](#basic)
@@ -9,21 +16,21 @@
 
 ## <a name="basic"></a>基本觀念
 
-### Model 是什麼?
+### Model 是什麼？
 
 很多剛開始接觸 Rails 的 MVC 架構的新手，可能會認為 Model 就是資料庫，事實上並不是。請先記住一件很很重要的觀念：
 
-> Model 不是資料表(Table)，Model 只是疊在資料表上面的一個抽象類別，負責跟實體的資料表溝通。
+> Model 不是資料表（Table），Model 只是疊在資料表上面的一個抽象類別，負責跟實體的資料表溝通。
 
-打個比方，Model 的角色有點類似卡通「哆啦 A 夢」裡有種叫做「翻譯蒟蒻」的道具，我們跟 Model 說人話，Model 會幫我們翻譯成資料庫看得懂的話(SQL)，幫我們跟資料庫要資料。
+打個比方，Model 的角色有點類似卡通「哆啦 A 夢」裡有種叫做「翻譯蒟蒻」的道具，我們跟 Model 說人話，Model 會幫我們翻譯成資料庫看得懂的話（SQL），幫我們跟資料庫要資料。
 
-### Model 跟與資料表(Table)的關係
+### Model 跟與資料表（Table）的關係
 
 講到 Model 跟資料表的關係，剛開始學習 Rails 的新手常會認為一個 Model 就會對到一個資料表，一個資料表就一定也有一個對應的 Model。在比較單純的專案，Model 跟資料表通常的確是一對一沒錯，但這並不是絕對的。
 
 ### 慣例 - 資料表命名
 
-在 Rails 專案中，Model 的命名是單數(而且必須大寫，因為在 Ruby 的類別名稱必須是大寫)，而資料表的命名則是複數(因為可以放很多資料?)、小寫並以底線分隔。
+在 Rails 專案中，Model 的命名是單數（而且必須大寫，因為在 Ruby 的類別名稱必須是大寫），而資料表的命名則是複數（因為可以放很多資料？）、小寫並以底線分隔。
 
 | Model 名稱 | 資料表名稱  |
 |------------|-------------|
@@ -39,7 +46,7 @@ class User < ActiveRecord::Base
 end
 ```
 
-只是，在 Rails 中我們會儘量遵守「慣例優於設定」(CoC, Convention over Configuration)的原則，順著預設的慣例做，可以省下不少麻煩。
+只是，在 Rails 中我們會儘量遵守「慣例優於設定」（CoC, Convention over Configuration）的原則，順著預設的慣例做，可以省下不少麻煩。
 
 ### 慣例 - 流水編號與時間戳記
 
@@ -59,13 +66,13 @@ class CreateUsers < ActiveRecord::Migration[5.0]
 end
 ```
 
-大概猜得出來它會有 `name`、`email` 以及 `tel` 三個欄位，執行 Migration 之後，如果使用資料庫檢視工具(我使用的是[DB Browser for SQLite](http://sqlitebrowser.org/))看一下這個資料表的樣子：
+大概猜得出來它會有 `name`、`email` 以及 `tel` 三個欄位，執行 Migration 之後，如果使用資料庫檢視工具（我使用的是[DB Browser for SQLite](http://sqlitebrowser.org/)）看一下這個資料表的樣子：
 
-![image](images/chapter15/user-table.png)
+![image](/images/chapter15/user-table.png)
 
 會發現除了上面這三個欄位之外，還多了 `id`、`created_at` 跟 `updated_at` 三個欄位。事實上，在 Migration 檔案中的 `t.timestapms` ，在經過轉換之後，會產生兩個名為 `created_at` 跟 `updated_at` 的時間欄位，分別會在資料「新增」及「更新」的時候，把當下的時間寫進去，完全不需要我們煩惱。
 
-而 `id` 欄位你在 Migration 沒看到任何資訊，這是 Rails 自動幫每個資料表加的流水編號欄位，這個欄位稱為資料表的主鍵(Primary Key)。
+而 `id` 欄位你在 Migration 沒看到任何資訊，這是 Rails 自動幫每個資料表加的流水編號欄位，這個欄位稱為資料表的主鍵（Primary Key）。
 
 如果你不想要這個主鍵，可以在 Migration 的時候加上 `id: false` 參數：
 
@@ -95,7 +102,7 @@ end
 
 ## <a name="model-crud"></a>Model 基本操作之 CRUD
 
-### 什麼是 ORM?
+### 什麼是 ORM？
 
 ORM 是 Object Relational Mapping 的縮寫，中文翻譯成物件關係對映。我們如果想要存取資料庫裡的內容，以前必需透過資料庫查詢語言(SQL)向資料庫進行查詢，但透過 ORM 的包裝之後，可以讓我們用操作「物件」的方式來操作資料庫。例如如果我想要找出所有 `users` 資料表裡的資料：
 
@@ -109,7 +116,7 @@ User.all
 select * from users`
 ```
 
-### CRUD 之 C (Create)
+### CRUD 之 C（Create）
 
 要新增一筆資料，常見有 `new` 跟 `create` 兩種方式。使用 `new` 方法做出一個 Model 物件後，再執行 `save` 方法即可把該筆資料存入資料表：
 
@@ -141,9 +148,9 @@ class PostsController < ApplicationController
 end
 ```
 
-另外，`create` 方法有另一個叫做 `create!` 的兄弟方法(沒錯，就是後面加了驚嘆號版本的)，它跟 `create` 方法一樣會把資料直接寫入資料表，但差別是當寫入發生錯誤時，它會產生例外(Exception)訊息。
+另外，`create` 方法有另一個叫做 `create!` 的兄弟方法（沒錯，就是後面加了驚嘆號版本的），它跟 `create` 方法一樣會把資料直接寫入資料表，但差別是當寫入發生錯誤時，它會產生例外（Exception）訊息。
 
-### CRUD 之 R (Read)
+### CRUD 之 R（Read）
 
 從資料表裡讀取資料也是很常見的操作，在讀取的方法就比寫入來得多樣化，有一次讀取一筆的方法，也有一次讀取一整批的方法。
 
@@ -248,33 +255,33 @@ Candidate.order(age: :desc).limit(3)
        (0.2ms)  SELECT MIN("candidates"."age") FROM "candidates"
     => 2
 
-### CRUD 之 U (Update)
+### CRUD 之 U（Update）
 
 更新資料常用的有 `save`、`update`、`update_attribute` 及 `update_attributes` 方法：
 
 ```ruby
-# 先抓出 1 號候選人
+# 先找出 1 號候選人
 candidate = Candidate.find_by(id: 1)
 
 # 使用 save 方法
 candidate.name = "剪彩倫"
 candidate.save
 
-# 使用 update_attribute 更新單一欄位的值 (注意：方法名字是單數)
+# 使用 update_attribute 方法更新單一欄位的值（注意：方法名字是單數）
 candidate.update_attribute(:name, "剪彩倫")
 
 # 使用 update 更新資料，可一次更新多個欄位，且不需要再呼叫 save 方法
 candidate.update(name: "剪彩倫", age: 20)
 
-# 使用 update_attributes
+# 使用 update_attributes 方法
 candidate.update_attributes(name: "剪彩倫", age: 20)
 ```
 
 以上有幾點需要說明一下：
 
-1. `save` 方法預設會經過驗證(Validateion，在稍後的章節會介紹)流程，如果驗證失敗將無法寫入。如果想要跳過驗證，可加上 `validates: false` 參數。
+1. `save` 方法預設會經過驗證（Validateion，在稍後的章節會介紹）流程，如果驗證失敗將無法寫入。如果想要跳過驗證，可加上 `validates: false` 參數。
 2. `update` 跟 `update_attributes` 其實只是名字不一樣，但事實上是一模一樣的內容。
-3. `update_attribute` 方法會跳過驗證(Validation)，等於是 `save(validate: false)` 的效果，在使用的時候要稍微注意一下。
+3. `update_attribute` 方法會跳過驗證（Validation），等於是 `save(validate: false)` 的效果，在使用的時候要稍微注意一下。
 
 另外，也可以直接針對整個資料表下手：
 
@@ -284,7 +291,7 @@ Candidate.update_all(name: "剪彩倫", age: 18)
 
 這樣就可以一口氣把所有候選人的資料的姓名跟年齡都改成一樣的，所以在使用這個方法的時候要特別留意。
 
-### CRUD 之 D (Delete)
+### CRUD 之 D（Delete）
 
 刪除資料就相對單純，可以使用 `delete` 或 `destroy` 方法：
 
@@ -296,7 +303,7 @@ candidate.destroy
 candidate.delete
 ```
 
-`destroy` 跟 `delete` 的差別，在於 `destroy` 方法在執行的時候，會執行完整的回呼(Callback，在稍後的章節會介紹)，但 `delete` 方法僅直接執行 SQL 的 `delete from ...` 語法，不會觸發任何回呼。
+`destroy` 跟 `delete` 的差別，在於 `destroy` 方法在執行的時候，會執行完整的回呼（Callback，在稍後的章節會介紹），但 `delete` 方法僅直接執行 SQL 的 `delete from ...` 語法，不會觸發任何回呼。
 
 除了把資料抓出來再進行刪除外，也可直接從資料表來下手：
 
@@ -410,7 +417,7 @@ class Product < ApplicationRecord
 end
 ```
 
-通常如果是簡單的條件，我個人會偏好把它放在 scope 裡，如果是比較複雜的條件，則會建議放在類別方法裡(其實要放 scope 也是可以)。
+通常如果是簡單的條件，我個人會偏好把它放在 scope 裡，如果是比較複雜的條件，則會建議放在類別方法裡（其實要放 scope 也是可以）。
 
 ### 預設 Scope
 

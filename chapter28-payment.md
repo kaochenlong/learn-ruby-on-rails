@@ -1,4 +1,11 @@
-# 金流串接(使用 Paypal)
+---
+
+title: 金流串接（使用 Paypal）
+permalink: /chapters/28-payment
+
+---
+
+# 金流串接（使用 Paypal）
 
 - [使用 Braintree - 前端](#front-end)
 - [使用 Braintree - 後端](#back-end)
@@ -11,26 +18,26 @@
 
 因為我們這是練習用的範例，所以在登入的時候選的是「Sandbox」模式，在這個模式下的任何消費都不會真的刷卡或匯款。登入之後的樣子像這樣：
 
-![image](images/chapter28/dash-board.png)
+![image](/images/chapter28/dash-board.png)
 
 點擊上方選單的「Help」→「API documentation」，可以在這個頁面查到串接金流服務的所有說明及範例。
 
 使用 Braintree 服務需要在前、後台都做一些設定才能使用，在前端的 `Client SDKs`，選擇 `Web/JavaScript`，整個 Client 端的 SDK 運作原理如它文件上附的這張圖：
 
-![image](images/chapter28/braintree-client.png)
+![image](/images/chapter28/braintree-client.png)
 
 說明：
 
 1. 打開瀏覽器，它會先跟網頁伺服器要一組 token，這個伺服器在這裡就是我們的 Rails 專案。
-2. 我們的網頁伺服器產生一組 token 給瀏覽器(或手機)。
-3. 當在頁面上填完信用卡號以及有效日期後，按下送出，這時候會再跟 Braintree 伺服器要一組 nonce(隨機數)。
+2. 我們的網頁伺服器產生一組 token 給瀏覽器（或手機）。
+3. 當在頁面上填完信用卡號以及有效日期後，按下送出，這時候會再跟 Braintree 伺服器要一組 nonce（隨機數）。
 4. 瀏覽器取得這組 nonce 後會傳給我們自己的網頁伺服器，然後我們的伺服器就會把所有相關資訊組合成一包資訊傳給 Braintree，進行刷卡。
 
 到這裡是前端頁面在做的事情。但第 2 步因為尚未完成，所以待會這個步驟的資訊會先用假的 token 替代。
 
 要注意的是，目前 Braintree 的 JavaScript 的 SDK 有 v2 跟 v3 兩個版本：
 
-![image](images/chapter28/v2-v3.png)
+![image](/images/chapter28/v2-v3.png)
 
 其中 v3 版本較多地方可以客制化，但 v2 版本使用上較為單純，所以以下將使用 v2 版本做為範例，v3 版本的使用方法跟 v2 版不會差太多，使用方式請參閱文件。
 
@@ -90,7 +97,7 @@ end
 
 重新整理頁面，這時候的畫面會變成這樣：
 
-![image](images/chapter28/payment-form.png)
+![image](/images/chapter28/payment-form.png)
 
 ### 測試卡號
 
@@ -101,9 +108,9 @@ Braintree 有提供一組測試用的卡號：
 
 填完卡號以及有效期限按下送出後，沒意外的話應該會看到這個錯誤畫面：
 
-![image](images/chapter28/post-error.png)
+![image](/images/chapter28/post-error.png)
 
-那是因為我們還沒有寫這個 `checkout` Action，所以有這個錯誤訊息是正常的。到這裡，前端頁面的設定算是完成一部份了。為什麼說一部份? 因為那個 `clientToken` 目前還是寫死的，它應該由我們的伺服器來傳給它才對，這也就是我們下一步要做的事。
+那是因為我們還沒有寫這個 `checkout` Action，所以有這個錯誤訊息是正常的。到這裡，前端頁面的設定算是完成一部份了。為什麼說一部份？因為那個 `clientToken` 目前還是寫死的，它應該由我們的伺服器來傳給它才對，這也就是我們下一步要做的事。
 
 ## <a name="back-end"></a>使用 Braintree - 後端
 
@@ -136,7 +143,7 @@ Braintree::Configuration.private_key = "use_your_private_key"
 
 其中 `use_your_merchant_id`、`use_your_public_key` 以及 `use_your_private_key` 這三個資訊，請到 Braintree 的上方選單「Account」→「My User」頁面，下方有一個「API Keys, Tokenization Keys, Encryption Keys」段落，裡面可以新增或取得所需的資訊：
 
-![image](images/chapter28/api-keys.png)
+![image](/images/chapter28/api-keys.png)
 
 > 注意：修改過 `config` 目錄下的檔案，通常都需要重新啟動 `rails server` 才會生效。
 
@@ -206,7 +213,7 @@ Parameters: {"utf8"=>"✓", "authenticity_token"=>"PdmlFcBf6AmjyNg9bM6nh3wppzdC3
 
 這段資訊裡面我們會需要的是 `payment_method_nonce` 以及 `id`，所以只要截取這兩個資訊出來就行了：
 
-> 你有發現這串 params 裡面沒有「信用卡卡號」嗎?
+> 你有發現這串 params 裡面沒有「信用卡卡號」嗎？
 
 ```ruby
 class ProductsController < ApplicationController
@@ -239,14 +246,14 @@ end
 說明：
 
 1. 因為 `checkout` Action 也需要先把要刷卡的那項商品挑出來，所以在 `before_action` 也把它掛上去
-2. `Braintree::Transaction.sale` 方法需傳入「金額」以及 Client 頁面傳過來的那個隨機數(nonce)
+2. `Braintree::Transaction.sale` 方法需傳入「金額」以及 Client 頁面傳過來的那個隨機數（nonce）
 3. 如果刷卡錯誤需適時的提醒使用者哪裡發生錯誤
 
 如果一切順利，應該就會轉往商品列表頁面了。
 
 這時候回到 Braintree 的後台主頁面，可以看到我們的確刷了 100 塊錢：
 
-![image](images/chapter28/paid.png)
+![image](/images/chapter28/paid.png)
 
 ## 小結
 

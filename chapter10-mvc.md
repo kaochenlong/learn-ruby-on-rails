@@ -1,12 +1,19 @@
+---
+
+title: Model、View、Controller 三分天下
+permalink: /chapters/10-mvc
+
+---
+
 # Model、View、Controller 三分天下
 
-- [為什麼要這麼麻煩?](#why-mvc)
+- [為什麼要這麼麻煩？](#why-mvc)
 - [圖解 MVC](#mvc-flow)
 - [目錄結構](#project-folders)
 
-Rails 的專案是採用 Model、View、Controller (簡稱 MVC) 的方式設計的。當年我在開發 PHP 專案的時候都沒有這麼麻煩，就是在一個 .php 檔案就處理完查詢資料庫、展示資料等工作(那時候沒有使用其它框架)。所以在我剛開始學習 Rails 的時候一直有這個疑問，就是「為什麼 Rails 要搞這麼複雜? 檔案分得這麼細要一直切換實在很麻煩耶!」
+Rails 的專案是採用 Model、View、Controller（簡稱 MVC）的方式設計的。當年我在開發 PHP 專案的時候都沒有這麼麻煩，就是在一個 .php 檔案就處理完查詢資料庫、展示資料等工作（那時候沒有使用其它框架）。所以在我剛開始學習 Rails 的時候一直有這個疑問，就是「為什麼 Rails 要搞這麼複雜？檔案分得這麼細要一直切換實在很麻煩耶！」
 
-## <a name="why-mvc"></a>為什麼要這麼麻煩?
+## <a name="why-mvc"></a>為什麼要這麼麻煩？
 
 ### 分工容易
 
@@ -20,13 +27,13 @@ Rails 的專案是採用 Model、View、Controller (簡稱 MVC) 的方式設計�
 
 我們用一張圖來說明 Rails 裡的 MVC 是怎麼運作的：
 
-![image](images/chapter10/mvc.png)
+![image](/images/chapter10/mvc.png)
 
-1. 當有使用者輸入網址，連到你的網站的時候，第一關會遇到的是路徑對照表(Route，檔案 `config/routes.rb`)。
+1. 當有使用者輸入網址，連到你的網站的時候，第一關會遇到的是路徑對照表（Route，檔案 `config/routes.rb`）。
 2. 在這個路徑對照表裡，記錄著這個網站對外開放的路徑對照表。Rails 會根據使用者輸入的網址及參數，比對這個路徑對照表的資料，然後告訴你應該去找哪個 Controller 上的哪個 Action；或是在對照表裡查不到相關資料，然後就會告訴你 `HTTP 404` 找不到頁面。
 3. 在 Controller 上通常會有好幾個 Action，其實這些 Action 說穿了就是一般的方法而已。透過路徑對照表，找到了對應的 Action，這個 Action 會決定要做什麼事。
 4. 舉例個子來說，在這個 Action 可能會需要查閱「目前所有的商品列表」，接著它就會去請 Model 幫忙要資料。
-5. 雖然 Model 本身並不是資料庫，但它可以幫你把你跟 Model 說的「人話」轉成資料庫看得懂的資料庫查詢語言(SQL)。
+5. 雖然 Model 本身並不是資料庫，但它可以幫你把你跟 Model 說的「人話」轉成資料庫看得懂的資料庫查詢語言（SQL）。
 6. 透過資料庫查詢語言，Model 從資料庫那邊取得你想要的資料。
 7. Model 把這包資料交回 Controller/Action 手上。
 8. 雖然 Controller/Action 拿到資料了，但目前這包東西還沒美化、整理過，還不適合給使用者看，所以 Controller/Action 需要跟 View 借一下畫面，讓資料更適合閱讀。
@@ -42,7 +49,7 @@ Rails 的專案是採用 Model、View、Controller (簡稱 MVC) 的方式設計�
 
 跟其它 MVC 相比，Route 相對的較為單純，全部的路徑設定都放在 `config/routes.rb` 這個檔案裡：
 
-![image](images/chapter10/folder-config.png)
+![image](/images/chapter10/folder-config.png)
 
 `config` 目錄裡面除了 `routes.rb` 之外，基本上跟整個專案設定有關的幾乎都是放在這裡，例如 `database.yml` 就是專門用來設定資料庫連線資訊的地方。關於 Route 的使用會在下一篇做更詳細的介紹。
 
@@ -50,7 +57,7 @@ Rails 的專案是採用 Model、View、Controller (簡稱 MVC) 的方式設計�
 
 Controller 就是放在專案的 `app/controllers` 目錄裡：
 
-![image](images/chapter10/folder-controller.png)
+![image](/images/chapter10/folder-controller.png)
 
 通常每個 Controller 會有自己獨立的檔案，而且檔案的名字跟類別的名字是對得起來的。規則很簡單，就是「大寫字元改成底線加小寫」。舉個例子來說，如果類別的名稱如果叫做 `PostsController` 的話，那這個檔案的名字就是會是 `posts_controller.rb`。
 
@@ -74,11 +81,11 @@ Controller 就是放在專案的 `app/controllers` 目錄裡：
 
 Model 相關的檔案都是放在 `app/models` 目錄裡：
 
-![image](images/chapter10/folder-model.png)
+![image](/images/chapter10/folder-model.png)
 
 它的類別與檔名規則跟 Controller 是一樣的，例如 `Post` Model，它的檔名是 `post.rb`；如果是 `UserStory` 的話，則是 `user_story.rb`，以此類推。
 
-另外，如果資料庫中有 Model 相對應的資料表(Table)的話，資料表的命名慣例是「小寫 + 複數」。簡單整理如下：
+另外，如果資料庫中有 Model 相對應的資料表（Table）的話，資料表的命名慣例是「小寫 + 複數」。簡單整理如下：
 
 | Model 類別名稱 |  檔案名稱          | 資料表名稱    |
 |----------------|--------------------|---------------|
@@ -86,13 +93,13 @@ Model 相關的檔案都是放在 `app/models` 目錄裡：
 | Post           |  post.rb           | posts         |
 | ProductItem    |  product_item.rb   | product_items |
 
-當然資料表的命名慣例是可以修改的，但沒必要的話通常不會特別去改它，儘量維持「慣例優於設定」(CoC, Convention Over Configuration)的原則。
+當然資料表的命名慣例是可以修改的，但沒必要的話通常不會特別去改它，儘量維持「慣例優於設定」（CoC, Convention Over Configuration）的原則。
 
 ### View
 
 View 主要是負責畫面輸出，通常是一群 HTML 之類的檔案，就放在 `app/views/` 目錄底下，而且預設會隨著 Controller 的名字而集中在某個資料夾：
 
-![image](images/chapter10/folder-view.png)
+![image](/images/chapter10/folder-view.png)
 
 像是 `PostsController` 相關的 View，就會放在 `app/views/posts` 目錄裡。如果執行的是 `PostsController` 的 `index` Action，沒特別聲明 render 方法的話，預設會來找 `app/views/posts/index.html.erb` 這個檔案。
 

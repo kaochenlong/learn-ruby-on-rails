@@ -1,3 +1,10 @@
+---
+
+title: 寄發信件
+permalink: /chapters/19-send-email
+
+---
+
 # 寄發信件
 
 ## <a name="send-mail">寄發信件
@@ -32,7 +39,7 @@ class ContactMailer < ApplicationMailer
 end
 ```
 
-咦? 有沒發現好像在哪看過這樣的東西? 其實 Mailer 的檔案結構，跟 Controller 有點像：
+咦？有沒發現好像在哪看過這樣的東西？其實 Mailer 的檔案結構，跟 Controller 有點像：
 
 |          | Controller                              | Mailer                            |
 |----------|:----------------------------------------|:----------------------------------|
@@ -42,7 +49,7 @@ end
 | Layout   | app/views/layouts/application.html.erb  | app/views/layouts/mailer.html.erb |
 | View     | app/views/users/*.erb                   | /app/views/contact_mailer/*.erb   |
 
-### mailer 上的 action?
+### mailer 上的 action？
 
 即然說 Mailer 跟 Controller 有點像，在 Mailer 也有類似像 action 之類的角色，寫起來大概像這樣：
 
@@ -55,7 +62,7 @@ class ContactMailer < ApplicationMailer
 end
 ```
 
-在 `ContactMailer` 類別裡定義了一個叫做 `say_hello_to` 的方法，並傳入一個 user 物件做為參數。其中真正進行寄信的是 `mail` 那行方法。咦? 等等，那信件內容呢? 跟 Controller 相比較起來，信件內容大概就是跟 View 差不多的角色。讓我們在 `app/views/contact_mailer` 目錄裡新增一個跟剛剛這個方法「同名」的檔案(檔案名稱：say_hello_to.html.erb)，並且加上以下內容：
+在 `ContactMailer` 類別裡定義了一個叫做 `say_hello_to` 的方法，並傳入一個 user 物件做為參數。其中真正進行寄信的是 `mail` 那行方法。咦？等等，那信件內容呢？跟 Controller 相比較起來，信件內容大概就是跟 View 差不多的角色。讓我們在 `app/views/contact_mailer` 目錄裡新增一個跟剛剛這個方法「同名」的檔案(檔案名稱：say_hello_to.html.erb)，並且加上以下內容：
 
 ```erb
 <%= @user.name %>，你好：
@@ -65,11 +72,11 @@ end
 謝謝你的來信，再見!
 ```
 
-寫起來的手感是不是真的跟一般的 View 很像呢? 它一樣也可以從 Mailer 取得實體變數，並輸出在這個檔案裡。
+寫起來的手感是不是真的跟一般的 View 很像呢？它一樣也可以從 Mailer 取得實體變數，並輸出在這個檔案裡。
 
-### 準備寄發!
+### 準備寄發！
 
-準備來寄信吧! 我希望可以在成功新增 User 的當下，就寄一封通知信給這位使用者：
+準備來寄信吧！我希望可以在成功新增 User 的當下，就寄一封通知信給這位使用者：
 
 ```ruby
 class UsersController < ApplicationController
@@ -95,13 +102,13 @@ ContactMailer.say_hello_to(@user).deliver_now
 
 就是寄信的地方了。
 
-有發現有點怪怪的地方嗎? 我們在 `ContactMailer` 這個類別裡定義實體方法 `say_hello_to`，為什麼這邊用起來變類別方法了? 其實這算是 ActionMailer 幫你做的魔術，只要是繼承自 ActionMailer 的類別，定義在 Mailer 裡的實體方法，都會被轉換成類別方法，使用起來更方便。
+有發現有點怪怪的地方嗎？我們在 `ContactMailer` 這個類別裡定義實體方法 `say_hello_to`，為什麼這邊用起來變類別方法了？其實這算是 ActionMailer 幫你做的魔術，只要是繼承自 ActionMailer 的類別，定義在 Mailer 裡的實體方法，都會被轉換成類別方法，使用起來更方便。
 
 試一下：
 
-![image](images/chapter19/sendmail-1.png)
+![image](/images/chapter19/sendmail-1.png)
 
 按下送出之後，過沒多久就收到信了：
 
-![image](images/chapter19/sendmail-2.png)
+![image](/images/chapter19/sendmail-2.png)
 

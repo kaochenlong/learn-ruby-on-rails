@@ -1,3 +1,10 @@
+---
+
+title: 購物車 Part 1
+permalink: /chapters/25-shopping-cart-part-1
+
+---
+
 # 購物車 Part 1
 
 - [功能設計](#requirement)
@@ -8,7 +15,7 @@
 
 在這個實作範例中，我們將使用：
 
-1. TDD (Test-Driven Development) 方式進行開發。
+1. TDD（Test-Driven Development）方式進行開發。
 2. 購物車的內容不會建立資料表。
 
 關於第 2 點，有些人會習慣使用建立資料表來存購物車的資料，不過我們這裡選擇使用 Session 來存放資料。
@@ -17,27 +24,27 @@
 
 ## <a name="requirement"></a>功能設計
 
-![image](images/chapter25/cart.png)
+![image](/images/chapter25/cart.png)
 
 說明：
 
-一台購物車(Cart,①)會有很多的購買項目 (CartItem ②)，每個購買項目都有一項商品(Product ③)以及數量(Quantity ④)
+一台購物車（Cart,①）會有很多的購買項目（CartItem ②），每個購買項目都有一項商品（Product ③）以及數量（Quantity ④）
 
 ### 基本功能
 
 1. 可以把商品丟到到購物車裡，然後購物車裡就有東西了。
-2. 如果加了相同種類的商品到購物車裡，購買項目(CartItem)並不會增加，但商品的數量會改變。
+2. 如果加了相同種類的商品到購物車裡，購買項目（CartItem）並不會增加，但商品的數量會改變。
 3. 商品可以放到購物車裡，也可以再拿出來。
-4. 每個 Cart Item 都可以計算它自己的金額(小計)
+4. 每個 Cart Item 都可以計算它自己的金額（小計）。
 5. 可以計算整台購物車的總消費金額。
-6. 特別活動可能可搭配折扣(例如聖誕節的時候全面打 9 折，或是滿額滿千送百)。
+6. 特別活動可能可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百）。
 
 ### 進階功能
 
 因為購物車將以 Session 方式儲存，所以：
 
 1. 可以將購物車內容轉換成 Hash，存到 Session 裡
-2. 也可以把 Session 的內容(Hash 格式)，還原成購物車的內容。
+2. 也可以把 Session 的內容（Hash 格式），還原成購物車的內容。
 
 ## <a name="rspec-env"></a>測試環境設定
 
@@ -95,7 +102,7 @@ Gem 安裝完成之後，接著照 `rspec-rails` 的說明頁面，安裝 `rspec
         invoke  factory_girl
         create    spec/factories/carts.rb
 
-接著執行測試看看，應該是會失敗(錯誤訊息是「沒有 Cart 這個常數」)：
+接著執行測試看看，應該是會失敗（錯誤訊息是「沒有 Cart 這個常數」）：
 
     $ rspec
     /private/tmp/shopping_mall/spec/models/cart_spec.rb:3:in `<top (required)>': uninitialized constant Cart (NameError)
@@ -145,19 +152,19 @@ RSpec.describe Cart, type: :model do
     it "可以把商品丟到到購物車裡，然後購物車裡就有東西了" do
     end
 
-    it "如果加了相同種類的商品到購物車裡，購買項目(CartItem)並不會增加，但商品的數量會改變" do
+    it "如果加了相同種類的商品到購物車裡，購買項目（CartItem）並不會增加，但商品的數量會改變" do
     end
 
     it "商品可以放到購物車裡，也可以再拿出來" do
     end
 
-    it "每個 Cart Item 都可以計算它自己的金額(小計)" do
+    it "每個 Cart Item 都可以計算它自己的金額（小計）" do
     end
 
     it "可以計算整台購物車的總消費金額" do
     end
 
-    it "特別活動可能可搭配折扣(例如聖誕節的時候全面打 9 折，或是滿額滿千送百)" do
+    it "特別活動可能可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百）" do
     end
   end
 
@@ -166,7 +173,7 @@ RSpec.describe Cart, type: :model do
     it "可以將購物車內容轉換成 Hash，存到 Session 裡" do
     end
 
-    it "可以把 Session 的內容(Hash 格式)，還原成購物車的內容" do
+    it "可以把 Session 的內容（Hash 格式），還原成購物車的內容" do
     end
   end
 end
@@ -232,7 +239,7 @@ RSpec.describe Cart, type: :model do
   describe "購物車基本功能" do
     # ...[略]
 
-    it "如果加了相同種類的商品到購物車裡，購買項目(CartItem)並不會增加，但商品的數量會改變" do
+    it "如果加了相同種類的商品到購物車裡，購買項目（CartItem）並不會增加，但商品的數量會改變" do
       cart = Cart.new                             # 新增一台購物車
       3.times { cart.add_item(1) }                # 加了 3 次的 1
       5.times { cart.add_item(2) }                # 加了 5 次的 2
@@ -355,7 +362,7 @@ end
       invoke      factory_girl
       create        spec/factories/products.rb
 
-別忘了執行 `rails db:migrate` 喔!
+別忘了執行 `rails db:migrate` 喔！
 
 接下來，回頭來幫 `CartItem` 加上 `product` 方法，讓它可以根據目前這條 item 的 `product_id` 查出產品是什麼：
 
@@ -385,7 +392,7 @@ end
 TDD 的手感：
 
 1. 確認規格，把規格轉成測試
-2. 執行測試，一定會失敗! (除非你有小精靈)
+2. 執行測試，一定會失敗！（除非你有小精靈）
 3. 想辦法讓測試通過
 4. 回到第一步
 

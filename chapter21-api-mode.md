@@ -1,12 +1,17 @@
+---
+
+title: API 模式
+permalink: /chapters/21-api-mode
+
+---
+
 # API 模式
 
 - [輸出成 JSON 格式 - 使用 render](#output-json-with-render)
 - [輸出成 JSON 格式 - 使用 Jbuilder](#output-json-with-jbuilder)
 - [API-Only 模式](#api-only)
 
-在開發手機應用程式或是一些前端比較吃重的網站應用程式時，常會需要跟後端伺服器交換資料，交換資料的格式常見的有 JSON 或 XML 等格式，這個交換介面又稱之 API (Application Programming Interface)。
-
-雖然 Rails 的強項之一是資料的 CRUD (新增、修改、刪除) 功能，但其實要拿來做 API (Application Programming Interface) 也是相當合適的。
+在開發手機應用程式或是一些前端比較吃重的網站應用程式時，常會需要跟後端伺服器交換資料，交換資料的格式常見的有 JSON 或 XML 等格式，這個交換介面又稱之 API（Application Programming Interface）。雖然 Rails 的強項之一是資料的 CRUD（新增、修改、刪除）功能，但其實要拿來做 API（Application Programming Interface）也是相當合適的。
 
 ## <a name="output-json-with-render"></a>輸出成 JSON 格式 - 使用 render
 
@@ -35,11 +40,11 @@ end
 
 原本的樣子長這樣：
 
-![image](images/chapter21/index-html.png)
+![image](/images/chapter21/index-html.png)
 
 這樣就會直接在 Controller 階段就直接以 JSON 格式輸出，輸出結果如下：
 
-![image](images/chapter21/index-json.png)
+![image](/images/chapter21/index-json.png)
 
 排版整理後結果如下：
 
@@ -77,7 +82,7 @@ end
 
 不知道大家有沒注意到，其實在使用 Scaffold 產生一堆檔案的時候，在 View 的目錄裡有多一些特別的檔案：
 
-![image](images/chapter21/views.png)
+![image](/images/chapter21/views.png)
 
 這幾個結尾是 `.json.jbuilder` 的檔案，就跟 `.html.erb` 的概念一樣，`.html.erb` 是指會使用 ERB 樣版引擎來解讀這個檔案，並轉換成 HTML 格式；而 `.json.jbuilder` 則是使用 [Jbuilder](https://github.com/rails/jbuilder) 這個 gem，把結果輸出成 JSON 格式。
 
@@ -106,7 +111,7 @@ json.url user_url(user, format: :json)
 json.extract! user, :name, :email
 ```
 
-輸出結果就會變成(經過排版結果)：
+輸出結果就會變成（經過排版結果）：
 
 ```json
 [
@@ -127,7 +132,7 @@ json.extract! user, :name, :email
 
 使用 `render json: @users` 的寫法只能一口氣把 `@users` 的內容全部印出來，而使用 Jbuilder 則是可以微調要輸出的欄位。另一個好處就是原本 `/users` 的頁面還是可保持 HTML 的頁面呈現，只有 `/users.json` 的時候才會以 JSON 格式輸出。
 
-### 為什麼加 `.json` 就可以了?
+### 為什麼加 `.json` 就可以了？
 
 其實這算是 Route 做的好事，先看一下 `rails routes` 的結果：
 
@@ -142,7 +147,7 @@ json.extract! user, :name, :email
               PUT    /users/:id(.:format)      users#update
               DELETE /users/:id(.:format)      users#destroy
 
-有注意到後面那個 `(.:format)` 嗎? 就是這個東西。假設你輸入網址 `/users.html` 的時候，後面的附檔名就會被捕捉成 `format`，然後如果在 Controller 的 Action 沒有特別聲明要以什麼方式 render 的話，就會依據這個 `format` 去找對應的檔案，也就是說會找到 app/views/index.`html`.erb。 (還記得結果是 `.html.erb` 的意思嗎?)
+有注意到後面那個 `(.:format)` 嗎？就是這個東西。假設你輸入網址 `/users.html` 的時候，後面的附檔名就會被捕捉成 `format`，然後如果在 Controller 的 Action 沒有特別聲明要以什麼方式 render 的話，就會依據這個 `format` 去找對應的檔案，也就是說會找到 app/views/index.`html`.erb。（還記得結果是 `.html.erb` 的意思嗎？）
 
 同理可證，當網址是輸入 `/users.json` 的時候，它會去找 app/views/index.`json`.jbuilder 來輸出結果。 如果後面沒有附檔名，例如 `/users`，則是預設會去找 `html` 的樣版。
 
