@@ -1,6 +1,7 @@
 ---
 
 title: 變數、常數、流程控制、迴圈
+comments: true
 permalink: /chapters/05-ruby-basic-1
 
 ---

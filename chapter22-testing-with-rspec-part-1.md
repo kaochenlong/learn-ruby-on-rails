@@ -1,6 +1,7 @@
 ---
 
 title: 寫測試讓你更有信心 Part 1
+comments: true
 permalink: /chapters/22-testing-with-rspec-part-1
 
 ---

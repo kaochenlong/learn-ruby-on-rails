@@ -1,6 +1,7 @@
 ---
 
 title: 程式碼整理
+comments: true
 permalink: /chapters/24-organize-your-code
 
 ---

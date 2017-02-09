@@ -1,6 +1,7 @@
 ---
 
 title: 寄發信件
+comments: true
 permalink: /chapters/19-send-email
 
 ---

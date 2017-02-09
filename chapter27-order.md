@@ -1,6 +1,7 @@
 ---
 
 title: 訂單處理
+comments: true
 permalink: /chapters/27-order
 
 ---

@@ -1,6 +1,7 @@
 ---
 
 title: Controller
+comments: true
 permalink: /chapters/12-controllers
 
 ---

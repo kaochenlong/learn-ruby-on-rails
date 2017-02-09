@@ -1,6 +1,7 @@
 ---
 
 title: 寫在最前面
+comments: true
 permalink: /chapters/00-about.html
 
 ---

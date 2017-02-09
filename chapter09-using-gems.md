@@ -1,6 +1,7 @@
 ---
 
 title: 使用套件（gem）讓開發更有效率
+comments: true
 permalink: /chapters/09-using-gems
 
 ---

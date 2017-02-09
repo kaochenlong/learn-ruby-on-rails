@@ -1,6 +1,7 @@
 ---
 
 title: 生態圈及簡介
+comments: true
 permalink: /chapters/01-ecosystem-and-introduction
 
 ---

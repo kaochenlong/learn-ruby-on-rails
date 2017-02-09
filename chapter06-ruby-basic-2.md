@@ -1,6 +1,7 @@
 ---
 
 title: 數字、字串、陣列、雜湊、符號
+comments: true
 permalink: /chapters/06-ruby-basic-2
 
 ---
