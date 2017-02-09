@@ -8,53 +8,47 @@
 
 ## 目錄
 
-### 簡介
+## 簡介
 
-- [00 寫在最前面](chapter00-about.md)
-- [01 生態圈及簡介](chapter01-ecosystem-and-introduction.md)
-- [02 開發環境安裝](chapter02-environment-setup.md)
-- [03 開發工具與常用命令列指令](chapter03-command-line-tools.md)
-- [04 第一個應用程式(使用 Scaffold)](chapter04-your-first-rails-application.md)
+- [00 寫在最前面](/chapters/00-about.html)
+- [01 生態圈及簡介](/chapters/01-ecosystem-and-introduction.html)
+- [02 開發環境安裝](/chapters/02-environment-setup.html)
+- [03 開發工具與常用命令列指令](/chapters/03-command-line-tools.html)
+- [04 第一個應用程式(使用 Scaffold)](/chapters/04-your-first-rails-application.html)
 
-### Ruby 基本
+## Ruby 基本
 
-- [05 變數、常數、流程控制、迴圈](chapter05-ruby-basic-1.md)
-- [06 數字、字串、陣列、雜湊、符號](chapter06-ruby-basic-2.md)
-- [07 方法與程式碼區塊](chapter07-ruby-basic-3.md)
-- [08 類別與模組](chapter08-ruby-basic-4.md)
-- [09 使用套件(gem)讓開發更有效率](chapter09-using-gems.md)
+- [05 變數、常數、流程控制、迴圈](/chapters/05-ruby-basic-1.html)
+- [06 數字、字串、陣列、雜湊、符號](/chapters/06-ruby-basic-2.html)
+- [07 方法與程式碼區塊](/chapters/07-ruby-basic-3.html)
+- [08 類別與模組](/chapters/08-ruby-basic-4.html)
+- [09 使用套件（gem）讓開發更有效率](/chapters/09-using-gems.html)
 
-### Rails 入門
+## Rails 入門
 
-- [10 Model、View、Controller 三分天下](chapter10-mvc.md)
-- [11 Routes](chapter11-routes.md)
-- [12 Controller](chapter12-controllers.md)
-- [13 CRUD 分解動作 - 簡易票選系統實作](chapter13-crud.md)
-- [14 Layout, Render 與 View Helper](chapter14-layout-render-and-view-helper.md)
-- [15 Model 基本操作](chapter15-model-basic.md)
-- [16 Model Migration](chapter16-model-migration.md)
-- [17 Model 關連性](chapter17-model-relationship.md)
-- [18 Model 驗證及回呼](chapter18-model-validation-and-callback.md)
-- [19 寄發信件](chapter19-send-email.md)
-- [20 背景工作及工作排程](chapter20-background-job.md)
-- [21 API 模式](chapter21-api-mode.md)
-- [22 寫測試讓你更有信心 - Part 1](chapter22-testing-with-rspec-part-1.md)
-- [23 寫測試讓你更有信心 - Part 2](chapter23-testing-with-rspec-part-2.md)
-- [24 程式碼整理](chapter24-organize-your-code.md)
+- [10 Model、View、Controller 三分天下](/chapters/10-mvc.html)
+- [11 Routes](/chapters/11-routes.html)
+- [12 Controller](/chapters/12-controllers.html)
+- [13 CRUD 分解動作 - 簡易票選系統實作](/chapters/13-crud.htlm)
+- [14 Layout，Render 與 View Helper](/chapters/14-layout-render-and-view-helper.html)
+- [15 Model 基本操作](/chapters/15-model-basic.html)
+- [16 Model Migration](/chapters/16-model-migration.html)
+- [17 Model 關連性](/chapters/17-model-relationship.html)
+- [18 Model 驗證及回呼](/chapters/18-model-validation-and-callback.html)
+- [19 寄發信件](/chapters/19-send-email.html)
+- [20 背景工作及工作排程](/chapters/20-background-job.html)
+- [21 API 模式](/chapters/21-api-mode.html)
+- [22 寫測試讓你更有信心 - Part 1](/chapters/22-testing-with-rspec-part-1.html)
+- [23 寫測試讓你更有信心 - Part 2](/chapters/23-testing-with-rspec-part-2.html)
+- [24 程式碼整理](/chapters/24-organize-your-code.html)
 
-### 實作
+## 實作
 
-- [25 購物車 - Part 1](chapter25-shopping-cart-part-1.md)
-- [26 購物車 - Part 2](chapter26-shopping-cart-part-2.md)
-- [27 訂單處理](chapter27-order.md)
-- [28 金流串接(使用 Paypal)](chapter28-payment.md)
-- [29 網站部署(使用 Heroku)](chapter29-deployment.md)
-- 30 後台管理系統設計
-- 31 ActionCable 即時聊天室
-
-### 其它
-
-- 會員系統與社群帳號串接(以 Facebook 為例)
+- [25 購物車 - Part 1](/chapters/25-shopping-cart-part-1.html)
+- [26 購物車 - Part 2](/chapters/26-shopping-cart-part-2.html)
+- [27 訂單處理](/chapters/27-order.html)
+- [28 金流串接（使用 Paypal）](/chapters/28-payment.html)
+- [29 網站部署（使用 Heroku）](/chapters/29-deployment.html)
 
 ## 版本
 
