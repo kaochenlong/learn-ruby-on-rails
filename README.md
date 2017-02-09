@@ -1,10 +1,16 @@
+---
+
+redirect_from: "http://railsbook.tw"
+
+---
+
 # 為你自己學 Ruby on Rails
 
 「為你自己學 Ruby on Rails」系列文章。
 
 如其標題，學習不需要為公司、不需要為長官、同事、不需要為別人，只為你自己。
 
-<a href="http://railsbook.tw" class="btn">好讀版本</a>
+好讀版本 <http://railsbook.tw>
 
 ## 版本
 
