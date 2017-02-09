@@ -207,7 +207,7 @@ end
 
 請打開專案的 `app/views/posts/index.html.erb` 檔案，把第 21 行的 `post.user` 改成 `post.user.name`，像這樣：
 
-```
+```erb
 <% @posts.each do |post| %>
   <tr>
     <td><%= post.title %></td>
