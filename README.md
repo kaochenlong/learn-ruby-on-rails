@@ -1,9 +1,3 @@
----
-
-redirect_from: "http://railsbook.tw"
-
----
-
 # 為你自己學 Ruby on Rails
 
 「為你自己學 Ruby on Rails」系列文章。
