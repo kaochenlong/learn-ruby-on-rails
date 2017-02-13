@@ -48,7 +48,7 @@ Rails 的專案是採用 Model、View、Controller（簡稱 MVC）的方式設�
 
 ### Route
 
-跟其它 MVC 相比，Route 相對的較為單純，全部的路徑設定都放在 `config/routes.rb` 這個檔案裡：
+跟 MVC 相比，Route 相對的較為單純，全部的路徑設定都放在 `config/routes.rb` 這個檔案裡：
 
 ![image](/images/chapter10/folder-config.png)
 
@@ -80,7 +80,7 @@ Controller 就是放在專案的 `app/controllers` 目錄裡：
 
 ### Model
 
-Model 相關的檔案都是放在 `app/models` 目錄裡：
+跟 Model 相關的檔案都放在 `app/models` 目錄裡：
 
 ![image](/images/chapter10/folder-model.png)
 
@@ -94,15 +94,15 @@ Model 相關的檔案都是放在 `app/models` 目錄裡：
 | Post           |  post.rb           | posts         |
 | ProductItem    |  product_item.rb   | product_items |
 
-當然資料表的命名慣例是可以修改的，但沒必要的話通常不會特別去改它，儘量維持「慣例優於設定」（CoC, Convention Over Configuration）的原則。
+當然資料表的命名慣例是可以修改的，但沒必要的話通常不會特別去改它，儘量維持 Rails 的「慣例優於設定」（CoC, Convention Over Configuration）的原則。
 
 ### View
 
-View 主要是負責畫面輸出，通常是一群 HTML 之類的檔案，就放在 `app/views/` 目錄底下，而且預設會隨著 Controller 的名字而集中在某個資料夾：
+View 的工作主要是負責畫面輸出，通常是一群 HTML 之類的檔案，就放在 `app/views/` 目錄底下，而且預設會隨著 Controller 的名字而集中在某個資料夾：
 
 ![image](/images/chapter10/folder-view.png)
 
-像是 `PostsController` 相關的 View，就會放在 `app/views/posts` 目錄裡。如果執行的是 `PostsController` 的 `index` Action，沒特別聲明 render 方法的話，預設會來找 `app/views/posts/index.html.erb` 這個檔案。
+舉例來說，跟 `PostsController` 相關的 View，就會放在 `app/views/posts` 目錄裡。如果執行的是 `PostsController` 的 `index` Action，沒特別聲明 render 方法的話，預設會去找 `app/views/posts/index.html.erb` 這個檔案。
 
 而這個 `index.html.erb` 的附檔名本身也是有特別意義的：
 

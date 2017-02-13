@@ -13,7 +13,7 @@ permalink: /chapters/11-routes
 - [資源 Resource](#resources)
 - [後台網址設計](#namespace)
 
-先讓我們回顧一下前一個章節的這張圖解：
+先讓我們回顧一下上一個章節的這張圖解：
 
 ![image](/images/chapter10/mvc.png)
 
@@ -114,6 +114,12 @@ end
      about GET  /about(.:format) pages#about
 
 > 注意：如果你用 Rails 版本是 4.x 版，請使用 `rake routes`
+
+### Route 不是全部
+
+其實並不是所有的 HTTP Request 都會經過 Route，如果是放在專案的 `public` 目錄裡的檔案是不用經過 Route 的。例如在裡面放了一個檔名為 `hello.html` 的檔案，這樣一來只要使用者輸入網址 `http://localhost:3000/hello.html` ，即使 Route 裡沒有這條路徑，還是可以直接讀取到該頁面的內容。
+
+如果你有翻一下 `public` 目錄的話，就會發現找不到頁面的 `404.html` 頁面跟伺服器錯誤的 `500.html` 頁面都在這裡面喔。
 
 ### 首頁網址設定
 
@@ -579,6 +585,22 @@ Rails.application.routes.draw do
   end
 end
 ```
+
+### 等等，明明有這個網址但怎麼連不上
+
+假設我的 `config/routes.rb` 長這樣：
+
+```ruby
+Rails.application.routes.draw do
+  post "/orders", to: "orders#index"
+end
+```
+
+然後很開心的打開瀏覽器，連上 `http://localhost:3000/orders` 的時候，會發現這個錯誤畫面：
+
+![image](/images/chapter11/no-route-error2.png)
+
+查一下 `rails routes` 指令的輸出，雖然有 `/orders` 路徑沒錯，但它的方法是 `POST`，一般連結是使用 `GET` 方法，所以出現 Route 找不到是正常的。要能正確的連上頁面，除了路徑正確之外，方法(Verb)也要正確。
 
 ## <a name="namespace"></a>後台網址設計
 
