@@ -2,7 +2,7 @@
 
 title: Model 關連性
 comments: true
-permalink: /chapters/17-model-relationship
+permalink: /chapters/17-model-relationship.html
 
 ---
 

@@ -2,7 +2,7 @@
 
 title: Model 驗證及回呼
 comments: true
-permalink: /chapters/18-model-validation-and-callback
+permalink: /chapters/18-model-validation-and-callback.html
 
 ---
 

@@ -2,7 +2,7 @@
 
 title: Routes
 comments: true
-permalink: /chapters/11-routes
+permalink: /chapters/11-routes.html
 
 ---
 

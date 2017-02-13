@@ -2,7 +2,7 @@
 
 title: Controller
 comments: true
-permalink: /chapters/12-controllers
+permalink: /chapters/12-controllers.html
 
 ---
 

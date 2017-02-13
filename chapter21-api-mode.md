@@ -2,7 +2,7 @@
 
 title: API 模式
 comments: true
-permalink: /chapters/21-api-mode
+permalink: /chapters/21-api-mode.html
 
 ---
 

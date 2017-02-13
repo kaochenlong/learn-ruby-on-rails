@@ -2,7 +2,7 @@
 
 title: Layout, Render 與 View Helper
 comments: true
-permalink: /chapters/14-layout-render-and-view-helper
+permalink: /chapters/14-layout-render-and-view-helper.html
 
 ---
 

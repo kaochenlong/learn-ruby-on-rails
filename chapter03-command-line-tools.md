@@ -2,7 +2,7 @@
 
 title: 開發工具與常用命令列指令
 comments: true
-permalink: /chapters/03-command-line-tools
+permalink: /chapters/03-command-line-tools.html
 
 ---
 

@@ -2,7 +2,7 @@
 
 title: 購物車 Part 2
 comments: true
-permalink: /chapters/26-shopping-cart-part-2
+permalink: /chapters/26-shopping-cart-part-2.html
 
 ---
 

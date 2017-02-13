@@ -2,7 +2,7 @@
 
 title: 網站部署（使用 Heroku）
 comments: true
-permalink: /chapters/29-deployment
+permalink: /chapters/29-deployment.html
 
 ---
 

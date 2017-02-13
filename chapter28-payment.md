@@ -2,7 +2,7 @@
 
 title: 金流串接（使用 Paypal）
 comments: true
-permalink: /chapters/28-payment
+permalink: /chapters/28-payment.html
 
 ---
 

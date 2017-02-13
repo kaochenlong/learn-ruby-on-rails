@@ -2,7 +2,7 @@
 
 title: CRUD 分解動作 - 簡易票選系統實作
 comments: true
-permalink: /chapters/13-crud
+permalink: /chapters/13-crud.html
 
 ---
 

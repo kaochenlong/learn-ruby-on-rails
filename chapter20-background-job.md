@@ -2,7 +2,7 @@
 
 title: 背景工作及工作排程
 comments: true
-permalink: /chapters/20-background-job
+permalink: /chapters/20-background-job.html
 
 ---
 

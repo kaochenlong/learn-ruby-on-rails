@@ -2,7 +2,7 @@
 
 title: Model、View、Controller 三分天下
 comments: true
-permalink: /chapters/10-mvc
+permalink: /chapters/10-mvc.html
 
 ---
 

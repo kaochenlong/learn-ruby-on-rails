@@ -1,7 +1,8 @@
 ---
 
 title: Model Migration
-permalink: /chapters/16-model-migration
+comments: true
+permalink: /chapters/16-model-migration.html
 
 ---
 

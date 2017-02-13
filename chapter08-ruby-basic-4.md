@@ -2,7 +2,7 @@
 
 title: 類別（Class）與模組（Module）
 comments: true
-permalink: /chapters/08-ruby-basic-4
+permalink: /chapters/08-ruby-basic-4.html
 
 ---
 

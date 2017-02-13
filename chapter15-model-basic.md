@@ -1,7 +1,8 @@
 ---
 
 title: Model 基本操作
-permalink: /chapters/15-model-basic
+comments: true
+permalink: /chapters/15-model-basic.html
 
 ---
 

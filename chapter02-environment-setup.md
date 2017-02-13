@@ -2,7 +2,7 @@
 
 title: 環境設定
 comments: true
-permalink: /chapters/02-environment-setup
+permalink: /chapters/02-environment-setup.html
 
 ---
 

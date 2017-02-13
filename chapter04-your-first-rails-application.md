@@ -2,7 +2,7 @@
 
 title: 第一個應用程式（使用 Scaffold）
 comments: true
-permalink: /chapters/04-your-first-rails-application
+permalink: /chapters/04-your-first-rails-application.html
 
 ---
 

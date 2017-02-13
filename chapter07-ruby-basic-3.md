@@ -2,7 +2,7 @@
 
 title: 方法與程式碼區塊（block）
 comments: true
-permalink: /chapters/07-ruby-basic-3
+permalink: /chapters/07-ruby-basic-3.html
 
 ---
 

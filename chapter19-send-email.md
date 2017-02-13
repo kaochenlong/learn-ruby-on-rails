@@ -2,7 +2,7 @@
 
 title: 寄發信件
 comments: true
-permalink: /chapters/19-send-email
+permalink: /chapters/19-send-email.html
 
 ---
 
@@ -10,7 +10,7 @@ permalink: /chapters/19-send-email
 
 ## <a name="send-mail">寄發信件
 
-在 Rails 要寄發信件其實滿容易的，可以使用內建的 ActionMailer 來做這件事。首先，讓我們先用 Rails 內建的 mailer 產生器來產生需要的檔案：
+在 Rails 要寄發信件其實滿容易的，有內建的類別(ActionMailer) 可以輕鬆的完成這件事。在 Rails 內建的產生器中，除了我們常用的 `scaffold`、`controller`、`model` 以及 `migration` 之外，也可使用 `mailer` 這個產生器來幫你建立寄信功能所需要的基本架構。首先，讓我們先用 Rails 內建的 mailer 產生器來產生需要的檔案：
 
     $ rails g mailer Contact
         create  app/mailers/contact_mailer.rb
@@ -22,7 +22,7 @@ permalink: /chapters/19-send-email
         create    test/mailers/contact_mailer_test.rb
         create    test/mailers/previews/contact_mailer_preview.rb
 
-透過產生器，建立了一個 `ContactMailer` 類別以及在 `app/views/contact_mailer` 目錄。先讓我們看一下 `app/mailers` 目錄，現在裡面應該有 2 個檔案，分別是 `application_mailer.rb` 跟 `contact_mailer.rb`。看一下 `application_mail.erb` 的內容：
+透過 mailer 產生器，建立了一個 `ContactMailer` 類別以及 `app/views/contact_mailer` 目錄。先讓我們看一下 `app/mailers` 目錄，現在裡面應該有 2 個檔案，檔名分別是 `application_mailer.rb` 跟 `contact_mailer.rb`。打開看一下 `application_mail.erb` 檔案的內容：
 
 ```ruby
 class ApplicationMailer < ActionMailer::Base
