@@ -219,7 +219,7 @@ ActiveRecord::Schema.define(version: 20170101081538) do
 end
 ```
 
-這個檔案是你在執行 `rails db:migrate` 指令的時候順便一起產生的，你不需要也沒必要手動修改這個檔案。從這個檔案可以看得出來每個資料表的名字與欄位名稱、型態。這個檔案通常會在版本控制系統裡，如果有些比較老舊的專長，中間有些 Migration 檔因為不明原因壞掉了而無法順利執行 `rails db:migrate`，這時候也可透過 `rails db:schema:load` 把資料表建回來。
+這個檔案是你在執行 `rails db:migrate` 指令的時候順便一起產生的，你不需要也沒必要手動修改這個檔案。從這個檔案可以看得出來每個資料表的名字與欄位名稱、型態。這個檔案通常會在版本控制系統裡，如果有些比較老舊的專案，中間有些 Migration 檔因為不明原因壞掉了而無法順利執行 `rails db:migrate`，這時候也可透過 `rails db:schema:load` 把資料表建回來。
 
 另外，因為這個檔案的內容是由 `rails db:migrate` 指令產生，所以偶爾會遇到新手「Migration 寫好但還沒存檔就執行」的狀況，這時候從這個 `schema.rb` 檔案就可以看得出來。
 

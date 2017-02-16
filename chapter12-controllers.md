@@ -18,7 +18,7 @@ permalink: /chapters/12-controllers.html
 
 ### Controller 是幹嘛的
 
-Controller 中文可翻譯成「控制器」，顧名思義，就是用來控制流程，例如它可能需要跟 Model 要資料，可能需要跟 View 要 HTML template 來玩填空遊戲，或是可能需要存取外部服務（例如金流串接）等，這大多是 Controller 要做的工作。
+Controller 中文可翻譯成「控制器」，顧名思義，就是用來控制流程用的。它可能需要跟 Model 要資料，可能需要跟 View 要 HTML template 來玩填空遊戲，或是可能需要存取外部服務（例如金流串接）等，這大多是 Controller 要做的工作。
 
 ### 命名慣例
 
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 end
 ```
 
-在沒有特別指定 Resources 的 `controller` 參數的情況下，預設會對到的 Controller 就會是 `PostsController` 或是 `UsersController` 這樣的複數型態；反之，如果使用的是單數 `resource`，對到的就會是單數的 Controller。
+在沒有特別指定 Resources 的 `controller` 參數的情況下，預設會對到的 Controller 就會是 `PostsController` 或是 `UsersController` 這樣的複數型態；反之，如果使用的是單數 `resource`，對到的就會是單數命名的 Controller。
 
 ### 第 0 步 - 新增 Controller
 
@@ -60,7 +60,7 @@ class PagesController < ApplicationController
 end
 ```
 
-這個 Controller 裡什麼內容都沒有，就只有繼承自 `ApplicationController` 而已。所以如果之後上手的話，也不一定要用產生器來幫你產生 Controller，直接自己手動新增也行。
+這個 Controller 裡什麼內容都沒有，就只有繼承自 `ApplicationController` 而已。所以如果上手之後，也不一定要用產生器來幫你產生 Controller，直接自己手動新增也行。
 
 ### 第 1 步 - 新增 Route
 
@@ -68,14 +68,14 @@ end
 
 ```ruby
 Rails.application.routes.draw do
-  get "hello_world", to: "pages#hello"
+  get "/hello_world", to: "pages#hello"
 
   resources :posts
   resources :users
 end
 ```
 
-當使用者輸入 `/hello_world` 網址的時候，會交給 `PagesController` 的 `hello` 方法處理。（是的，其實網址跟 Controller 上的 Action 不一定要同名喔）
+當使用者輸入 `/hello_world` 網址的時候，會交給 `PagesController` 的 `hello` 方法處理。（是的，其實網址跟 Controller 上的 Action 不一定要同名）
 
 ### 第 2 步 - 把文字印出來吧！
 
@@ -91,7 +91,7 @@ end
 
 在 `hello` 方法裡要把文字輸出到瀏覽器上，不是使用 `return` 也不是使用 `puts`，而是使用 `render` 方法，後面的 `plain` 參數是指要輸出一個一般的文字內容到畫面上。
 
-有些剛開始學 Rails 的新朋友可能會這樣想：
+有些剛開始學 Rails 的新朋友可能會想這樣做：
 
 ```ruby
 class PagesController < ApplicationController
@@ -106,13 +106,13 @@ end
 
 ![image](/images/chapter12/puts-to-console.png)
 
-你就可以看到這樣的畫面：
+你就可以發現有這樣的畫面：
 
 ![image](/images/chapter12/render-hello-world.png)
 
 ### 第 3 步 - 把工作交給 View 吧
 
-雖然第 2 步這樣可以把資料輸出在畫面上沒錯，但這樣實在是太辛苦了。在 Controller 裡的 Action，如果沒有特別指定 `render` 方法的話，它會到 `app/views/` 的目錄找「 Controller 名字」目錄裡的 Action 同名檔案。以這個例子來說，它會去找 `app/views/pages/hello.html.erb`。
+雖然在第 2 步這樣可以直接在 Action 裡透過 `render` 方法把資料輸出在畫面上沒錯，但如果遇到比較複雜的 HTML 通常就不會用這個方式了。在 Controller 裡的 Action，如果沒有特別指定 `render` 方法或參數的話，它會到 `app/views/` 的目錄找「 Controller 名字」目錄裡的 Action 同名檔案。以這個例子來說，它會去找 `app/views/pages/hello.html.erb`。
 
 ![image](/images/chapter12/controller-view-mapping.png)
 
