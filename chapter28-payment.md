@@ -11,9 +11,12 @@ permalink: /chapters/28-payment.html
 - [使用 Braintree - 前端](#front-end)
 - [使用 Braintree - 後端](#back-end)
 
-有購物車、有訂單處理，接下來就是準備要你的客人付錢了。國內、外的金流廠商有非常多，本章節將以 Paypal 為例，示範如何串接金流。一般來說，國外的金流服務在串接上是比較簡單的，不僅設計比較先進，文件也比較清楚。但不管是要串接哪一家的金流，文件是一定都得要看的。
+有購物車、有訂單處理，接下來就是準備要你的客人付錢了。國內、外的金流廠商有非常多，本章節將以 Paypal 為例，示範如何串接金流。一般來說，國外的金流服務在串接上是比較簡單的，不僅設計比較先進，文件也比較清楚。雖然國外的金流服務比較容易串接，但有可能會遇到以下問題：
 
-我們將使用 Braintree 提供的服務來串接 Paypal 金流。
+1. 國內某些信用卡沒辦法刷
+2. 可能需要有國外的銀行帳戶才能收款
+
+但不管是要串接哪一家的金流服務，文件是一定都得要看的。以下我們將使用 [Braintree](https://www.braintreepayments.com/) 所提供的服務來串接 Paypal 金流。
 
 ## <a name="front-end"></a>使用 Braintree - 前端
 
@@ -40,9 +43,7 @@ permalink: /chapters/28-payment.html
 
 ![image](/images/chapter28/v2-v3.png)
 
-其中 v3 版本較多地方可以客制化，但 v2 版本使用上較為單純，所以以下將使用 v2 版本做為範例，v3 版本的使用方法跟 v2 版不會差太多，使用方式請參閱文件。
-
-為了簡化流程，我直接在商品頁面的 `show` 頁面進行刷卡，我直接在該頁面加上它文件的範例：
+其中 v3 版本較多地方可以客制化，但 v2 版本使用上較為簡單，以下將使用 v2 版本做為範例。為了簡化流程，我直接在商品頁面的 `show` 頁面進行刷卡，我直接在該頁面加上它文件的範例：
 
 ```erb
 <p id="notice"><%= notice %></p>
@@ -82,8 +83,8 @@ braintree.setup(clientToken, "dropin", {
 
 說明：
 
-1. Form 裡面必須有一個 id 為 `payment-form` 的元素，好讓底下的 JavaScript 可以對到這個名字。不一定要用這個名字，但如果改的話，底下的 `braintree.setup` 那段範例裡的名字也要跟著改。
-2. 文件的範例只是一般的 HTML form，但在 Rails 傳送表單的時候會檢查 CSRF Token，所以通常會用 `form_for` 或 `form_tag` 來產生 HTML form。
+1. Form 裡面必須有一個 id 為 `payment-form` 的元素，好讓底下的 JavaScript 可以對到這個名字。不一定要用 `payment-form` 這個名字，但如果換的話，底下的 `braintree.setup` 那段範例裡的名字也要跟著換。
+2. 文件的範例只是一般的 HTML form，但在 Rails 傳送表單的時候會順便檢查 CSRF Token，所以通常會用 `form_for` 或 `form_tag` 來產生 HTML form。
 3. 接續 2，為了讓 `form_for` 裡的 `checkout_product_path` 可以正常運作，我在 `config/routes.rb` 加了一些修改：
 
 ```ruby

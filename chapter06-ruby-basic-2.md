@@ -625,9 +625,9 @@ end
 
 ### Symbol 是什麼
 
-Symbol 其實是有點玄的東西，有些人認為它就是的變數，或就是只是個名字，但事實上它不就是變數或名字這麼簡單，你可以想像它是一個「帶有名字的物件」：
+Symbol 其實是有點玄的東西，有些人認為它就是變數，或就是只是個名字，但事實上它不只是變數或名字這麼簡單，你可以想像它是一個「帶有名字的物件」：
 
-Symbol 就是一個 `Symbol` [類別](http://ruby-doc.org/core/Symbol.html)的實體，它可用來表示某個狀態，例如這樣：
+Symbol 是一個 `Symbol` [類別](http://ruby-doc.org/core/Symbol.html)的實體，它可用來表示某個狀態，例如這樣：
 
 ```ruby
 class Order
@@ -650,7 +650,7 @@ if order.status == :pending
 end
 ```
 
-你也許會好奇這裡的 `:pending` 跟 `:complete` 是什麼？其實它就是代表 pending 跟 complete 這兩個狀態，前面提到 Symbol 是一種「帶有名字的物件」，正如其名，Symbol 就是符號，這個符號表示「已完成」或「未完成」。
+你也許會好奇這裡的 `:pending` 跟 `:complete` 是什麼？你可把它當做就是代表 pending 跟 complete 這兩個「狀態」，Symbol 是一種「帶有名字的物件」，正如其名，Symbol 就是符號，這個符號可用來表示「已完成」或「未完成」。
 
 那.. 上面這個例子，把 Symbol 改用字串可以嗎？當然是可以的。
 
