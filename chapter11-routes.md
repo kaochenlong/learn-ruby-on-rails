@@ -501,7 +501,7 @@ end
     # 或是給它一個獨立的路徑
     GET /orders/cancelled
 
-雖然第一種做法也可以，但這樣表示必須在原來的 Action 裡多判斷、處理傳進來的 `type=calcelled` 參數；第二種做法則是另外開一個 Action 專門做這件事。你可以使用 `collection` 方法來做出這個效果：
+雖然第一種做法也可以，但這樣表示必須在原來的 Action 裡多判斷、處理傳進來的 `type=cancelled` 參數；第二種做法則是另外開一個 Action 專門做這件事。你可以使用 `collection` 方法來做出這個效果：
 
 ```ruby
 Rails.application.routes.draw do
