@@ -71,7 +71,7 @@ end
 
 ![image](/images/chapter15/user-table.png)
 
-會發現除了上面這三個欄位之外，還多了 `id`、`created_at` 跟 `updated_at` 三個欄位。事實上，在 Migration 檔案中的 `t.timestapms` ，在經過轉換之後，會產生兩個名為 `created_at` 跟 `updated_at` 的時間欄位，分別會在資料「新增」及「更新」的時候，把當下的時間寫進去，完全不需要我們煩惱。
+會發現除了上面這三個欄位之外，還多了 `id`、`created_at` 跟 `updated_at` 三個欄位。事實上，在 Migration 檔案中的 `t.timestamps` ，在經過轉換之後，會產生兩個名為 `created_at` 跟 `updated_at` 的時間欄位，分別會在資料「新增」及「更新」的時候，把當下的時間寫進去，完全不需要我們煩惱。
 
 而 `id` 欄位你在 Migration 沒看到任何資訊，這是 Rails 自動幫每個資料表加的流水編號欄位，這個欄位稱為資料表的主鍵（Primary Key）。
 
