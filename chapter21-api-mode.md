@@ -162,5 +162,5 @@ Rails 方便歸方便，它本身是個有點肥大的框架，這是一直以�
 
 更多詳細資料請參閱 http://guides.rubyonrails.org/api_app.html
 
-但即使如此，Rails 畢竟是一個功能完整的網站開發框架，改成 API only 也只是從很胖的胖子變成普通胖的胖子，如果真的有效能考量，而且沒有要用到那麼完整的功能，也許可直接考慮使用更輕量化的工具，例如 Sinatra (http://www.sinatrarb.com/)。
+但即使如此，Rails 畢竟是一個功能完整的網站開發框架，改成 API only 也只是從很胖的胖子變成普通胖的胖子，如果真的有效能考量，而且沒有要用到那麼完整的功能，也許可直接考慮使用更輕量化的工具，例如 Sinatra ([http://www.sinatrarb.com/](http://www.sinatrarb.com/))。
 
