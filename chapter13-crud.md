@@ -23,6 +23,7 @@ permalink: /chapters/13-crud.html
 - [第 12 步 - 整理重複的程式碼](#step12)
 - [第 13 步 - 使用 bootstrap 來美化頁面](#step13)
 - [第 14 步 - 使用 gem 來簡化表單](#step14)
+- [第 15 步 - 顯示 flash 訊息](#step15)
 
 CRUD 是 Create, Read, Update 跟 Delete 四個字的縮寫，對 Rails 來說，開發 CRUD 應用程式可以說是它的強項，甚至用 Scaffold 一行指令就搞定。第一次用 Scaffold 會感覺非常神奇，但對新手來說也不知道到底發生什麼事。所以接下來我們一步一步分解 CRUD 的各項動作，希望可以讓大家更了解 Rails 的一些慣例以及它是怎麼運作的。
 
@@ -796,6 +797,33 @@ simple_form 可以用來取代原來的 `form_for`，原來那個 Partial Render
 ![image](/images/chapter13/vote-candidate-12.png)
 
 不僅程式碼變精簡了，畫面也變好看了。
+
+### <a name="step15"></a>第 15 步 - 顯示 flash 訊息
+
+如果你的觀察力不錯，你可能已經發現 Controller 裡頭夾雜著要回饋給使用者的訊息
+在 Rails 裡提供了一個方便的功能叫做 flash 
+flash 是一個 key and value 的 [hash](http://railsbook.tw/chapters/06-ruby-basic-2.html#hash) 
+Controller 裡頭我們傳遞了一個 flash 給 view 顯示，顯示一次 flash 就會被清除
+
+我們可以試著在 `index.html.erb` 新增一段程式碼讓 flash 顯示出來
+
+```erb
+
+<h1>候選人列表</h1>
+
+<% if flash[:notice]%>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %> 
+
+<%= link_to "新增候選人", new_candidate_path %>
+
+.. [略] ..
+```
+
+透過 if 判斷 flash 裡頭的 notice 是否存在，存在的話將它顯示在畫面上提醒使用者目前的狀況
+此時如果操作後就可以看到像這樣的提示畫面
+
+![image](/images/chapter13/flash-message.png)
 
 > 以上實作完整程式碼可在[我的 GitHub 帳號](https://github.com/kaochenlong/my_candidates)裡取得。
 
