@@ -129,7 +129,7 @@ Braintree 有提供一組測試用的卡號：
 
 ### 2. 設定金鑰
 
-接下來要設定一些金鑰資訊以便讓我們產生下一步所需的 Client Token。以我們在開發環境為例，請打開 `config/environmentsdevelopment.rb` 檔案，在最下方加上這幾行：
+接下來要設定一些金鑰資訊以便讓我們產生下一步所需的 Client Token。以我們在開發環境為例，請打開 `config/environments/development.rb` 檔案，在最下方加上這幾行：
 
 ```ruby
 Rails.application.configure do
